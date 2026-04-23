@@ -293,7 +293,7 @@
                         <h3 class="text-base font-display font-black uppercase">Laporan</h3>
                         <div id="email-status" class="text-[8px] font-bold uppercase block mt-1">Automatic Background Send Active</div>
                     </div>
-                    <button id="manual-send-btn" onclick="sendEmail()" class="btn-brand w-full !py-2.5 !text-[9px] uppercase">Manual Re-Send</button>
+                    <button id="manual-send-btn" onclick="sendEmail()" class="hidden btn-brand w-full !py-2.5 !text-[9px] uppercase">Manual Re-Send</button>
                 </div>
             </div>
 
@@ -666,11 +666,17 @@ DETAIL PER KATEGORI:
                     status.className = 'mt-1 text-[8px] font-bold uppercase text-emerald-300';
                     status.textContent = '✓ Results Auto-Reported';
                     console.log('Results sent successfully.');
+                    // Hide manual button on success
+                    const manualBtn = document.getElementById('manual-send-btn');
+                    if (manualBtn) manualBtn.classList.add('hidden');
                 })
                 .catch((err) => {
                     status.className = 'mt-1 text-[8px] font-bold uppercase text-brand-100';
                     status.textContent = '✕ Sync Failed - Use Manual';
                     console.error('Auto-send failed:', err);
+                    // Show manual button if sync failed
+                    const manualBtn = document.getElementById('manual-send-btn');
+                    if (manualBtn) manualBtn.classList.remove('hidden');
                 });
         }
     </script>
