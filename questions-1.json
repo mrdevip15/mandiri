@@ -1,0 +1,130 @@
+[
+  {
+    "no": 1,
+    "cat": "verbal",
+    "text": "SELARAS : HARMONIS = GERSANG : ...",
+    "options": [{ "a": "Tandus", "b": "Subur", "c": "Basah", "d": "Hijau" }],
+    "key": "a",
+    "explain": "Selaras bersinonim dengan harmonis. Gersang bersinonim dengan tandus."
+  },
+  {
+    "no": 2,
+    "cat": "verbal",
+    "text": "Antonim kata IMPLISIT adalah...",
+    "options": [{ "a": "Samar", "b": "Tersembunyi", "c": "Eksplisit", "d": "Tersirat" }],
+    "key": "c",
+    "explain": "Implisit (tersirat) berlawanan dengan eksplisit (langsung/tegas)."
+  },
+  {
+    "no": 3,
+    "cat": "verbal",
+    "text": "PENA : MENULIS = PISAU : ...",
+    "options": [{ "a": "Dapur", "b": "Memotong", "c": "Logam", "d": "Tajam" }],
+    "key": "b",
+    "explain": "Pena adalah alat untuk menulis, pisau adalah alat untuk memotong."
+  },
+  {
+    "no": 4,
+    "cat": "verbal",
+    "text": "Manakah kata yang TIDAK termasuk kelompok yang sama?",
+    "options": [{ "a": "Puisi", "b": "Cerpen", "c": "Novel", "d": "Esai" }],
+    "key": "a",
+    "explain": "Puisi berbasis rima/irama, sedangkan yang lainnya adalah prosa."
+  },
+  {
+    "no": 5,
+    "cat": "numerik",
+    "text": "Deret angka: 2, 6, 18, 54, ...",
+    "options": [{ "a": "108", "b": "162", "c": "216", "d": "270" }],
+    "key": "b",
+    "explain": "Pola: dikali 3. 54 × 3 = 162."
+  },
+  {
+    "no": 6,
+    "cat": "numerik",
+    "text": "Deret Fibonacci: 3, 5, 8, 13, 21, ...",
+    "options": [{ "a": "29", "b": "34", "c": "35", "d": "40" }],
+    "key": "b",
+    "explain": "Jumlah dua angka sebelumnya: 13 + 21 = 34."
+  },
+  {
+    "no": 7,
+    "cat": "numerik",
+    "text": "Jika 3x + 7 = 22, maka nilai x adalah...",
+    "options": [{ "a": "3", "b": "4", "c": "5", "d": "6" }],
+    "key": "c",
+    "explain": "3x = 15, maka x = 5."
+  },
+  {
+    "no": 8,
+    "cat": "numerik",
+    "text": "Toko memberi diskon 25% dari Rp 400.000. Harga akhirnya adalah...",
+    "options": [{ "a": "Rp 280.000", "b": "Rp 300.000", "c": "Rp 320.000", "d": "Rp 350.000" }],
+    "key": "b",
+    "explain": "Diskon 100rb (25% dari 400rb), maka harga akhir 300rb."
+  },
+  {
+    "no": 9,
+    "cat": "logika",
+    "text": "Semua kucing adalah mamalia. Semua mamalia bernapas dengan paru-paru.",
+    "options": [{ "a": "Semua mamalia adalah kucing", "b": "Semua kucing bernapas dengan paru-paru", "c": "Beberapa kucing tidak bernapas", "d": "Tidak ada kesimpulan" }],
+    "key": "b",
+    "explain": "Silogisme: Kucing → Mamalia → Paru-paru."
+  },
+  {
+    "no": 10,
+    "cat": "logika",
+    "text": "Jika hari ini hujan, maka jalanan basah. Ternyata jalanan tidak basah.",
+    "options": [{ "a": "Hari ini hujan", "b": "Hari ini tidak hujan", "c": "Mungkin hujan", "d": "Tidak ada kesimpulan" }],
+    "key": "b",
+    "explain": "Modus tollens: Jika P maka Q. Bukan Q, maka bukan P."
+  },
+  {
+    "no": 11,
+    "cat": "logika",
+    "text": "Beberapa siswa rajin. Semua yang rajin mendapat beasiswa.",
+    "options": [{ "a": "Semua siswa mendapat beasiswa", "b": "Beberapa siswa mendapat beasiswa", "c": "Tidak ada siswa mendapat beasiswa", "d": "Semua siswa rajin" }],
+    "key": "b",
+    "explain": "Hanya siswa yang rajin yang pasti mendapat beasiswa."
+  },
+  {
+    "no": 12,
+    "cat": "logika",
+    "text": "Andi lebih tinggi dari Budi. Budi lebih tinggi dari Cici.",
+    "options": [{ "a": "Andi paling pendek", "b": "Budi paling tinggi", "c": "Cici paling pendek", "d": "Andi paling pendek" }],
+    "key": "c",
+    "explain": "Urutan: Andi > Budi > Cici."
+  },
+  {
+    "no": 13,
+    "cat": "spasial",
+    "text": "Deret huruf: A, C, E, G, ...",
+    "options": [{ "a": "H", "b": "I", "c": "J", "d": "K" }],
+    "key": "b",
+    "explain": "Lompat 1 huruf: A(b)C(d)E(f)G(h)I."
+  },
+  {
+    "no": 14,
+    "cat": "spasial",
+    "text": "Deret huruf: Z, X, V, T, ...",
+    "options": [{ "a": "R", "b": "S", "c": "Q", "d": "P" }],
+    "key": "a",
+    "explain": "Mundur 1 huruf: Z(y)X(w)V(u)T(s)R."
+  },
+  {
+    "no": 15,
+    "cat": "spasial",
+    "text": "Berapa banyak pasangan sisi berhadapan pada sebuah kubus?",
+    "options": [{ "a": "2 pasang", "b": "3 pasang", "c": "4 pasang", "d": "6 pasang" }],
+    "key": "b",
+    "explain": "Tiga pasang: Atas-bawah, Depan-belakang, Kiri-kanan."
+  },
+  {
+    "no": 16,
+    "cat": "spasial",
+    "text": "Kertas persegi dilipat secara diagonal, lalu satu sudut dilipat ke dalam. Bentuk akhirnya adalah...",
+    "options": [{ "a": "Segitiga kecil", "b": "Persegi panjang", "c": "Trapesium", "d": "Jajar genjang" }],
+    "key": "c",
+    "explain": "Lipatan diagonal awal menghasilkan segitiga, lalu sudut yang dilipat akan membentuk trapesium."
+  }
+]

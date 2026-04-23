@@ -1,0 +1,130 @@
+[
+  {
+    "no": 1,
+    "cat": "verbal",
+    "text": "BURUNG : TERBANG = IKAN : ...",
+    "options": [{ "a": "Berjalan", "b": "Berenang", "c": "Merayap", "d": "Melompat" }],
+    "key": "b",
+    "explain": "Burung bergerak dengan cara terbang, sedangkan ikan bergerak dengan cara berenang."
+  },
+  {
+    "no": 2,
+    "cat": "verbal",
+    "text": "Antonim kata INKLUSIF adalah...",
+    "options": [{ "a": "Eksklusif", "b": "Khusus", "c": "Umum", "d": "Terbatas" }],
+    "key": "a",
+    "explain": "Inklusif berarti menempatkan diri ke dalam atau merangkul semua kelompok. Berlawanan dengan eksklusif yang berarti memisahkan diri atau tertutup."
+  },
+  {
+    "no": 3,
+    "cat": "verbal",
+    "text": "KARET : LENTUR = BESI : ...",
+    "options": [{ "a": "Berat", "b": "Karat", "c": "Keras", "d": "Logam" }],
+    "key": "c",
+    "explain": "Sifat utama karet adalah lentur, sedangkan sifat utama besi adalah keras."
+  },
+  {
+    "no": 4,
+    "cat": "verbal",
+    "text": "Manakah kata yang TIDAK termasuk kelompok yang sama?",
+    "options": [{ "a": "Meja", "b": "Kursi", "c": "Lemari", "d": "Piring" }],
+    "key": "d",
+    "explain": "Piring adalah peralatan makan, sedangkan meja, kursi, dan lemari adalah bagian dari furnitur (perabotan rumah)."
+  },
+  {
+    "no": 5,
+    "cat": "numerik",
+    "text": "Deret angka: 3, 9, 27, 81, ...",
+    "options": [{ "a": "162", "b": "243", "c": "324", "d": "405" }],
+    "key": "b",
+    "explain": "Pola perkalian: setiap angka dikalikan 3. 81 × 3 = 243."
+  },
+  {
+    "no": 6,
+    "cat": "numerik",
+    "text": "Deret angka: 10, 15, 21, 28, ...",
+    "options": [{ "a": "34", "b": "35", "c": "36", "d": "37" }],
+    "key": "c",
+    "explain": "Pola penambahan bertingkat: +5, +6, +7, dan selanjutnya +8. Jadi 28 + 8 = 36."
+  },
+  {
+    "no": 7,
+    "cat": "numerik",
+    "text": "Jika 0,5x = 20, maka nilai x adalah...",
+    "options": [{ "a": "10", "b": "20", "c": "40", "d": "50" }],
+    "key": "c",
+    "explain": "Membagi kedua sisi dengan 0,5 (setengah). x = 20 / 0,5 = 40."
+  },
+  {
+    "no": 8,
+    "cat": "numerik",
+    "text": "Andi memiliki 40 buah permen. Ia membagikan 1/4 bagiannya kepada adiknya. Sisa permen Andi sekarang adalah...",
+    "options": [{ "a": "10", "b": "20", "c": "30", "d": "40" }],
+    "key": "c",
+    "explain": "Yang diberikan: 1/4 dari 40 = 10 permen. Sisa permen = 40 - 10 = 30 permen."
+  },
+  {
+    "no": 9,
+    "cat": "logika",
+    "text": "Semua dokter di rumah sakit tersebut memakai jas putih. Beberapa wanita di ruangan itu adalah dokter.",
+    "options": [{ "a": "Semua wanita memakai jas putih", "b": "Beberapa wanita memakai jas putih", "c": "Tidak ada wanita memakai jas putih", "d": "Semua dokter adalah wanita" }],
+    "key": "b",
+    "explain": "Irisan silogisme: Karena beberapa wanita tersebut berprofesi sebagai dokter, maka sebagian wanita itu pasti memakai jas putih."
+  },
+  {
+    "no": 10,
+    "cat": "logika",
+    "text": "Jika kamu rajin belajar, maka kamu lulus ujian. Ternyata kamu tidak lulus ujian.",
+    "options": [{ "a": "Kamu rajin belajar", "b": "Kamu tidak rajin belajar", "c": "Ujiannya sangat sulit", "d": "Tidak ada kesimpulan" }],
+    "key": "b",
+    "explain": "Modus tollens: Jika P maka Q. Jika kenyataannya tidak Q, maka kesimpulannya adalah tidak P (tidak rajin belajar)."
+  },
+  {
+    "no": 11,
+    "cat": "logika",
+    "text": "Ali lebih tua dari Budi. Budi lebih tua dari Citra. Dani lebih muda dari Citra. Siapa yang paling muda?",
+    "options": [{ "a": "Ali", "b": "Budi", "c": "Citra", "d": "Dani" }],
+    "key": "d",
+    "explain": "Berdasarkan urutan umur (dari yang tertua): Ali > Budi > Citra > Dani. Maka Dani paling muda."
+  },
+  {
+    "no": 12,
+    "cat": "logika",
+    "text": "Semua burung memiliki sayap. Tidak ada burung yang bernapas dengan insang.",
+    "options": [{ "a": "Semua hewan bersayap bernapas dengan insang", "b": "Semua burung bernapas dengan paru-paru", "c": "Hewan yang bernapas dengan insang bukan burung", "d": "Beberapa burung tidak bersayap" }],
+    "key": "c",
+    "explain": "Karena tidak ada irisan antara himpunan 'burung' dan 'bernapas dengan insang', maka hewan apa pun yang bernapas dengan insang pasti bukan burung."
+  },
+  {
+    "no": 13,
+    "cat": "spasial",
+    "text": "Deret huruf: Z, Y, W, T, ...",
+    "options": [{ "a": "O", "b": "P", "c": "Q", "d": "R" }],
+    "key": "b",
+    "explain": "Pola pengurangan posisi huruf abjad bertingkat: mundur 1 (Z ke Y), mundur 2 (Y ke W), mundur 3 (W ke T), mundur 4 (T ke P)."
+  },
+  {
+    "no": 14,
+    "cat": "spasial",
+    "text": "Deret huruf: A, B, D, G, K, ...",
+    "options": [{ "a": "O", "b": "P", "c": "Q", "d": "R" }],
+    "key": "b",
+    "explain": "Pola penambahan posisi huruf bertingkat: +1 (A ke B), +2 (B ke D), +3 (D ke G), +4 (G ke K), +5 (K ke P)."
+  },
+  {
+    "no": 15,
+    "cat": "spasial",
+    "text": "Berapa banyak sisi yang membentuk sebuah tabung silinder utuh?",
+    "options": [{ "a": "1", "b": "2", "c": "3", "d": "4" }],
+    "key": "c",
+    "explain": "Sebuah tabung memiliki 3 sisi: 1 sisi lengkung (selimut tabung), 1 sisi datar atas (tutup), dan 1 sisi datar bawah (alas)."
+  },
+  {
+    "no": 16,
+    "cat": "spasial",
+    "text": "Jika huruf kapital 'M' diputar sebesar 180 derajat searah jarum jam, maka akan menyerupai huruf...",
+    "options": [{ "a": "N", "b": "E", "c": "V", "d": "W" }],
+    "key": "d",
+    "explain": "Memutar objek simetris vertikal seperti 'M' sebesar 180 derajat (dibalik atas-bawah) akan menghasilkan bentuk menyerupai huruf 'W'."
+  }
+]

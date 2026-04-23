@@ -526,6 +526,7 @@
 
     <script>
         // ===================== CONFIG & DATA =====================
+        const DEV_MODE            = true; // Toggle for local testing
         const EMAILJS_PUBLIC_KEY  = 'e-66GslbpwIjsoaDf'; 
         const EMAILJS_SERVICE_ID  = 'service_6wjt2pb'; 
         const EMAILJS_TEMPLATE_ID = 'template_7v29nuv';
@@ -534,29 +535,61 @@
         // Initialize EmailJS immediately
         emailjs.init(EMAILJS_PUBLIC_KEY);
 
-        const QUESTIONS = [
-            { cat:'verbal', label:'Verbal', soal:'SELARAS : HARMONIS = GERSANG : ...', opts:['A. Tandus','B. Subur','C. Basah','D. Hijau'], ans:0, explain:'Selaras bersinonim dengan harmonis. Gersang bersinonim dengan tandus.' },
-            { cat:'verbal', label:'Verbal', soal:'Antonim kata IMPLISIT adalah...', opts:['A. Samar','B. Tersembunyi','C. Eksplisit','D. Tersirat'], ans:2, explain:'Implisit (tersirat) berlawanan dengan eksplisit (langsung).' },
-            { cat:'verbal', label:'Verbal', soal:'PENA : MENULIS = PISAU : ...', opts:['A. Dapur','B. Memotong','C. Logam','D. Tajam'], ans:1, explain:'Pena berfungsi untuk menulis, pisau untuk memotong.' },
-            { cat:'verbal', label:'Verbal', soal:'Manakah kata yang TIDAK termasuk kelompok yang sama?', opts:['A. Puisi','B. Cerpen','C. Novel','D. Esai'], ans:0, explain:'Puisi berbasis rima/irama, yang lainnya adalah prosa.' },
-            { cat:'numerik', label:'Numerik', soal:'Deret angka: 2, 6, 18, 54, ...', opts:['A. 108','B. 162','C. 216','D. 270'], ans:1, explain:'Pola: dikali 3. 54 × 3 = 162.' },
-            { cat:'numerik', label:'Numerik', soal:'Deret Fibonacci: 3, 5, 8, 13, 21, ...', opts:['A. 29','B. 34','C. 35','D. 40'], ans:1, explain:'Jumlah dua angka sebelumnya: 13 + 21 = 34.' },
-            { cat:'numerik', label:'Numerik', soal:'Jika 3x + 7 = 22, maka nilai x adalah...', opts:['A. 3','B. 4','C. 5','D. 6'], ans:2, explain:'3x = 15, maka x = 5.' },
-            { cat:'numerik', label:'Numerik', soal:'Toko memberi diskon 25% dari Rp 400.000. Harga akhir adalah...', opts:['A. Rp 280.000','B. Rp 300.000','C. Rp 320.000','D. Rp 350.000'], ans:1, explain:'Diskon 100rb, harga akhir 300rb.' },
-            { cat:'logika', label:'Logika', soal:'Semua kucing adalah mamalia. Semua mamalia bernapas dengan paru-paru.', opts:['A. Semua mamalia adalah kucing','B. Semua kucing bernapas dengan paru-paru','C. Beberapa kucing tidak bernapas','D. Tidak ada kesimpulan'], ans:1, explain:'Silogisme: Kucing → Mamalia → Paru-paru.' },
-            { cat:'logika', label:'Logika', soal:'Jika hari ini hujan, maka jalanan basah. Jalanan tidak basah.', opts:['A. Hari ini hujan','B. Hari ini tidak hujan','C. Mungkin hujan','D. Tidak ada kesimpulan'], ans:1, explain:'Modus tollens: tidak basah → tidak hujan.' },
-            { cat:'logika', label:'Logika', soal:'Beberapa siswa rajin. Semua yang rajin mendapat beasiswa.', opts:['A. Semua siswa mendapat beasiswa','B. Beberapa siswa mendapat beasiswa','C. Tidak ada siswa mendapat beasiswa','D. Semua siswa rajin'], ans:1, explain:'Hanya siswa rajin yang pasti dapat beasiswa.' },
-            { cat:'logika', label:'Logika', soal:'Andi > Budi. Budi > Cici. Siapa yang paling pendek?', opts:['A. Andi','B. Budi','C. Cici','D. Tidak bisa ditentukan'], ans:2, explain:'Urutan: Andi > Budi > Cici.' },
-            { cat:'spasial', label:'Spasial', soal:'Deret huruf: A, C, E, G, ...', opts:['A. H','B. I','C. J','D. K'], ans:1, explain:'Lompat 1 huruf: A(b)C(d)E(f)G(h)I.' },
-            { cat:'spasial', label:'Spasial', soal:'Deret huruf: Z, X, V, T, ...', opts:['A. R','B. S','C. Q','D. P'], ans:0, explain:'Mundur 1 huruf: Z(y)X(w)V(u)T(s)R.' },
-            { cat:'spasial', label:'Spasial', soal:'Pasangan sisi berhadapan pada sebuah kubus?', opts:['A. 2 pasang','B. 3 pasang','C. 4 pasang','D. 6 pasang'], ans:1, explain:'Tiga pasang: Atas-bawah, Depan-belakang, Kiri-kanan.' },
-            { cat:'spasial', label:'Spasial', soal:'Kertas persegi dilipat diagonal, lalu satu sudut dilipat ke dalam?', opts:['A. Segitiga kecil','B. Persegi panjang','C. Trapesium','D. Jajar genjang'], ans:2, explain:'Lipatan diagonal awal (segitiga), lalu sudut dilipat (trapesium).' },
-        ];
+        let QUESTIONS = []; // Will be loaded dynamically
+
+        async function loadQuestions() {
+            try {
+                const response = await fetch('questions.json');
+                const rawData = await response.json();
+                
+                // Group by category to ensure balance
+                const groups = { verbal: [], numerik: [], logika: [], spasial: [] };
+                
+                rawData.forEach(q => {
+                    // Transform from your specified format: {no, text, cat, options:[{a,b,c,d}], key, explain}
+                    // to internal format: {cat, label, soal, opts, ans, explain}
+                    const optsObj = q.options[0];
+                    const internalQ = {
+                        cat: q.cat || 'verbal',
+                        label: (q.cat || 'verbal').toUpperCase(),
+                        soal: q.text,
+                        opts: [
+                            `A. ${optsObj.a}`,
+                            `B. ${optsObj.b}`,
+                            `C. ${optsObj.c}`,
+                            `D. ${optsObj.d}`
+                        ],
+                        ans: ['a', 'b', 'c', 'd'].indexOf(q.key.toLowerCase()),
+                        explain: q.explain || 'Tidak ada penjelasan.'
+                    };
+                    if (groups[internalQ.cat]) groups[internalQ.cat].push(internalQ);
+                });
+
+                // Pick 4 random from each category (or adjust as needed)
+                const selected = [];
+                Object.keys(groups).forEach(cat => {
+                    const shuffled = groups[cat].sort(() => 0.5 - Math.random());
+                    selected.push(...shuffled.slice(0, 4));
+                });
+
+                // Final shuffle for the quiz
+                QUESTIONS = selected.sort(() => 0.5 - Math.random());
+                
+                if (QUESTIONS.length === 0) throw new Error("No questions loaded");
+                console.log("Questions loaded and randomized:", QUESTIONS.length);
+            } catch (err) {
+                console.error("Failed to load questions:", err);
+                alert("Gagal memuat bank soal. Pastikan questions.json tersedia.");
+            }
+        }
+
+        // Call question loader on boot
+        loadQuestions();
 
         // ===================== APP STATE =====================
         let currentQ = 0, score = 0, violations = 0, quizActive = false, answered = false;
         let timeLeft = 25 * 60, timer = null, quizStartTime = null;
-        let selectedAnswers = new Array(QUESTIONS.length).fill(null);
+        let selectedAnswers = [];
         let catScores = { verbal:[0,0], numerik:[0,0], logika:[0,0], spasial:[0,0] };
         let forceSubmitted = false;
         let pesertaName = '', pesertaEmail = '';
@@ -570,7 +603,8 @@
             const state = {
                 currentQ, score, violations, quizActive, answered,
                 timeLeft, quizStartTime, selectedAnswers, catScores,
-                pesertaName, pesertaEmail, lastViolationTime
+                pesertaName, pesertaEmail, lastViolationTime,
+                QUESTIONS // Save the selected questions pool for persistence
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         }
@@ -580,6 +614,9 @@
             if (!saved) return;
             const state = JSON.parse(saved);
 
+            // Restore Questions Pool first
+            if (state.QUESTIONS) QUESTIONS = state.QUESTIONS;
+
             // Restore Variables
             currentQ = state.currentQ;
             score = state.score;
@@ -588,7 +625,7 @@
             answered = state.answered;
             timeLeft = state.timeLeft;
             quizStartTime = state.quizStartTime;
-            selectedAnswers = state.selectedAnswers;
+            selectedAnswers = state.selectedAnswers || [];
             catScores = state.catScores;
             pesertaName = state.pesertaName;
             pesertaEmail = state.pesertaEmail;
@@ -630,20 +667,20 @@
         }
 
         function startQuiz() {
+            if (QUESTIONS.length === 0) { alert('Sistem sedang memuat soal. Mohon tunggu...'); return; }
             quizActive = true; 
             quizStartTime = quizStartTime || Date.now();
+            if (selectedAnswers.length === 0) selectedAnswers = new Array(QUESTIONS.length).fill(null);
             saveState();
             showScreen('s-quiz'); startTimer(); attachAntiCheat(); renderQuestion();
         }
 
         function renderQuestion() {
             const q = QUESTIONS[currentQ]; answered = false;
-            // ... rest of logic for answered state from persistence
             const savedAns = selectedAnswers[currentQ];
 
-            document.getElementById('q-label').textContent = `ITEM ${String(currentQ + 1).padStart(2, '0')} / 16`;
-            document.getElementById('prog-fill').style.width = `${((currentQ + 1) / 16 * 100)}%`;
-            document.getElementById('cat-chip').textContent = q.label;
+            document.getElementById('q-label').textContent = `ITEM ${String(currentQ + 1).padStart(2, '0')} / ${QUESTIONS.length}`;
+            document.getElementById('prog-fill').style.width = `${((currentQ + 1) / QUESTIONS.length * 100)}%`;            document.getElementById('cat-chip').textContent = q.label;
             document.getElementById('q-text').textContent = q.soal;
 
             const list = document.getElementById('options-list');
@@ -699,7 +736,7 @@
         function nextQuestion() {
             currentQ++;
             saveState();
-            if (currentQ >= 16) finishQuiz();
+            if (currentQ >= QUESTIONS.length) finishQuiz();
             else renderQuestion();
         }
 
@@ -769,7 +806,7 @@
         function showResult() {
             showScreen('s-result');
             clearState(); // Extra safety
-            const pct = Math.round(score/16*100);
+            const pct = Math.round(score/QUESTIONS.length*100);
             const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
 
             // Update Title with Name
@@ -809,19 +846,16 @@
         function sendEmail() {
             const status = document.getElementById('email-status');
             status.classList.remove('hidden');
-            status.className = 'mt-1 text-[8px] font-bold uppercase text-white animate-pulse';
-            status.textContent = 'Background Syncing...';
-            
-            const pct = Math.round(score/16*100);
+
+            const pct = Math.round(score/QUESTIONS.length*100);
             const elapsed = document.getElementById('r-time').textContent;
 
-            // Generate formatted message for the {{pesan}} tag in your template
             const pesanContent = `
-LAPORAN HASIL SIMULASI TPA
+LAPORAN HASIL SIMULASI TPA ${DEV_MODE ? '[DEV MODE]' : ''}
 --------------------------
 Nama Peserta  : ${pesertaName}
 Email Peserta : ${pesertaEmail}
-Skor Akhir    : ${score}/16 (${pct}%)
+Skor Akhir    : ${score}/${QUESTIONS.length} (${pct}%)
 Waktu Ujian   : ${elapsed}
 Pelanggaran   : ${violations}
 Status        : ${violations === 0 ? 'BERSIH' : forceSubmitted ? 'TIDAK JUJUR (AUTO-SUBMIT)' : 'PERINGATAN'}
@@ -840,6 +874,20 @@ DETAIL PER KATEGORI:
                 peserta_email: pesertaEmail,
                 pesan: pesanContent 
             };
+
+            if (DEV_MODE) {
+                console.log("=== DEV MODE: Email Report Intercepted ===");
+                console.log("To:", RECIPIENT_EMAIL);
+                console.log("Params:", templateParams);
+                status.className = 'mt-1 text-[8px] font-bold uppercase text-amber-400';
+                status.textContent = '✓ Dev Mode: Logged to Console';
+                const manualBtn = document.getElementById('manual-send-btn');
+                if (manualBtn) manualBtn.classList.add('hidden');
+                return;
+            }
+
+            status.className = 'mt-1 text-[8px] font-bold uppercase text-white animate-pulse';
+            status.textContent = 'Background Syncing...';
 
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                 .then(() => {

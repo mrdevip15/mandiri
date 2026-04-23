@@ -1,0 +1,130 @@
+[
+  {
+    "no": 1,
+    "cat": "verbal",
+    "text": "GURU : SEKOLAH = DOKTER : ...",
+    "options": [{ "a": "Pasien", "b": "Puskesmas", "c": "Rumah Sakit", "d": "Obat" }],
+    "key": "c",
+    "explain": "Guru bekerja di sekolah, sedangkan dokter bekerja di rumah sakit."
+  },
+  {
+    "no": 2,
+    "cat": "verbal",
+    "text": "Antonim kata PASIF adalah...",
+    "options": [{ "a": "Diam", "b": "Aktif", "c": "Reaktif", "d": "Statis" }],
+    "key": "b",
+    "explain": "Pasif memiliki arti tidak giat atau tinggal menerima saja, yang berlawanan dengan aktif."
+  },
+  {
+    "no": 3,
+    "cat": "verbal",
+    "text": "KENDARAAN : MOBIL = ALAT TULIS : ...",
+    "options": [{ "a": "Buku", "b": "Pensil", "c": "Meja", "d": "Kertas" }],
+    "key": "b",
+    "explain": "Mobil adalah salah satu jenis kendaraan, sedangkan pensil adalah salah satu jenis alat tulis."
+  },
+  {
+    "no": 4,
+    "cat": "verbal",
+    "text": "Manakah kata yang TIDAK termasuk kelompok yang sama?",
+    "options": [{ "a": "Apel", "b": "Jeruk", "c": "Mangga", "d": "Bayam" }],
+    "key": "d",
+    "explain": "Bayam adalah jenis sayuran, sedangkan yang lainnya adalah jenis buah-buahan."
+  },
+  {
+    "no": 5,
+    "cat": "numerik",
+    "text": "Deret angka: 1, 4, 9, 16, 25, ...",
+    "options": [{ "a": "30", "b": "36", "c": "40", "d": "49" }],
+    "key": "b",
+    "explain": "Pola deret bilangan kuadrat sempurna: 1², 2², 3², 4², 5², dan selanjutnya 6² = 36."
+  },
+  {
+    "no": 6,
+    "cat": "numerik",
+    "text": "Deret angka: 50, 45, 35, 20, ...",
+    "options": [{ "a": "0", "b": "5", "c": "10", "d": "15" }],
+    "key": "a",
+    "explain": "Pola pengurangan bertingkat: -5, -10, -15, dan selanjutnya -20. Jadi 20 - 20 = 0."
+  },
+  {
+    "no": 7,
+    "cat": "numerik",
+    "text": "Jika 4y - 5 = 15, maka nilai y adalah...",
+    "options": [{ "a": "4", "b": "5", "c": "6", "d": "7" }],
+    "key": "b",
+    "explain": "4y = 15 + 5 -> 4y = 20, maka y = 5."
+  },
+  {
+    "no": 8,
+    "cat": "numerik",
+    "text": "Seseorang membeli baju seharga Rp 200.000 dan mendapat diskon 15%. Berapa harga akhir yang harus dibayar?",
+    "options": [{ "a": "Rp 170.000", "b": "Rp 175.000", "c": "Rp 180.000", "d": "Rp 185.000" }],
+    "key": "a",
+    "explain": "Diskon 15% dari Rp 200.000 adalah Rp 30.000. Harga akhir: 200.000 - 30.000 = Rp 170.000."
+  },
+  {
+    "no": 9,
+    "cat": "logika",
+    "text": "Semua pegawai memakai dasi. Budi adalah pegawai.",
+    "options": [{ "a": "Budi tidak memakai dasi", "b": "Budi memakai dasi", "c": "Budi belum tentu memakai dasi", "d": "Tidak ada kesimpulan" }],
+    "key": "b",
+    "explain": "Silogisme langsung: Budi termasuk dalam kelompok pegawai yang aturannya pasti memakai dasi."
+  },
+  {
+    "no": 10,
+    "cat": "logika",
+    "text": "Jika cuaca cerah, kami pergi ke pantai. Ternyata kami tidak pergi ke pantai.",
+    "options": [{ "a": "Cuaca cerah", "b": "Cuaca tidak cerah", "c": "Kami pergi ke gunung", "d": "Tidak ada kesimpulan" }],
+    "key": "b",
+    "explain": "Modus tollens: Jika P maka Q. Bukan Q, maka kesimpulannya adalah bukan P (cuaca tidak cerah)."
+  },
+  {
+    "no": 11,
+    "cat": "logika",
+    "text": "Beberapa mobil berbahan bakar listrik. Semua kendaraan berbahan bakar listrik ramah lingkungan.",
+    "options": [{ "a": "Semua mobil ramah lingkungan", "b": "Beberapa mobil ramah lingkungan", "c": "Tidak ada mobil ramah lingkungan", "d": "Semua kendaraan adalah mobil" }],
+    "key": "b",
+    "explain": "Irisan himpunan: Karena beberapa mobil termasuk bahan bakar listrik, maka sebagian mobil tersebut pasti ramah lingkungan."
+  },
+  {
+    "no": 12,
+    "cat": "logika",
+    "text": "Dika berlari lebih cepat dari Eka. Feri berlari lebih cepat dari Dika.",
+    "options": [{ "a": "Eka paling cepat", "b": "Dika paling lambat", "c": "Feri paling lambat", "d": "Eka paling lambat" }],
+    "key": "d",
+    "explain": "Urutan kecepatan dari yang tertinggi ke terendah: Feri > Dika > Eka. Jadi Eka adalah yang paling lambat."
+  },
+  {
+    "no": 13,
+    "cat": "spasial",
+    "text": "Deret huruf: B, E, H, K, ...",
+    "options": [{ "a": "M", "b": "N", "c": "O", "d": "P" }],
+    "key": "b",
+    "explain": "Pola melompat 2 huruf: B (c,d) E (f,g) H (i,j) K (l,m) N."
+  },
+  {
+    "no": 14,
+    "cat": "spasial",
+    "text": "Deret huruf: A, Z, B, Y, C, ...",
+    "options": [{ "a": "X", "b": "W", "c": "V", "d": "U" }],
+    "key": "a",
+    "explain": "Ada dua pola berselang-seling: maju dari awal alfabet (A, B, C) dan mundur dari akhir alfabet (Z, Y, X)."
+  },
+  {
+    "no": 15,
+    "cat": "spasial",
+    "text": "Berapa banyak titik sudut pada sebuah balok?",
+    "options": [{ "a": "6", "b": "8", "c": "10", "d": "12" }],
+    "key": "b",
+    "explain": "Sebuah balok 3D memiliki tepat 8 titik sudut (4 di bagian atas, 4 di bagian bawah)."
+  },
+  {
+    "no": 16,
+    "cat": "spasial",
+    "text": "Jika sebuah bujur sangkar (persegi) dipotong lurus secara diagonal dari satu sudut ke sudut yang berlawanan, akan menghasilkan...",
+    "options": [{ "a": "Dua persegi panjang", "b": "Dua segitiga siku-siku", "c": "Dua trapesium", "d": "Empat segitiga" }],
+    "key": "b",
+    "explain": "Potongan diagonal pada persegi membaginya persis menjadi dua buah segitiga siku-siku sama kaki."
+  }
+]

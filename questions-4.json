@@ -1,0 +1,130 @@
+[
+  {
+    "no": 1,
+    "cat": "verbal",
+    "text": "BUMI : MATAHARI = BULAN : ...",
+    "options": [{ "a": "Bintang", "b": "Bumi", "c": "Tata Surya", "d": "Angkasa" }],
+    "key": "b",
+    "explain": "Bumi mengorbit/mengelilingi Matahari, sedangkan Bulan mengorbit/mengelilingi Bumi."
+  },
+  {
+    "no": 2,
+    "cat": "verbal",
+    "text": "Antonim kata SKEPTIS adalah...",
+    "options": [{ "a": "Ragu-ragu", "b": "Curiga", "c": "Yakin", "d": "Apatis" }],
+    "key": "c",
+    "explain": "Skeptis berarti kurang percaya atau ragu-ragu terhadap sesuatu. Antonimnya adalah yakin atau percaya."
+  },
+  {
+    "no": 3,
+    "cat": "verbal",
+    "text": "API : PANAS = ES : ...",
+    "options": [{ "a": "Dingin", "b": "Beku", "c": "Cair", "d": "Air" }],
+    "key": "a",
+    "explain": "Sifat dasar dari api adalah menghasilkan panas, sedangkan sifat dasar es adalah menghasilkan rasa dingin."
+  },
+  {
+    "no": 4,
+    "cat": "verbal",
+    "text": "Manakah kata yang TIDAK termasuk kelompok yang sama?",
+    "options": [{ "a": "Singa", "b": "Harimau", "c": "Macan Tutul", "d": "Rusa" }],
+    "key": "d",
+    "explain": "Rusa adalah hewan herbivora, sedangkan pilihan lainnya adalah hewan karnivora (kucing besar)."
+  },
+  {
+    "no": 5,
+    "cat": "numerik",
+    "text": "Deret angka: 1, 8, 27, 64, ...",
+    "options": [{ "a": "81", "b": "100", "c": "125", "d": "144" }],
+    "key": "c",
+    "explain": "Pola deret bilangan pangkat tiga (kubik): 1³, 2³, 3³, 4³, dan selanjutnya 5³ = 125."
+  },
+  {
+    "no": 6,
+    "cat": "numerik",
+    "text": "Deret pecahan: 1/2, 2/3, 3/4, 4/5, ...",
+    "options": [{ "a": "5/7", "b": "5/6", "c": "6/7", "d": "7/8" }],
+    "key": "b",
+    "explain": "Pembilang dan penyebut masing-masing bertambah 1 setiap sukunya. Selanjutnya adalah 5/6."
+  },
+  {
+    "no": 7,
+    "cat": "numerik",
+    "text": "Jika 5x - 3 = 2x + 9, maka nilai x adalah...",
+    "options": [{ "a": "2", "b": "3", "c": "4", "d": "5" }],
+    "key": "c",
+    "explain": "5x - 2x = 9 + 3 -> 3x = 12, maka x = 4."
+  },
+  {
+    "no": 8,
+    "cat": "numerik",
+    "text": "Sebuah mobil melaju dengan kecepatan 60 km/jam selama 2,5 jam. Jarak yang ditempuh adalah...",
+    "options": [{ "a": "120 km", "b": "140 km", "c": "150 km", "d": "160 km" }],
+    "key": "c",
+    "explain": "Jarak = Kecepatan × Waktu = 60 km/jam × 2,5 jam = 150 km."
+  },
+  {
+    "no": 9,
+    "cat": "logika",
+    "text": "Semua mamalia menyusui anaknya. Lumba-lumba adalah mamalia.",
+    "options": [{ "a": "Lumba-lumba adalah ikan", "b": "Lumba-lumba menyusui anaknya", "c": "Beberapa lumba-lumba tidak menyusui", "d": "Tidak ada kesimpulan" }],
+    "key": "b",
+    "explain": "Silogisme langsung: Lumba-lumba termasuk kelompok mamalia yang memiliki sifat menyusui."
+  },
+  {
+    "no": 10,
+    "cat": "logika",
+    "text": "Jika harga BBM naik, maka harga sembako naik. Harga sembako tidak naik.",
+    "options": [{ "a": "Harga BBM naik", "b": "Harga BBM tidak naik", "c": "Harga BBM stabil", "d": "Tidak bisa disimpulkan" }],
+    "key": "b",
+    "explain": "Modus tollens: Jika P maka Q. Ternyata bukan Q (harga sembako tidak naik), maka kesimpulannya bukan P (harga BBM tidak naik)."
+  },
+  {
+    "no": 11,
+    "cat": "logika",
+    "text": "Kotak P lebih berat dari Kotak Q. Kotak R lebih ringan dari Kotak Q. Kotak S lebih berat dari Kotak P. Kotak manakah yang paling ringan?",
+    "options": [{ "a": "Kotak P", "b": "Kotak Q", "c": "Kotak R", "d": "Kotak S" }],
+    "key": "c",
+    "explain": "Urutan berat: S > P > Q > R. Maka kotak paling ringan adalah R."
+  },
+  {
+    "no": 12,
+    "cat": "logika",
+    "text": "Semua peserta rapat mengenakan kemeja. Pak Budi adalah peserta rapat. Pak Budi juga memakai dasi.",
+    "options": [{ "a": "Pak Budi hanya memakai dasi", "b": "Semua peserta rapat memakai dasi", "c": "Pak Budi mengenakan kemeja dan dasi", "d": "Pak Budi bukan peserta rapat" }],
+    "key": "c",
+    "explain": "Sebagai peserta rapat, Pak Budi pasti memakai kemeja. Fakta tambahan menyebutkan ia memakai dasi, maka ia memakai keduanya."
+  },
+  {
+    "no": 13,
+    "cat": "spasial",
+    "text": "Deret huruf: A, D, G, J, ...",
+    "options": [{ "a": "L", "b": "M", "c": "N", "d": "O" }],
+    "key": "b",
+    "explain": "Pola melompat 2 huruf: A(bc)D(ef)G(hi)J(kl)M."
+  },
+  {
+    "no": 14,
+    "cat": "spasial",
+    "text": "Deret huruf: A, Z, C, X, E, V, ...",
+    "options": [{ "a": "G", "b": "F", "c": "T", "d": "U" }],
+    "key": "a",
+    "explain": "Pola dua larik berselang-seling. Larik ganjil: A, C, E, (G). Larik genap: Z, X, V (mundur melompat 1 huruf)."
+  },
+  {
+    "no": 15,
+    "cat": "spasial",
+    "text": "Jika sebuah jaring-jaring balok dirakit, sisi yang menjadi alas akan selalu sejajar dan berhadapan dengan sisi...",
+    "options": [{ "a": "Depan", "b": "Samping kanan", "c": "Atas (Tutup)", "d": "Belakang" }],
+    "key": "c",
+    "explain": "Dalam bangun ruang balok atau kubus, sisi alas (bawah) selalu berhadapan sejajar dengan sisi atas (tutup)."
+  },
+  {
+    "no": 16,
+    "cat": "spasial",
+    "text": "Huruf 'p' kecil, jika dicerminkan secara vertikal (terdapat cermin di sebelah kanannya), akan membentuk bayangan yang menyerupai huruf...",
+    "options": [{ "a": "d", "b": "b", "c": "q", "d": "g" }],
+    "key": "c",
+    "explain": "Pencerminan secara vertikal (kanan-kiri) dari huruf 'p' akan membalik bentuk perutnya ke kanan, menghasilkan huruf 'q'."
+  }
+]
