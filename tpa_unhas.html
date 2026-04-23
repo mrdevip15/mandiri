@@ -351,6 +351,9 @@
         const EMAILJS_TEMPLATE_ID = 'template_7v29nuv';
         const RECIPIENT_EMAIL     = 'mrdevip15@gmail.com';
 
+        // Initialize EmailJS immediately
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
         const QUESTIONS = [
             { cat:'verbal', label:'Verbal', soal:'SELARAS : HARMONIS = GERSANG : ...', opts:['A. Tandus','B. Subur','C. Basah','D. Hijau'], ans:0, explain:'Selaras bersinonim dengan harmonis. Gersang bersinonim dengan tandus.' },
             { cat:'verbal', label:'Verbal', soal:'Antonim kata IMPLISIT adalah...', opts:['A. Samar','B. Tersembunyi','C. Eksplisit','D. Tersirat'], ans:2, explain:'Implisit (tersirat) berlawanan dengan eksplisit (langsung).' },
@@ -464,27 +467,48 @@
         }
 
         function triggerViolation(msg) {
+            if (!quizActive) return;
             violations++;
-            document.getElementById('viol-pill').classList.remove('hidden');
-            document.getElementById('viol-count').textContent = violations;
-            if (violations >= 3) { finishQuiz(true); return; }
-            document.getElementById('modal-msg').textContent = msg;
-            document.getElementById('viol-modal').classList.remove('hidden');
+            
+            const pill = document.getElementById('viol-pill');
+            const count = document.getElementById('viol-count');
+            if (pill) pill.classList.remove('hidden');
+            if (count) count.textContent = violations;
+
+            if (violations >= MAX_VIOLATIONS) {
+                finishQuiz(true);
+            } else {
+                document.getElementById('modal-msg').textContent = msg;
+                document.getElementById('viol-modal').classList.remove('hidden');
+            }
         }
 
-        function closeViolModal() { document.getElementById('viol-modal').classList.add('hidden'); }
+        function closeViolModal() { 
+            document.getElementById('viol-modal').classList.add('hidden'); 
+        }
+
+        const handleVisibility = () => { if (document.hidden && quizActive) triggerViolation('Peringatan tab switching.'); };
+        const handleBlur = () => { if (quizActive) triggerViolation('Fokus jendela hilang.'); };
 
         function attachAntiCheat() {
-            document.addEventListener('visibilitychange', () => { if (document.hidden && quizActive) triggerViolation('Peringatan tab switching.'); });
-            window.addEventListener('blur', () => { if (quizActive) triggerViolation('Fokus jendela hilang.'); });
+            document.addEventListener('visibilitychange', handleVisibility);
+            window.addEventListener('blur', handleBlur);
         }
 
-        function removeAntiCheat() { }
+        function removeAntiCheat() {
+            document.removeEventListener('visibilitychange', handleVisibility);
+            window.removeEventListener('blur', handleBlur);
+        }
 
         function showResult() {
             showScreen('s-result');
             const pct = Math.round(score/16*100);
             const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
+            
+            // Update Title with Name
+            document.getElementById('r-title').textContent = pesertaName;
+            document.getElementById('r-verdict').textContent = pesertaEmail;
+
             document.getElementById('r-score').textContent = score;
             document.getElementById('r-pct').textContent = pct + '%';
             document.getElementById('r-time').textContent = `${Math.floor(elapsed/60)}:${(elapsed%60).toString().padStart(2, '0')}`;
@@ -521,24 +545,43 @@
             const pct = Math.round(score/16*100);
             const elapsed = document.getElementById('r-time').textContent;
 
-            emailjs.init(EMAILJS_PUBLIC_KEY);
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            // Generate formatted message for the {{pesan}} tag in your template
+            const pesanContent = `
+LAPORAN HASIL SIMULASI TPA
+--------------------------
+Nama Peserta  : ${pesertaName}
+Email Peserta : ${pesertaEmail}
+Skor Akhir    : ${score}/16 (${pct}%)
+Waktu Ujian   : ${elapsed}
+Pelanggaran   : ${violations}
+Status        : ${violations === 0 ? 'BERSIH' : forceSubmitted ? 'TIDAK JUJUR (AUTO-SUBMIT)' : 'PERINGATAN'}
+
+DETAIL PER KATEGORI:
+- Verbal  : ${catScores.verbal[0]}/${catScores.verbal[1]}
+- Numerik : ${catScores.numerik[0]}/${catScores.numerik[1]}
+- Logika  : ${catScores.logika[0]}/${catScores.logika[1]}
+- Spasial : ${catScores.spasial[0]}/${catScores.spasial[1]}
+            `.trim();
+
+            const templateParams = {
+                to_email: RECIPIENT_EMAIL.trim(),
+                reply_to: pesertaEmail,
                 peserta_name: pesertaName,
                 peserta_email: pesertaEmail,
-                total_score: `${score}/16`,
-                percentage: pct + '%',
-                waktu_ujian: elapsed,
-                violations: violations,
-                integritas: violations === 0 ? 'BERSIH' : forceSubmitted ? 'TIDAK JUJUR' : 'PERINGATAN'
-            }).then(() => {
-                status.className = 'mt-1 text-[8px] font-bold uppercase text-emerald-300';
-                status.textContent = '✓ Results Auto-Reported';
-                console.log('Results sent successfully.');
-            }).catch((err) => {
-                status.className = 'mt-1 text-[8px] font-bold uppercase text-brand-100';
-                status.textContent = '✕ Sync Failed - Use Manual';
-                console.error('Auto-send failed:', err);
-            });
+                pesan: pesanContent 
+            };
+
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                .then(() => {
+                    status.className = 'mt-1 text-[8px] font-bold uppercase text-emerald-300';
+                    status.textContent = '✓ Results Auto-Reported';
+                    console.log('Results sent successfully.');
+                })
+                .catch((err) => {
+                    status.className = 'mt-1 text-[8px] font-bold uppercase text-brand-100';
+                    status.textContent = '✕ Sync Failed - Use Manual';
+                    console.error('Auto-send failed:', err);
+                });
         }
     </script>
 </body>
