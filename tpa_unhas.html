@@ -204,13 +204,13 @@
             </div>
 
             <div class="flex items-center gap-2">
-                <div id="viol-pill" class="hidden flex items-center gap-1 px-2 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-[9px] font-bold uppercase font-display">
-                    <i class="ph ph-warning-octagon text-xs"></i>
-                    <span id="viol-count">0</span>/3
+                <div id="viol-pill" class="hidden flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-[10px] font-bold uppercase font-display">
+                    <i class="ph ph-warning-octagon text-sm"></i>
+                    <span><span id="viol-count">0</span>/3</span>
                 </div>
-                <div id="timer-pill" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-black text-white font-mono font-bold text-xs tracking-tight">
+                <div id="timer-pill" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black text-white font-mono font-bold text-[10px] tracking-tight">
                     <i class="ph ph-clock text-brand-500"></i>
-                    25:00
+                    <span id="timer-text">25:00</span>
                 </div>
             </div>
         </nav>
@@ -382,6 +382,57 @@
         let pesertaName = '', pesertaEmail = '';
         const MAX_VIOLATIONS = 3;
 
+        // ===================== PERSISTENCE =====================
+        const STORAGE_KEY = 'tpa_sim_state';
+
+        function saveState() {
+            if (!quizActive && !pesertaName) return;
+            const state = {
+                currentQ, score, violations, quizActive, answered,
+                timeLeft, quizStartTime, selectedAnswers, catScores,
+                pesertaName, pesertaEmail, lastViolationTime
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+
+        function loadState() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) return;
+            const state = JSON.parse(saved);
+
+            // Restore Variables
+            currentQ = state.currentQ;
+            score = state.score;
+            violations = state.violations;
+            quizActive = state.quizActive;
+            answered = state.answered;
+            timeLeft = state.timeLeft;
+            quizStartTime = state.quizStartTime;
+            selectedAnswers = state.selectedAnswers;
+            catScores = state.catScores;
+            pesertaName = state.pesertaName;
+            pesertaEmail = state.pesertaEmail;
+            lastViolationTime = state.lastViolationTime || 0;
+
+            if (quizActive) {
+                showScreen('s-quiz');
+                startTimer();
+                attachAntiCheat();
+                renderQuestion();
+                // Update UI for violations if any
+                if (violations > 0) {
+                    document.getElementById('viol-pill').classList.remove('hidden');
+                    document.getElementById('viol-count').textContent = violations;
+                }
+            } else if (pesertaName) {
+                showScreen('s-instructions');
+            }
+        }
+
+        function clearState() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
         // ===================== CORE LOGIC =====================
         function showScreen(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
@@ -394,16 +445,22 @@
             pesertaName = document.getElementById('inp-name').value.trim();
             pesertaEmail = document.getElementById('inp-email').value.trim();
             if (!pesertaName || !pesertaEmail.includes('@')) { alert('Data tidak valid.'); return; }
+            saveState();
             showScreen('s-instructions');
         }
 
         function startQuiz() {
-            quizActive = true; quizStartTime = Date.now();
+            quizActive = true; 
+            quizStartTime = quizStartTime || Date.now();
+            saveState();
             showScreen('s-quiz'); startTimer(); attachAntiCheat(); renderQuestion();
         }
 
         function renderQuestion() {
             const q = QUESTIONS[currentQ]; answered = false;
+            // ... rest of logic for answered state from persistence
+            const savedAns = selectedAnswers[currentQ];
+
             document.getElementById('q-label').textContent = `ITEM ${String(currentQ + 1).padStart(2, '0')} / 16`;
             document.getElementById('prog-fill').style.width = `${((currentQ + 1) / 16 * 100)}%`;
             document.getElementById('cat-chip').textContent = q.label;
@@ -426,6 +483,22 @@
 
             document.getElementById('explain-box').classList.add('hidden');
             document.getElementById('btn-next').classList.add('hidden');
+
+            if (savedAns !== null) {
+                restoreAnswer(savedAns);
+            }
+        }
+
+        function restoreAnswer(idx) {
+            answered = true;
+            const q = QUESTIONS[currentQ];
+            const btns = document.querySelectorAll('.opt-card');
+            btns.forEach(b => b.disabled = true);
+            if (idx === q.ans) { btns[idx].classList.add('correct'); }
+            else { btns[idx].classList.add('wrong'); btns[q.ans].classList.add('correct'); }
+            document.getElementById('explain-text').textContent = q.explain;
+            document.getElementById('explain-box').classList.remove('hidden');
+            document.getElementById('btn-next').classList.remove('hidden');
         }
 
         function selectAnswer(idx) {
@@ -440,16 +513,19 @@
             document.getElementById('explain-box').classList.remove('hidden');
             const nextBtn = document.getElementById('btn-next');
             nextBtn.classList.remove('hidden');
+            saveState();
         }
 
         function nextQuestion() {
             currentQ++;
+            saveState();
             if (currentQ >= 16) finishQuiz();
             else renderQuestion();
         }
 
         function finishQuiz(forced = false) {
             quizActive = false; forceSubmitted = forced; clearInterval(timer);
+            clearState();
             removeAntiCheat(); 
             showResult();
             // AUTOMATIC BACKGROUND SEND
@@ -461,15 +537,27 @@
                 timeLeft--;
                 const m = Math.floor(timeLeft/60).toString().padStart(2, '0');
                 const s = (timeLeft%60).toString().padStart(2, '0');
-                document.getElementById('timer-pill').innerHTML = `<i class="ph ph-clock text-brand-600 md:text-brand-500"></i> ${m}:${s}`;
+                const textEl = document.getElementById('timer-text');
+                if (textEl) textEl.textContent = `${m}:${s}`;
+
+                // Save time every 10 seconds to reduce storage writes
+                if (timeLeft % 10 === 0) saveState();
+
                 if (timeLeft <= 0) finishQuiz();
             }, 1000);
         }
 
+        let lastViolationTime = 0;
         function triggerViolation(msg) {
             if (!quizActive) return;
+
+            const now = Date.now();
+            if (now - lastViolationTime < 100) return; 
+            lastViolationTime = now;
+
             violations++;
-            
+            saveState();
+
             const pill = document.getElementById('viol-pill');
             const count = document.getElementById('viol-count');
             if (pill) pill.classList.remove('hidden');
@@ -483,9 +571,7 @@
             }
         }
 
-        function closeViolModal() { 
-            document.getElementById('viol-modal').classList.add('hidden'); 
-        }
+        function closeViolModal() { document.getElementById('viol-modal').classList.add('hidden'); }
 
         const handleVisibility = () => { if (document.hidden && quizActive) triggerViolation('Peringatan tab switching.'); };
         const handleBlur = () => { if (quizActive) triggerViolation('Fokus jendela hilang.'); };
@@ -502,9 +588,10 @@
 
         function showResult() {
             showScreen('s-result');
+            clearState(); // Extra safety
             const pct = Math.round(score/16*100);
             const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
-            
+
             // Update Title with Name
             document.getElementById('r-title').textContent = pesertaName;
             document.getElementById('r-verdict').textContent = pesertaEmail;
@@ -535,6 +622,9 @@
                 detail.appendChild(row);
             });
         }
+
+        // Auto-load state on page start
+        window.addEventListener('load', loadState);
 
         function sendEmail() {
             const status = document.getElementById('email-status');
