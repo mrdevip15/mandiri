@@ -305,7 +305,7 @@
     <div class="noise-bg"></div>
 
     <!-- ======= IDENTITY SCREEN ======= -->
-    <main id="s-identity" class="screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 max-w-6xl mx-auto">
+    <main id="s-identity" class="screen hidden flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 max-w-6xl mx-auto">
         <div class="w-full flex-1 space-y-4 md:space-y-8 animate-reveal text-center md:text-left">
             <div class="inline-flex items-center gap-2 badge-brand">
                 <span class="w-1.5 h-1.5 rounded-full bg-brand-600 animate-pulse"></span>
@@ -594,7 +594,13 @@
                 ALL_SETS = rawSets.map(set => set.map(normalizeQuestion));
 
                 console.log("Database loaded:", ALL_SETS.length, "sets available.");
-                loadState(); // Load progress after questions are ready
+                
+                // If we were waiting for questions to restore a quiz, do it now
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const state = JSON.parse(saved);
+                    if (state.quizActive) loadState();
+                }
             } catch (err) {
                 console.error("Failed to load questions:", err);
                 alert("Gagal memuat bank soal.");
@@ -639,6 +645,9 @@
                 currentLevel = state.currentLevel;
                 QUESTIONS = ALL_SETS[currentLevel - 1];
                 if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0) {
+                    // If database is still loading, just wait. loadQuestions will call this again.
+                    if (ALL_SETS.length === 0) return; 
+                    
                     clearActiveSession();
                     showScreen('s-dashboard');
                     return;
@@ -996,7 +1005,10 @@ Status        : ${score >= PASSING_SCORE ? 'LULUS' : 'GAGAL'}
                 });
         }
 
+        // Start loading questions in background
         loadQuestions();
+        // Immediate routing check to avoid glimpses
+        loadState();
     </script>
 </body>
 </html>
