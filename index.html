@@ -131,6 +131,22 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
+        .bento-card.success {
+            background-color: #ecfdf5;
+            border-color: #10b981;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1);
+        }
+        .bento-card.success span { color: #059669 !important; }
+        .bento-card.success p { color: #064e3b !important; }
+
+        .bento-card.error {
+            background-color: var(--brand-50);
+            border-color: var(--brand-200);
+            box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.1);
+        }
+        .bento-card.error span { color: var(--brand-600) !important; }
+        .bento-card.error p { color: var(--brand-900) !important; }
+
         @media (min-width: 768px) {
             .bento-card {
                 padding: 2rem;
@@ -328,12 +344,29 @@
                         <label class="text-[10px] font-bold text-brand-100 uppercase tracking-widest font-display ml-1">Alamat Email</label>
                         <input type="email" id="inp-email" class="input-brand" placeholder="email@contoh.com">
                     </div>
-                    <button onclick="goInstructions()" class="btn-brand w-full group mt-2">
+                    <button onclick="goDashboard()" class="btn-brand w-full group mt-2">
                         Verifikasi Data
                         <i class="ph ph-arrow-right transition-transform group-hover:translate-x-1"></i>
                     </button>
                 </div>
             </div>
+        </div>
+    </main>
+
+    <!-- ======= DASHBOARD SCREEN ======= -->
+    <main id="s-dashboard" class="screen hidden flex flex-col items-center justify-center max-w-4xl mx-auto space-y-8">
+        <div class="text-center space-y-2 animate-reveal">
+            <h2 class="text-3xl md:text-5xl font-display font-black text-zinc-950 tracking-tighter uppercase">Pilih Level</h2>
+            <p class="text-zinc-500 font-medium text-xs md:text-base">Selesaikan level sebelumnya untuk membuka level berikutnya.</p>
+        </div>
+        
+        <div id="level-grid" class="grid grid-cols-1 md:grid-cols-5 gap-4 w-full animate-reveal [animation-delay:100ms]">
+            <!-- Levels injected via JS -->
+        </div>
+
+        <div class="flex flex-col items-center gap-4 pt-8 animate-reveal [animation-delay:200ms]">
+            <p id="player-info" class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest"></p>
+            <button onclick="logout()" class="text-[9px] font-black text-brand-600 hover:text-zinc-950 uppercase tracking-[0.2em] font-display transition-colors">Reset Sesi & Ganti Identitas</button>
         </div>
     </main>
 
@@ -411,7 +444,7 @@
                 </div>
 
                 <div id="explain-box" class="hidden animate-reveal">
-                    <div class="bento-card !p-5 md:!p-8 space-y-2">
+                    <div id="explain-card" class="bento-card !p-5 md:!p-8 space-y-2">
                         <span class="text-[9px] font-bold text-brand-100 uppercase tracking-widest font-display">Penjelasan</span>
                         <p id="explain-text" class="text-white text-xs md:text-sm leading-relaxed"></p>
                     </div>
@@ -526,67 +559,50 @@
 
     <script>
         // ===================== CONFIG & DATA =====================
-        const DEV_MODE            = true; // Toggle for local testing
+        const DEV_MODE            = true; 
         const EMAILJS_PUBLIC_KEY  = 'e-66GslbpwIjsoaDf'; 
         const EMAILJS_SERVICE_ID  = 'service_6wjt2pb'; 
         const EMAILJS_TEMPLATE_ID = 'template_7v29nuv';
         const RECIPIENT_EMAIL     = 'mrdevip15@gmail.com';
+        const PASSING_SCORE       = 8; // 50% of 16
 
         // Initialize EmailJS immediately
         emailjs.init(EMAILJS_PUBLIC_KEY);
 
-        let QUESTIONS = []; // Will be loaded dynamically
+        let ALL_SETS = [];    // 5 arrays of questions
+        let QUESTIONS = [];   // The active set of 16
 
+        function normalizeQuestion(q) {
+            const optsObj = q.options[0];
+            return {
+                cat: q.cat || 'verbal',
+                label: (q.cat || 'verbal').toUpperCase(),
+                soal: q.text,
+                opts: [`A. ${optsObj.a}`, `B. ${optsObj.b}`, `C. ${optsObj.c}`, `D. ${optsObj.d}`],
+                ans: ['a', 'b', 'c', 'd'].indexOf(q.key.toLowerCase()),
+                explain: q.explain || 'Tidak ada penjelasan.'
+            };
+        }
+        
         async function loadQuestions() {
             try {
-                const response = await fetch('questions.json');
-                const rawData = await response.json();
-                
-                // Group by category to ensure balance
-                const groups = { verbal: [], numerik: [], logika: [], spasial: [] };
-                
-                rawData.forEach(q => {
-                    // Transform from your specified format: {no, text, cat, options:[{a,b,c,d}], key, explain}
-                    // to internal format: {cat, label, soal, opts, ans, explain}
-                    const optsObj = q.options[0];
-                    const internalQ = {
-                        cat: q.cat || 'verbal',
-                        label: (q.cat || 'verbal').toUpperCase(),
-                        soal: q.text,
-                        opts: [
-                            `A. ${optsObj.a}`,
-                            `B. ${optsObj.b}`,
-                            `C. ${optsObj.c}`,
-                            `D. ${optsObj.d}`
-                        ],
-                        ans: ['a', 'b', 'c', 'd'].indexOf(q.key.toLowerCase()),
-                        explain: q.explain || 'Tidak ada penjelasan.'
-                    };
-                    if (groups[internalQ.cat]) groups[internalQ.cat].push(internalQ);
-                });
+                const responses = await Promise.all(
+                    Array.from({ length: 5 }, (_, i) => fetch(`questions-${i + 1}.json`))
+                );
+                const rawSets = await Promise.all(responses.map(response => response.json()));
 
-                // Pick 4 random from each category (or adjust as needed)
-                const selected = [];
-                Object.keys(groups).forEach(cat => {
-                    const shuffled = groups[cat].sort(() => 0.5 - Math.random());
-                    selected.push(...shuffled.slice(0, 4));
-                });
+                ALL_SETS = rawSets.map(set => set.map(normalizeQuestion));
 
-                // Final shuffle for the quiz
-                QUESTIONS = selected.sort(() => 0.5 - Math.random());
-                
-                if (QUESTIONS.length === 0) throw new Error("No questions loaded");
-                console.log("Questions loaded and randomized:", QUESTIONS.length);
+                console.log("Database loaded:", ALL_SETS.length, "sets available.");
+                loadState(); // Load progress after questions are ready
             } catch (err) {
                 console.error("Failed to load questions:", err);
-                alert("Gagal memuat bank soal. Pastikan questions.json tersedia.");
+                alert("Gagal memuat bank soal.");
             }
         }
 
-        // Call question loader on boot
-        loadQuestions();
-
         // ===================== APP STATE =====================
+        let currentLevel = 1, unlockedLevel = 1, levelScores = [0,0,0,0,0];
         let currentQ = 0, score = 0, violations = 0, quizActive = false, answered = false;
         let timeLeft = 25 * 60, timer = null, quizStartTime = null;
         let selectedAnswers = [];
@@ -596,58 +612,78 @@
         const MAX_VIOLATIONS = 3;
 
         // ===================== PERSISTENCE =====================
-        const STORAGE_KEY = 'tpa_sim_state';
+        const STORAGE_KEY = 'tpa_sim_game_v1';
 
         function saveState() {
-            if (!quizActive && !pesertaName) return;
             const state = {
-                currentQ, score, violations, quizActive, answered,
-                timeLeft, quizStartTime, selectedAnswers, catScores,
-                pesertaName, pesertaEmail, lastViolationTime,
-                QUESTIONS // Save the selected questions pool for persistence
+                // User & Progress
+                pesertaName, pesertaEmail, unlockedLevel, levelScores,
+                // Active Quiz Session (if any)
+                quizActive, currentLevel, currentQ, score, violations, answered,
+                timeLeft, quizStartTime, selectedAnswers, catScores, lastViolationTime
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         }
 
         function loadState() {
             const saved = localStorage.getItem(STORAGE_KEY);
-            if (!saved) return;
+            if (!saved) { showScreen('s-identity'); return; }
             const state = JSON.parse(saved);
 
-            // Restore Questions Pool first
-            if (state.QUESTIONS) QUESTIONS = state.QUESTIONS;
-
-            // Restore Variables
-            currentQ = state.currentQ;
-            score = state.score;
-            violations = state.violations;
-            quizActive = state.quizActive;
-            answered = state.answered;
-            timeLeft = state.timeLeft;
-            quizStartTime = state.quizStartTime;
-            selectedAnswers = state.selectedAnswers || [];
-            catScores = state.catScores;
             pesertaName = state.pesertaName;
             pesertaEmail = state.pesertaEmail;
-            lastViolationTime = state.lastViolationTime || 0;
+            unlockedLevel = state.unlockedLevel || 1;
+            levelScores = state.levelScores || [0,0,0,0,0];
 
-            if (quizActive) {
+            if (state.quizActive) {
+                currentLevel = state.currentLevel;
+                QUESTIONS = ALL_SETS[currentLevel - 1];
+                if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0) {
+                    clearActiveSession();
+                    showScreen('s-dashboard');
+                    return;
+                }
+                currentQ = state.currentQ;
+                score = state.score;
+                violations = state.violations;
+                quizActive = state.quizActive;
+                answered = state.answered;
+                timeLeft = state.timeLeft;
+                quizStartTime = state.quizStartTime;
+                selectedAnswers = state.selectedAnswers || [];
+                catScores = state.catScores;
+                lastViolationTime = state.lastViolationTime || 0;
+
                 showScreen('s-quiz');
                 startTimer();
                 attachAntiCheat();
                 renderQuestion();
-                // Update UI for violations if any
                 if (violations > 0) {
                     document.getElementById('viol-pill').classList.remove('hidden');
                     document.getElementById('viol-count').textContent = violations;
                 }
             } else if (pesertaName) {
-                showScreen('s-instructions');
+                renderDashboard();
+                showScreen('s-dashboard');
+            } else {
+                showScreen('s-identity');
             }
         }
 
-        function clearState() {
-            localStorage.removeItem(STORAGE_KEY);
+        function clearActiveSession() {
+            quizActive = false;
+            currentQ = 0; score = 0; violations = 0; answered = false;
+            timeLeft = 25 * 60; timer = null; quizStartTime = null;
+            selectedAnswers = [];
+            catScores = { verbal:[0,0], numerik:[0,0], logika:[0,0], spasial:[0,0] };
+            saveState();
+        }
+
+        function logout() {
+            if (confirm("Reset seluruh progress dan identitas?")) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
         }
 
         // ===================== CORE LOGIC =====================
@@ -658,29 +694,86 @@
             target.scrollTop = 0;
         }
 
-        function goInstructions() {
-            pesertaName = document.getElementById('inp-name').value.trim();
-            pesertaEmail = document.getElementById('inp-email').value.trim();
-            if (!pesertaName || !pesertaEmail.includes('@')) { alert('Data tidak valid.'); return; }
-            saveState();
+        function goInstructions(level) {
+            currentLevel = level;
+            QUESTIONS = ALL_SETS[currentLevel - 1];
+            if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0) {
+                alert('Soal untuk level ini belum siap.');
+                renderDashboard();
+                showScreen('s-dashboard');
+                return;
+            }
             showScreen('s-instructions');
+            saveState();
+        }
+
+        function renderDashboard() {
+            document.getElementById('player-info').textContent = `${pesertaName} • ${pesertaEmail}`;
+            const grid = document.getElementById('level-grid');
+            grid.innerHTML = '';
+            
+            for (let i = 1; i <= 5; i++) {
+                const isUnlocked = i <= unlockedLevel;
+                const highscore = levelScores[i-1];
+                const card = document.createElement('div');
+                card.className = `bento-card relative overflow-hidden flex flex-col items-center justify-center gap-2 p-6 transition-all duration-300 ${isUnlocked ? 'cursor-pointer hover:scale-[1.02] active:scale-95' : 'opacity-40 grayscale pointer-events-none'}`;
+                
+                card.innerHTML = `
+                    <span class="text-[9px] font-black uppercase tracking-widest text-brand-100">Level</span>
+                    <h3 class="text-4xl font-display font-black text-white">${i}</h3>
+                    <div class="mt-2 text-center">
+                        <span class="text-[8px] font-bold uppercase ${highscore >= PASSING_SCORE ? 'text-emerald-300' : 'text-brand-200'}">
+                            ${highscore > 0 ? `High Score: ${highscore}/16` : isUnlocked ? 'Ready to Play' : 'Locked'}
+                        </span>
+                    </div>
+                `;
+                
+                if (isUnlocked) card.onclick = () => goInstructions(i);
+                grid.appendChild(card);
+            }
+        }
+
+        function goDashboard() {
+            pesertaName = pesertaName || document.getElementById('inp-name').value.trim();
+            pesertaEmail = pesertaEmail || document.getElementById('inp-email').value.trim();
+            if (!pesertaName || !pesertaEmail.includes('@')) { alert('Data tidak valid.'); return; }
+            renderDashboard();
+            showScreen('s-dashboard');
+            saveState();
         }
 
         function startQuiz() {
-            if (QUESTIONS.length === 0) { alert('Sistem sedang memuat soal. Mohon tunggu...'); return; }
+            const questions = Array.isArray(QUESTIONS) && QUESTIONS.length > 0
+                ? QUESTIONS
+                : ALL_SETS[currentLevel - 1];
+
+            if (!Array.isArray(questions) || questions.length === 0) {
+                alert('Soal belum siap. Silakan tunggu beberapa saat atau muat ulang halaman.');
+                return;
+            }
+
+            QUESTIONS = questions;
             quizActive = true; 
-            quizStartTime = quizStartTime || Date.now();
-            if (selectedAnswers.length === 0) selectedAnswers = new Array(QUESTIONS.length).fill(null);
+            quizStartTime = Date.now();
+            selectedAnswers = new Array(QUESTIONS.length).fill(null);
             saveState();
             showScreen('s-quiz'); startTimer(); attachAntiCheat(); renderQuestion();
         }
 
         function renderQuestion() {
+            if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0 || !QUESTIONS[currentQ]) {
+                alert('Soal tidak tersedia. Silakan kembali ke dashboard.');
+                clearActiveSession();
+                renderDashboard();
+                showScreen('s-dashboard');
+                return;
+            }
             const q = QUESTIONS[currentQ]; answered = false;
             const savedAns = selectedAnswers[currentQ];
-
-            document.getElementById('q-label').textContent = `ITEM ${String(currentQ + 1).padStart(2, '0')} / ${QUESTIONS.length}`;
-            document.getElementById('prog-fill').style.width = `${((currentQ + 1) / QUESTIONS.length * 100)}%`;            document.getElementById('cat-chip').textContent = q.label;
+            
+            document.getElementById('q-label').textContent = `LEVEL ${currentLevel} • ITEM ${String(currentQ + 1).padStart(2, '0')} / ${QUESTIONS.length}`;
+            document.getElementById('prog-fill').style.width = `${((currentQ + 1) / QUESTIONS.length * 100)}%`;
+            document.getElementById('cat-chip').textContent = q.label;
             document.getElementById('q-text').textContent = q.soal;
 
             const list = document.getElementById('options-list');
@@ -701,18 +794,28 @@
             document.getElementById('explain-box').classList.add('hidden');
             document.getElementById('btn-next').classList.add('hidden');
 
-            if (savedAns !== null) {
-                restoreAnswer(savedAns);
-            }
+            if (savedAns !== null) restoreAnswer(savedAns);
         }
 
         function restoreAnswer(idx) {
             answered = true;
             const q = QUESTIONS[currentQ];
             const btns = document.querySelectorAll('.opt-card');
+            const expCard = document.getElementById('explain-card');
+
             btns.forEach(b => b.disabled = true);
-            if (idx === q.ans) { btns[idx].classList.add('correct'); }
-            else { btns[idx].classList.add('wrong'); btns[q.ans].classList.add('correct'); }
+            expCard.classList.remove('success', 'error');
+
+            if (!btns[idx] || !btns[q.ans]) { return; }
+            if (idx === q.ans) { 
+                btns[idx].classList.add('correct'); 
+                expCard.classList.add('success');
+            } else { 
+                btns[idx].classList.add('wrong'); 
+                btns[q.ans].classList.add('correct'); 
+                expCard.classList.add('error');
+            }
+            
             document.getElementById('explain-text').textContent = q.explain;
             document.getElementById('explain-box').classList.remove('hidden');
             document.getElementById('btn-next').classList.remove('hidden');
@@ -722,14 +825,26 @@
             if (answered) return; answered = true;
             const q = QUESTIONS[currentQ]; selectedAnswers[currentQ] = idx;
             const btns = document.querySelectorAll('.opt-card');
+            const expCard = document.getElementById('explain-card');
+
             btns.forEach(b => b.disabled = true);
-            if (idx === q.ans) { btns[idx].classList.add('correct'); score++; catScores[q.cat][0]++; }
-            else { btns[idx].classList.add('wrong'); btns[q.ans].classList.add('correct'); }
+            expCard.classList.remove('success', 'error');
+
+            if (idx === q.ans) { 
+                btns[idx].classList.add('correct'); 
+                score++; 
+                catScores[q.cat][0]++; 
+                expCard.classList.add('success');
+            } else { 
+                btns[idx].classList.add('wrong'); 
+                btns[q.ans].classList.add('correct'); 
+                expCard.classList.add('error');
+            }
+            
             catScores[q.cat][1]++;
             document.getElementById('explain-text').textContent = q.explain;
             document.getElementById('explain-box').classList.remove('hidden');
-            const nextBtn = document.getElementById('btn-next');
-            nextBtn.classList.remove('hidden');
+            document.getElementById('btn-next').classList.remove('hidden');
             saveState();
         }
 
@@ -742,10 +857,20 @@
 
         function finishQuiz(forced = false) {
             quizActive = false; forceSubmitted = forced; clearInterval(timer);
-            clearState();
             removeAntiCheat(); 
+
+            // Update Progress
+            if (score > levelScores[currentLevel - 1]) {
+                levelScores[currentLevel - 1] = score;
+            }
+
+            // Unlocking logic
+            if (score >= PASSING_SCORE && currentLevel === unlockedLevel && unlockedLevel < 5) {
+                unlockedLevel++;
+            }
+
+            saveState();
             showResult();
-            // AUTOMATIC BACKGROUND SEND
             sendEmail();
         }
 
@@ -756,10 +881,7 @@
                 const s = (timeLeft%60).toString().padStart(2, '0');
                 const textEl = document.getElementById('timer-text');
                 if (textEl) textEl.textContent = `${m}:${s}`;
-
-                // Save time every 10 seconds to reduce storage writes
                 if (timeLeft % 10 === 0) saveState();
-
                 if (timeLeft <= 0) finishQuiz();
             }, 1000);
         }
@@ -767,51 +889,35 @@
         let lastViolationTime = 0;
         function triggerViolation(msg) {
             if (!quizActive) return;
-
             const now = Date.now();
             if (now - lastViolationTime < 100) return; 
             lastViolationTime = now;
-
             violations++;
             saveState();
-
             const pill = document.getElementById('viol-pill');
             const count = document.getElementById('viol-count');
             if (pill) pill.classList.remove('hidden');
             if (count) count.textContent = violations;
-
-            if (violations >= MAX_VIOLATIONS) {
-                finishQuiz(true);
-            } else {
+            if (violations >= MAX_VIOLATIONS) finishQuiz(true);
+            else {
                 document.getElementById('modal-msg').textContent = msg;
                 document.getElementById('viol-modal').classList.remove('hidden');
             }
         }
 
         function closeViolModal() { document.getElementById('viol-modal').classList.add('hidden'); }
-
         const handleVisibility = () => { if (document.hidden && quizActive) triggerViolation('Peringatan tab switching.'); };
         const handleBlur = () => { if (quizActive) triggerViolation('Fokus jendela hilang.'); };
-
-        function attachAntiCheat() {
-            document.addEventListener('visibilitychange', handleVisibility);
-            window.addEventListener('blur', handleBlur);
-        }
-
-        function removeAntiCheat() {
-            document.removeEventListener('visibilitychange', handleVisibility);
-            window.removeEventListener('blur', handleBlur);
-        }
+        function attachAntiCheat() { document.addEventListener('visibilitychange', handleVisibility); window.addEventListener('blur', handleBlur); }
+        function removeAntiCheat() { document.removeEventListener('visibilitychange', handleVisibility); window.removeEventListener('blur', handleBlur); }
 
         function showResult() {
             showScreen('s-result');
-            clearState(); // Extra safety
             const pct = Math.round(score/QUESTIONS.length*100);
             const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
-
-            // Update Title with Name
-            document.getElementById('r-title').textContent = pesertaName;
-            document.getElementById('r-verdict').textContent = pesertaEmail;
+            
+            document.getElementById('r-title').textContent = `${pesertaName} • LEVEL ${currentLevel}`;
+            document.getElementById('r-verdict').textContent = score >= PASSING_SCORE ? 'LEVEL BERHASIL DILEWATI!' : 'SKOR BELUM MENCUKUPI (MIN. 8).';
 
             document.getElementById('r-score').textContent = score;
             document.getElementById('r-pct').textContent = pct + '%';
@@ -838,75 +944,59 @@
                 row.innerHTML = `<span class="font-mono text-zinc-400 text-[9px] font-bold">${String(i+1).padStart(2, '0')}</span><p class="flex-1 text-[10px] text-zinc-900 font-bold truncate">${q.soal}</p><span class="text-[9px] font-black uppercase ${sel === q.ans ? 'text-emerald-500' : 'text-brand-600'}">${sel === q.ans ? 'OK' : 'ERR'}</span>`;
                 detail.appendChild(row);
             });
+            
+            // Show return to dashboard button
+            const manualBtn = document.getElementById('manual-send-btn');
+            manualBtn.textContent = "Kembali ke Dashboard";
+            manualBtn.classList.remove('hidden');
+            manualBtn.onclick = () => { clearActiveSession(); renderDashboard(); showScreen('s-dashboard'); };
         }
-
-        // Auto-load state on page start
-        window.addEventListener('load', loadState);
 
         function sendEmail() {
             const status = document.getElementById('email-status');
             status.classList.remove('hidden');
-
             const pct = Math.round(score/QUESTIONS.length*100);
             const elapsed = document.getElementById('r-time').textContent;
-
-            const pesanContent = `
-LAPORAN HASIL SIMULASI TPA ${DEV_MODE ? '[DEV MODE]' : ''}
---------------------------
-Nama Peserta  : ${pesertaName}
-Email Peserta : ${pesertaEmail}
-Skor Akhir    : ${score}/${QUESTIONS.length} (${pct}%)
-Waktu Ujian   : ${elapsed}
-Pelanggaran   : ${violations}
-Status        : ${violations === 0 ? 'BERSIH' : forceSubmitted ? 'TIDAK JUJUR (AUTO-SUBMIT)' : 'PERINGATAN'}
-
-DETAIL PER KATEGORI:
-- Verbal  : ${catScores.verbal[0]}/${catScores.verbal[1]}
-- Numerik : ${catScores.numerik[0]}/${catScores.numerik[1]}
-- Logika  : ${catScores.logika[0]}/${catScores.logika[1]}
-- Spasial : ${catScores.spasial[0]}/${catScores.spasial[1]}
-            `.trim();
 
             const templateParams = {
                 to_email: RECIPIENT_EMAIL.trim(),
                 reply_to: pesertaEmail,
                 peserta_name: pesertaName,
                 peserta_email: pesertaEmail,
-                pesan: pesanContent 
+                pesan: `
+LAPORAN HASIL SIMULASI TPA ${DEV_MODE ? '[DEV MODE]' : ''}
+LEVEL: ${currentLevel}
+--------------------------
+Nama Peserta  : ${pesertaName}
+Skor Akhir    : ${score}/16 (${pct}%)
+Waktu Ujian   : ${elapsed}
+Pelanggaran   : ${violations}
+Status        : ${score >= PASSING_SCORE ? 'LULUS' : 'GAGAL'}
+                `.trim()
             };
 
             if (DEV_MODE) {
                 console.log("=== DEV MODE: Email Report Intercepted ===");
-                console.log("To:", RECIPIENT_EMAIL);
-                console.log("Params:", templateParams);
+                console.log(templateParams);
                 status.className = 'mt-1 text-[8px] font-bold uppercase text-amber-400';
                 status.textContent = '✓ Dev Mode: Logged to Console';
-                const manualBtn = document.getElementById('manual-send-btn');
-                if (manualBtn) manualBtn.classList.add('hidden');
                 return;
             }
 
             status.className = 'mt-1 text-[8px] font-bold uppercase text-white animate-pulse';
             status.textContent = 'Background Syncing...';
-
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                 .then(() => {
                     status.className = 'mt-1 text-[8px] font-bold uppercase text-emerald-300';
                     status.textContent = '✓ Results Auto-Reported';
-                    console.log('Results sent successfully.');
-                    // Hide manual button on success
-                    const manualBtn = document.getElementById('manual-send-btn');
-                    if (manualBtn) manualBtn.classList.add('hidden');
                 })
                 .catch((err) => {
                     status.className = 'mt-1 text-[8px] font-bold uppercase text-brand-100';
-                    status.textContent = '✕ Sync Failed - Use Manual';
-                    console.error('Auto-send failed:', err);
-                    // Show manual button if sync failed
-                    const manualBtn = document.getElementById('manual-send-btn');
-                    if (manualBtn) manualBtn.classList.remove('hidden');
+                    status.textContent = '✕ Sync Failed';
                 });
         }
+
+        loadQuestions();
     </script>
 </body>
 </html>
