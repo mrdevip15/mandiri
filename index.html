@@ -570,16 +570,28 @@
         emailjs.init(EMAILJS_PUBLIC_KEY);
 
         let ALL_SETS = [];    // 5 arrays of questions
-        let QUESTIONS = [];   // The active set of 16
+        let AKMIL_SET = null; // Special set from akmil.json
+        let QUESTIONS = [];   // The active set
 
         function normalizeQuestion(q) {
+            if (q.opsi) {
+                return {
+                    cat: q.mapel || 'akmil',
+                    label: (q.mapel || 'akmil').toUpperCase(),
+                    soal: q.soal,
+                    opts: q.opsi.map((opt, i) => `${['A','B','C','D','E'][i]}. ${opt}`),
+                    ans: q.kunci,
+                    explain: q.pembahasan || 'Tidak ada penjelasan.'
+                };
+            }
             const optsObj = q.options[0];
+            const keys = Object.keys(optsObj);
             return {
                 cat: q.cat || 'verbal',
                 label: (q.cat || 'verbal').toUpperCase(),
                 soal: q.text,
-                opts: [`A. ${optsObj.a}`, `B. ${optsObj.b}`, `C. ${optsObj.c}`, `D. ${optsObj.d}`],
-                ans: ['a', 'b', 'c', 'd'].indexOf(q.key.toLowerCase()),
+                opts: keys.map((k, i) => `${['A','B','C','D','E'][i]}. ${optsObj[k]}`),
+                ans: keys.indexOf(q.key.toLowerCase()),
                 explain: q.explain || 'Tidak ada penjelasan.'
             };
         }
@@ -592,6 +604,15 @@
                 const rawSets = await Promise.all(responses.map(response => response.json()));
 
                 ALL_SETS = rawSets.map(set => set.map(normalizeQuestion));
+
+                // Load AKMIL special set
+                try {
+                    const akmilResp = await fetch('akmil.json');
+                    if (akmilResp.ok) {
+                        const akmilRaw = await akmilResp.json();
+                        AKMIL_SET = akmilRaw.map(normalizeQuestion);
+                    }
+                } catch (e) { console.warn("Akmil set not found"); }
 
                 console.log("Database loaded:", ALL_SETS.length, "sets available.");
                 
@@ -643,7 +664,12 @@
 
             if (state.quizActive) {
                 currentLevel = state.currentLevel;
-                QUESTIONS = ALL_SETS[currentLevel - 1];
+                if (currentLevel === 'akmil') {
+                    QUESTIONS = AKMIL_SET;
+                } else {
+                    QUESTIONS = ALL_SETS[currentLevel - 1];
+                }
+                
                 if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0) {
                     // If database is still loading, just wait. loadQuestions will call this again.
                     if (ALL_SETS.length === 0) return; 
@@ -705,7 +731,12 @@
 
         function goInstructions(level) {
             currentLevel = level;
-            QUESTIONS = ALL_SETS[currentLevel - 1];
+            if (level === 'akmil') {
+                QUESTIONS = AKMIL_SET;
+            } else {
+                QUESTIONS = ALL_SETS[currentLevel - 1];
+            }
+            
             if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0) {
                 alert('Soal untuk level ini belum siap.');
                 renderDashboard();
@@ -740,6 +771,23 @@
                 if (isUnlocked) card.onclick = () => goInstructions(i);
                 grid.appendChild(card);
             }
+
+            // Add AKMIL Special Card if loaded
+            if (AKMIL_SET) {
+                const card = document.createElement('div');
+                card.className = `bento-card relative overflow-hidden flex flex-col items-center justify-center gap-2 p-6 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-95 border-2 border-amber-400 bg-zinc-900`;
+                card.innerHTML = `
+                    <span class="text-[9px] font-black uppercase tracking-widest text-amber-400">Special</span>
+                    <h3 class="text-2xl font-display font-black text-white">AKMIL PACK</h3>
+                    <div class="mt-2 text-center">
+                        <span class="text-[8px] font-bold uppercase text-amber-200">
+                            35 Questions • Math & Physics
+                        </span>
+                    </div>
+                `;
+                card.onclick = () => goInstructions('akmil');
+                grid.appendChild(card);
+            }
         }
 
         function goDashboard() {
@@ -754,7 +802,7 @@
         function startQuiz() {
             const questions = Array.isArray(QUESTIONS) && QUESTIONS.length > 0
                 ? QUESTIONS
-                : ALL_SETS[currentLevel - 1];
+                : (currentLevel === 'akmil' ? AKMIL_SET : ALL_SETS[currentLevel - 1]);
 
             if (!Array.isArray(questions) || questions.length === 0) {
                 alert('Soal belum siap. Silakan tunggu beberapa saat atau muat ulang halaman.');
@@ -780,7 +828,8 @@
             const q = QUESTIONS[currentQ]; answered = false;
             const savedAns = selectedAnswers[currentQ];
             
-            document.getElementById('q-label').textContent = `LEVEL ${currentLevel} • ITEM ${String(currentQ + 1).padStart(2, '0')} / ${QUESTIONS.length}`;
+            const levelLabel = currentLevel === 'akmil' ? 'SPECIAL' : `LEVEL ${currentLevel}`;
+            document.getElementById('q-label').textContent = `${levelLabel} • ITEM ${String(currentQ + 1).padStart(2, '0')} / ${QUESTIONS.length}`;
             document.getElementById('prog-fill').style.width = `${((currentQ + 1) / QUESTIONS.length * 100)}%`;
             document.getElementById('cat-chip').textContent = q.label;
             document.getElementById('q-text').textContent = q.soal;
@@ -792,7 +841,7 @@
                 btn.className = 'opt-card group';
                 btn.innerHTML = `
                     <div class="w-8 h-8 shrink-0 rounded-lg bg-black flex items-center justify-center font-display font-black text-white border-2 border-black text-xs">
-                        ${['A','B','C','D'][i]}
+                        ${['A','B','C','D','E'][i]}
                     </div>
                     <span class="font-display font-bold text-zinc-950 text-sm md:text-lg flex-1">${opt.substring(3) || opt}</span>
                 `;
@@ -839,6 +888,8 @@
             btns.forEach(b => b.disabled = true);
             expCard.classList.remove('success', 'error');
 
+            if (!catScores[q.cat]) catScores[q.cat] = [0, 0];
+
             if (idx === q.ans) { 
                 btns[idx].classList.add('correct'); 
                 score++; 
@@ -869,13 +920,14 @@
             removeAntiCheat(); 
 
             // Update Progress
-            if (score > levelScores[currentLevel - 1]) {
-                levelScores[currentLevel - 1] = score;
-            }
-
-            // Unlocking logic
-            if (score >= PASSING_SCORE && currentLevel === unlockedLevel && unlockedLevel < 5) {
-                unlockedLevel++;
+            if (currentLevel !== 'akmil') {
+                if (score > levelScores[currentLevel - 1]) {
+                    levelScores[currentLevel - 1] = score;
+                }
+                // Unlocking logic
+                if (score >= PASSING_SCORE && currentLevel === unlockedLevel && unlockedLevel < 5) {
+                    unlockedLevel++;
+                }
             }
 
             saveState();
@@ -925,8 +977,8 @@
             const pct = Math.round(score/QUESTIONS.length*100);
             const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
             
-            document.getElementById('r-title').textContent = `${pesertaName} • LEVEL ${currentLevel}`;
-            document.getElementById('r-verdict').textContent = score >= PASSING_SCORE ? 'LEVEL BERHASIL DILEWATI!' : 'SKOR BELUM MENCUKUPI (MIN. 8).';
+            document.getElementById('r-title').textContent = `${pesertaName} • ${currentLevel === 'akmil' ? 'SPECIAL AKMIL' : 'LEVEL ' + currentLevel}`;
+            document.getElementById('r-verdict').textContent = score >= (currentLevel === 'akmil' ? 20 : PASSING_SCORE) ? 'BERHASIL DILEWATI!' : 'SKOR BELUM MENCUKUPI.';
 
             document.getElementById('r-score').textContent = score;
             document.getElementById('r-pct').textContent = pct + '%';
@@ -940,10 +992,24 @@
                 document.getElementById('r-viol-alert').classList.remove('hidden');
                 document.getElementById('r-viol-text').textContent = forceSubmitted ? `SESI DIHENTIKAN PAKSA.` : `${violations} Pelanggaran Tercatat.`;
             }
-            ['verbal','numerik','logika','spasial'].forEach(cat => {
-                const [got, total] = catScores[cat];
-                document.getElementById('r-' + cat).textContent = `${got}/${total}`;
-            });
+            
+            // Dynamic category score display
+            const catGrid = document.querySelector('#s-result .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-4');
+            if (catGrid) {
+                catGrid.innerHTML = '';
+                Object.keys(catScores).forEach(cat => {
+                    const [got, total] = catScores[cat];
+                    if (total === 0) return;
+                    const div = document.createElement('div');
+                    div.className = 'bento-card !p-5 flex items-end justify-between';
+                    div.innerHTML = `
+                        <span class="text-[9px] font-bold text-brand-100 uppercase font-display">${cat}</span>
+                        <span class="text-2xl font-mono font-bold text-white">${got}/${total}</span>
+                    `;
+                    catGrid.appendChild(div);
+                });
+            }
+
             const detail = document.getElementById('r-detail');
             detail.innerHTML = '<h3 class="text-xl font-display font-black uppercase mb-4 mt-6">Log Jawaban</h3>';
             QUESTIONS.forEach((q, i) => {
