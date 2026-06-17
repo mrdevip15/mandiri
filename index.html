@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TPA Simulation — Unhas 2026</title>
+    <title>Mini-Test — Test pengetahuan mu disini</title>
     
     <!-- Premium Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -309,13 +309,13 @@
         <div class="w-full flex-1 space-y-4 md:space-y-8 animate-reveal text-center md:text-left">
             <div class="inline-flex items-center gap-2 badge-brand">
                 <span class="w-1.5 h-1.5 rounded-full bg-brand-600 animate-pulse"></span>
-                JSM Non-UTBK • Unhas 2026
+                Mini-Test • dibuat oleh mr.dev
             </div>
             <h1 class="display-h1">
-                Simulasi <br/><span class="text-brand-600 italic">TPA Digital.</span>
+                Uji <br/><span class="text-brand-600 italic">Pengetahuanmu.</span>
             </h1>
             <p class="text-zinc-500 text-sm md:text-lg max-w-[45ch] leading-relaxed mx-auto md:mx-0">
-                Platform evaluasi akademik mandiri dengan integrasi sistem keamanan tinggi.
+                Platform kuis mandiri untuk mengasah kemampuan akademik Anda ~ dibuat oleh mr.dev
             </p>
             <div class="flex justify-center md:justify-start gap-8 pt-2">
                 <div class="flex flex-col">
@@ -383,7 +383,7 @@
                     <i class="ph ph-stack text-white text-xl md:text-2xl mt-1"></i>
                     <div>
                         <h3 class="font-display font-bold text-white text-sm">Materi</h3>
-                        <p class="text-[10px] text-brand-100">16 soal Verbal, Numerik, Logika, Spasial.</p>
+                        <p id="instr-materi" class="text-[10px] text-brand-100">16 soal Verbal, Numerik, Logika, Spasial.</p>
                     </div>
                 </div>
                 <div class="bento-card !p-5 flex gap-4 items-start">
@@ -611,6 +611,8 @@
                     if (akmilResp.ok) {
                         const akmilRaw = await akmilResp.json();
                         AKMIL_SET = akmilRaw.map(normalizeQuestion);
+                        // If we are already on the dashboard, update it to show the special pack
+                        if (pesertaName && !quizActive) renderDashboard();
                     }
                 } catch (e) { console.warn("Akmil set not found"); }
 
@@ -733,8 +735,10 @@
             currentLevel = level;
             if (level === 'akmil') {
                 QUESTIONS = AKMIL_SET;
+                document.getElementById('instr-materi').textContent = '35 soal Matematika & Fisika.';
             } else {
                 QUESTIONS = ALL_SETS[currentLevel - 1];
+                document.getElementById('instr-materi').textContent = '16 soal Verbal, Numerik, Logika, Spasial.';
             }
             
             if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0) {
@@ -1039,11 +1043,11 @@
                 peserta_name: pesertaName,
                 peserta_email: pesertaEmail,
                 pesan: `
-LAPORAN HASIL SIMULASI TPA ${DEV_MODE ? '[DEV MODE]' : ''}
+LAPORAN HASIL MINI-TEST ${DEV_MODE ? '[DEV MODE]' : ''}
 LEVEL: ${currentLevel}
 --------------------------
 Nama Peserta  : ${pesertaName}
-Skor Akhir    : ${score}/16 (${pct}%)
+Skor Akhir    : ${score}/${QUESTIONS.length} (${pct}%)
 Waktu Ujian   : ${elapsed}
 Pelanggaran   : ${violations}
 Status        : ${score >= PASSING_SCORE ? 'LULUS' : 'GAGAL'}
