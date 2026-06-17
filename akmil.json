@@ -3,192 +3,192 @@
     "mapel": "Matematika",
     "kategori": "Aritmetika Sosial",
     "soal": "Sebuah toko peralatan memberikan diskon 20% kemudian diskon tambahan 10% untuk pembelian seragam senilai Rp800.000. Berapa harga yang harus dibayar?",
-    "opsi": ["Rp576.000", "Rp560.000", "Rp600.000", "Rp612.000", "Rp640.000"],
-    "kunci": 0,
+    "opsi": ["Rp640.000", "Rp560.000", "Rp576.000", "Rp612.000", "Rp600.000"],
+    "kunci": 2,
     "pembahasan": "Diskon bertingkat dihitung berurutan: harga setelah diskon 20% = 800.000 × 80% = 640.000. Kemudian dikurangi diskon tambahan 10%: 640.000 × 90% = 576.000."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aritmetika Sosial",
     "soal": "Seorang calon taruna menabung Rp2.000.000 di koperasi dengan bunga tunggal 6% per tahun. Berapa total tabungan setelah 8 bulan?",
-    "opsi": ["Rp2.040.000", "Rp2.080.000", "Rp2.060.000", "Rp2.120.000", "Rp2.160.000"],
-    "kunci": 1,
+    "opsi": ["Rp2.080.000", "Rp2.040.000", "Rp2.060.000", "Rp2.120.000", "Rp2.160.000"],
+    "kunci": 0,
     "pembahasan": "Bunga tunggal dihitung dari pokok awal. Bunga 8 bulan = 2.000.000 × 6% × (8/12) = 80.000. Total tabungan = 2.000.000 + 80.000 = 2.080.000."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aritmetika Sosial",
     "soal": "Pembangunan barak dapat diselesaikan oleh 8 prajurit dalam 15 hari. Jika tugas harus selesai dalam 10 hari dengan laju kerja yang sama, berapa prajurit tambahan yang diperlukan?",
-    "opsi": ["2 prajurit", "3 prajurit", "4 prajurit", "5 prajurit", "6 prajurit"],
+    "opsi": ["6 prajurit", "3 prajurit", "4 prajurit", "5 prajurit", "2 prajurit"],
     "kunci": 2,
     "pembahasan": "Total kapasitas kerja = 8 prajurit × 15 hari = 120 orang-hari. Untuk selesai dalam 10 hari dibutuhkan 120 ÷ 10 = 12 prajurit. Tambahan yang diperlukan = 12 − 8 = 4 prajurit."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aritmetika Sosial",
-    "soal": "Dua peleton bergerak dari dua titik yang berjarak 90 km saling mendekat. Peleton A bergerak 25 km/jam dan peleton B bergerak 20 km/jam. Setelah berapa jam mereka akan bertemu?",
-    "opsi": ["1,5 jam", "1,8 jam", "2,2 jam", "2 jam", "2,5 jam"],
-    "kunci": 3,
+    "soal": "Dua peleton bergerak dari dua titik yang berjarak 90 km saling mendekat. Peleton A bergerak 25 km/jam and peleton B bergerak 20 km/jam. Setelah berapa jam mereka akan bertemu?",
+    "opsi": ["1,5 jam", "2 jam", "2,2 jam", "1,8 jam", "2,5 jam"],
+    "kunci": 1,
     "pembahasan": "Karena bergerak saling mendekat, jarak tempuh gabungan = jumlah kecepatan × waktu. 90 = (25+20) × t → t = 90/45 = 2 jam."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aritmetika Sosial",
-    "soal": "Seorang pedagang membeli 50 kg beras dengan harga Rp10.000/kg. Karena penyimpanan kurang baik, 5 kg beras rusak dan tidak bisa dijual. Sisa beras dijual dengan harga Rp12.000/kg. Berapa persentase keuntungan pedagang tersebut?",
-    "opsi": ["Untung 6%", "Rugi 8%", "Untung 10%", "Rugi 6%", "Untung 8%"],
-    "kunci": 4,
+    "soal": "Seorang pedagang membeli 50 kg beras dengan harga Rp10.000/kg. Karena penyimpanan kurang baik, 5 kg beras rusak and tidak bisa dijual. Sisa beras dijual dengan harga Rp12.000/kg. Berapa persentase keuntungan pedagang tersebut?",
+    "opsi": ["Untung 8%", "Rugi 8%", "Untung 10%", "Rugi 6%", "Untung 6%"],
+    "kunci": 0,
     "pembahasan": "Modal = 50 × 10.000 = 500.000. Beras terjual = 45 kg, hasil penjualan = 45 × 12.000 = 540.000. Untung = 540.000 − 500.000 = 40.000. Persentase untung = 40.000/500.000 × 100% = 8%."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aljabar",
     "soal": "Jumlah dua bilangan adalah 48. Jika bilangan pertama dikurangi 6 sama dengan dua kali bilangan kedua, berapa selisih kedua bilangan tersebut?",
-    "opsi": ["20", "18", "14", "22", "26"],
-    "kunci": 0,
-    "pembahasan": "Misal bilangan x dan y dengan x+y=48 dan x−6=2y. Substitusi: (2y+6)+y=48 → 3y=42 → y=14, x=34. Selisih = x−y = 34−14 = 20."
+    "opsi": ["18", "14", "20", "22", "26"],
+    "kunci": 2,
+    "pembahasan": "Misal bilangan x and y dengan x+y=48 dan x−6=2y. Substitusi: (2y+6)+y=48 → 3y=42 → y=14, x=34. Selisih = x−y = 34−14 = 20."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aljabar",
-    "soal": "Akar-akar persamaan kuadrat x²−7x+12=0 adalah p dan q dengan p>q. Nilai dari 2p−q adalah...",
-    "opsi": ["3", "5", "4", "6", "7"],
-    "kunci": 1,
-    "pembahasan": "x²−7x+12=0 difaktorkan menjadi (x−3)(x−4)=0, sehingga akar-akarnya 3 dan 4. Karena p>q maka p=4, q=3. Nilai 2p−q = 8−3 = 5."
+    "soal": "Akar-akar persamaan kuadrat x²−7x+12=0 adalah p and q dengan p>q. Nilai dari 2p−q adalah...",
+    "opsi": ["3", "4", "5", "6", "7"],
+    "kunci": 2,
+    "pembahasan": "x²−7x+12=0 difaktorkan menjadi (x−3)(x−4)=0, sehingga akar-akarnya 3 and 4. Karena p>q maka p=4, q=3. Nilai 2p−q = 8−3 = 5."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aljabar",
     "soal": "Himpunan penyelesaian dari pertidaksamaan 3x−5 ≤ 2x+4 adalah...",
-    "opsi": ["x ≤ −9", "x ≥ 9", "x ≤ 9", "x ≥ −9", "x ≤ 4"],
-    "kunci": 2,
+    "opsi": ["x ≤ 9", "x ≥ 9", "x ≤ -9", "x ≥ -9", "x ≤ 4"],
+    "kunci": 0,
     "pembahasan": "3x−5 ≤ 2x+4 → 3x−2x ≤ 4+5 → x ≤ 9."
   },
   {
     "mapel": "Matematika",
     "kategori": "Aljabar",
-    "soal": "Harga 3 buku dan 2 pulpen adalah Rp29.000. Harga 1 buku dan 1 pulpen adalah Rp11.000. Berapa harga 1 buku?",
-    "opsi": ["Rp5.000", "Rp6.000", "Rp8.000", "Rp7.000", "Rp9.000"],
-    "kunci": 3,
+    "soal": "Harga 3 buku and 2 pulpen adalah Rp29.000. Harga 1 buku and 1 pulpen adalah Rp11.000. Berapa harga 1 buku?",
+    "opsi": ["Rp5.000", "Rp7.000", "Rp8.000", "Rp6.000", "Rp9.000"],
+    "kunci": 1,
     "pembahasan": "Dari b+p=11.000 diperoleh p=11.000−b. Substitusi ke 3b+2p=29.000: 3b+2(11.000−b)=29.000 → b+22.000=29.000 → b=7.000."
   },
   {
     "mapel": "Matematika",
     "kategori": "Geometri",
     "soal": "Sebuah lapangan upacara berbentuk persegi panjang berukuran 40 m × 25 m. Di tengah lapangan terdapat lintasan lari berbentuk lingkaran berdiameter 14 m. Berapa luas lapangan di luar lintasan lari tersebut? (π=22/7)",
-    "opsi": ["820 m²", "836 m²", "866 m²", "856 m²", "846 m²"],
-    "kunci": 4,
+    "opsi": ["820 m²", "846 m²", "866 m²", "856 m²", "836 m²"],
+    "kunci": 1,
     "pembahasan": "Luas lapangan = 40×25 = 1.000 m². Luas lintasan lingkaran (r=7 m) = π r² = 22/7 × 49 = 154 m². Luas di luar lintasan = 1.000 − 154 = 846 m²."
   },
   {
     "mapel": "Matematika",
     "kategori": "Geometri",
-    "soal": "Sebuah tandon air berbentuk tabung memiliki diameter alas 2,8 m dan tinggi 3 m. Volume air maksimum yang dapat ditampung adalah... (π=22/7)",
-    "opsi": ["18,48 m³", "17,48 m³", "16,48 m³", "19,48 m³", "20,48 m³"],
-    "kunci": 0,
+    "soal": "Sebuah tandon air berbentuk tabung memiliki diameter alas 2,8 m and tinggi 3 m. Volume air maksimum yang dapat ditampung adalah... (π=22/7)",
+    "opsi": ["17,48 m³", "16,48 m³", "18,48 m³", "19,48 m³", "20,48 m³"],
+    "kunci": 2,
     "pembahasan": "Volume tabung = π r² h dengan r = 1,4 m. V = 22/7 × 1,96 × 3 = 18,48 m³."
   },
   {
     "mapel": "Matematika",
     "kategori": "Geometri",
     "soal": "Sebuah tangga sepanjang 5 m disandarkan pada dinding tegak. Jika jarak kaki tangga ke dinding adalah 3 m, tinggi tangga menyentuh dinding adalah...",
-    "opsi": ["3 m", "4 m", "3,5 m", "4,5 m", "4,8 m"],
-    "kunci": 1,
+    "opsi": ["3 m", "3,5 m", "4,5 m", "4 m", "4,8 m"],
+    "kunci": 3,
     "pembahasan": "Berdasarkan teorema Pythagoras: tinggi² = 5² − 3² = 25−9 = 16, sehingga tinggi = √16 = 4 m."
   },
   {
     "mapel": "Matematika",
     "kategori": "Geometri",
     "soal": "Pada trapesium sama kaki, sudut alas adalah 65°. Besar sudut atas pada sisi yang sama (sudut berpelurus) adalah...",
-    "opsi": ["105°", "110°", "115°", "120°", "125°"],
-    "kunci": 2,
-    "pembahasan": "Pada trapesium sama kaki, sudut alas dan sudut atas pada sisi yang sama saling berjumlah 180° (berpelurus). Sudut atas = 180° − 65° = 115°."
+    "opsi": ["105°", "115°", "110°", "120°", "125°"],
+    "kunci": 1,
+    "pembahasan": "Pada trapesium sama kaki, sudut alas and sudut atas pada sisi yang sama saling berjumlah 180° (berpelurus). Sudut atas = 180° − 65° = 115°."
   },
   {
     "mapel": "Matematika",
     "kategori": "Trigonometri",
     "soal": "Sebuah menara pengawas diamati dari titik di tanah pada jarak 40 m dari kaki menara dengan sudut elevasi 30°. Tinggi menara tersebut adalah... (tan30° ≈ 0,577)",
-    "opsi": ["20,0 m", "21,5 m", "25,0 m", "23,1 m", "26,7 m"],
-    "kunci": 3,
+    "opsi": ["20,0 m", "23,1 m", "25,0 m", "21,5 m", "26,7 m"],
+    "kunci": 1,
     "pembahasan": "Tinggi menara = jarak × tan(sudut elevasi) = 40 × tan30° ≈ 40 × 0,577 = 23,1 m."
   },
   {
     "mapel": "Matematika",
     "kategori": "Trigonometri",
     "soal": "Nilai dari sin60° × cos30° + sin30° × cos60° adalah...",
-    "opsi": ["0", "1/2", "√3/2", "√2", "1"],
-    "kunci": 4,
+    "opsi": ["0", "1/2", "√3/2", "1", "√2"],
+    "kunci": 3,
     "pembahasan": "Bentuk ini sesuai identitas sin(A+B) = sinA cosB + cosA sinB, dengan A=60°, B=30°, sehingga hasilnya sin(90°) = 1."
   },
   {
     "mapel": "Matematika",
     "kategori": "Trigonometri",
     "soal": "Pada segitiga siku-siku, panjang sisi miring 13 cm and salah satu sisi siku-siku 5 cm. Nilai tan dari sudut yang berhadapan dengan sisi 5 cm tersebut adalah...",
-    "opsi": ["5/12", "12/13", "5/13", "12/5", "13/12"],
-    "kunci": 0,
+    "opsi": ["12/13", "5/12", "5/13", "12/5", "13/12"],
+    "kunci": 1,
     "pembahasan": "Sisi siku-siku lainnya = √(13²−5²) = √(169−25) = √144 = 12. tan sudut di depan sisi 5 = sisi depan/sisi samping = 5/12."
   },
   {
     "mapel": "Matematika",
     "kategori": "Statistika & Peluang",
-    "soal": "Nilai rata-rata tes akademik dari 10 calon taruna adalah 72. Jika ditambahkan 2 calon taruna lagi dengan nilai 80 dan 86, rata-rata 12 calon taruna tersebut menjadi...",
-    "opsi": ["72,5", "73,8", "73,2", "74,2", "74,8"],
-    "kunci": 1,
-    "pembahasan": "Jumlah nilai 10 orang = 10×72 = 720. Setelah ditambah 80 dan 86, total = 720+80+86 = 886. Rata-rata baru = 886/12 ≈ 73,8."
+    "soal": "Nilai rata-rata tes akademik dari 10 calon taruna adalah 72. Jika ditambahkan 2 calon taruna lagi with nilai 80 and 86, rata-rata 12 calon taruna tersebut menjadi...",
+    "opsi": ["73,8", "72,5", "73,2", "74,2", "74,8"],
+    "kunci": 0,
+    "pembahasan": "Jumlah nilai 10 orang = 10×72 = 720. Setelah ditambah 80 and 86, total = 720+80+86 = 886. Rata-rata baru = 886/12 ≈ 73,8."
   },
   {
     "mapel": "Matematika",
     "kategori": "Statistika & Peluang",
-    "soal": "Dari sebuah kotak berisi 5 bola merah dan 3 bola putih, diambil 2 bola sekaligus secara acak. Peluang kedua bola yang terambil berwarna merah adalah...",
-    "opsi": ["3/14", "1/2", "5/14", "5/28", "3/8"],
-    "kunci": 2,
+    "soal": "Dari sebuah kotak berisi 5 bola merah and 3 bola putih, diambil 2 bola sekaligus secara acak. Peluang kedua bola yang terambil berwarna merah adalah...",
+    "opsi": ["3/14", "1/2", "5/28", "5/14", "3/8"],
+    "kunci": 3,
     "pembahasan": "Total cara mengambil 2 dari 8 bola = C(8,2) = 28. Cara mengambil 2 bola merah dari 5 = C(5,2) = 10. Peluang = 10/28 = 5/14."
   },
   {
     "mapel": "Matematika",
     "kategori": "Logika Numerik",
     "soal": "Perhatikan barisan angka berikut: 4, 7, 13, 25, 49, ... Angka selanjutnya adalah...",
-    "opsi": ["91", "94", "95", "97", "96"],
-    "kunci": 3,
+    "opsi": ["91", "95", "97", "94", "96"],
+    "kunci": 2,
     "pembahasan": "Pola barisan: setiap suku diperoleh dari suku sebelumnya × 2 dikurangi 1 (4→7→13→25→49→97). Maka suku selanjutnya = 49×2−1 = 97."
   },
   {
     "mapel": "Matematika",
     "kategori": "Logika Numerik",
     "soal": "Jika A=1, B=2, C=3, ..., Z=26, maka nilai dari penjumlahan huruf pada kata \"TNI\" adalah...",
-    "opsi": ["40", "41", "42", "44", "43"],
-    "kunci": 4,
+    "opsi": ["40", "43", "42", "44", "41"],
+    "kunci": 1,
     "pembahasan": "T=20, N=14, I=9 (urutan alfabet A=1 ... Z=26). Jumlah = 20+14+9 = 43."
   },
   {
     "mapel": "Fisika",
     "kategori": "Kinematika",
-    "soal": "Sebuah kendaraan tempur bergerak dengan kecepatan tetap 72 km/jam. Jarak yang ditempuh dalam waktu 5 menit adalah...",
-    "opsi": ["6 km", "5 km", "4 km", "7 km", "8 km"],
-    "kunci": 0,
+    "soal": "Sebuah kendaraan tempur bergerak with kecepatan tetap 72 km/jam. Jarak yang ditempuh dalam waktu 5 menit adalah...",
+    "opsi": ["5 km", "4 km", "6 km", "7 km", "8 km"],
+    "kunci": 2,
     "pembahasan": "Kecepatan 72 km/jam = 20 m/s. Jarak = v×t = 20 m/s × 300 s (5 menit) = 6.000 m = 6 km."
   },
   {
     "mapel": "Fisika",
     "kategori": "Kinematika",
     "soal": "Sebuah peluru mengalami percepatan tetap 4 m/s² dari keadaan diam. Kecepatan peluru setelah 3 sekon adalah...",
-    "opsi": ["8 m/s", "12 m/s", "10 m/s", "14 m/s", "16 m/s"],
-    "kunci": 1,
-    "pembahasan": "Menggunakan v = u + a t dengan u=0: v = 4 × 3 = 12 m/s."
+    "opsi": ["8 m/s", "10 m/s", "14 m/s", "12 m/s", "16 m/s"],
+    "kunci": 3,
+    "pembahasan": "Menggunakan v = u + a t with u=0: v = 4 × 3 = 12 m/s."
   },
   {
     "mapel": "Fisika",
     "kategori": "Kinematika",
     "soal": "Sebuah benda dijatuhkan bebas dari ketinggian 45 m (g=10 m/s²). Waktu yang dibutuhkan benda untuk mencapai tanah adalah...",
-    "opsi": ["2 s", "2,5 s", "3 s", "3,5 s", "4 s"],
-    "kunci": 2,
+    "opsi": ["3 s", "2,5 s", "2 s", "3,5 s", "4 s"],
+    "kunci": 0,
     "pembahasan": "Gerak jatuh bebas: h = ½ g t² → 45 = ½×10×t² → t² = 9 → t = 3 sekon."
   },
   {
     "mapel": "Fisika",
     "kategori": "Dinamika (Hukum Newton)",
-    "soal": "Sebuah gerobak amunisi bermassa 50 kg didorong dengan gaya 200 N. Jika terdapat gaya gesek 50 N yang melawan arah gerak, besar percepatan gerobak adalah...",
-    "opsi": ["2 m/s²", "2,5 m/s²", "3,5 m/s²", "3 m/s²", "4 m/s²"],
-    "kunci": 3,
+    "soal": "Sebuah gerobak amunisi bermassa 50 kg didorong with gaya 200 N. Jika terdapat gaya gesek 50 N yang melawan arah gerak, besar percepatan gerobak adalah...",
+    "opsi": ["2 m/s²", "3 m/s²", "3,5 m/s²", "2,5 m/s²", "4 m/s²"],
+    "kunci": 1,
     "pembahasan": "Gaya neto = gaya dorong − gaya gesek = 200−50 = 150 N. Percepatan = F/m = 150/50 = 3 m/s²."
   },
   {
@@ -202,42 +202,42 @@
   {
     "mapel": "Fisika",
     "kategori": "Dinamika (Hukum Newton)",
-    "soal": "Sebuah peti perbekalan bermassa 20 kg berada di atas lantai datar. Jika koefisien gesek statis antara peti dan lantai adalah 0,4 (g=10 m/s²), gaya minimum agar peti mulai bergeser adalah...",
-    "opsi": ["80 N", "70 N", "60 N", "90 N", "100 N"],
-    "kunci": 0,
+    "soal": "Sebuah peti perbekalan bermassa 20 kg berada di atas lantai datar. Jika koefisien gesek statis antara peti and lantai adalah 0,4 (g=10 m/s²), gaya minimum agar peti mulai bergeser adalah...",
+    "opsi": ["70 N", "80 N", "60 N", "90 N", "100 N"],
+    "kunci": 1,
     "pembahasan": "Gaya gesek statis maksimum = μ × N = μ × m × g = 0,4 × 20 × 10 = 80 N. Inilah gaya minimum agar peti mulai bergeser."
   },
   {
     "mapel": "Fisika",
     "kategori": "Usaha & Energi",
-    "soal": "Sebuah balok ditarik dengan gaya 40 N sejauh 5 m searah dengan perpindahannya. Usaha yang dilakukan gaya tersebut adalah...",
-    "opsi": ["150 J", "200 J", "180 J", "220 J", "250 J"],
-    "kunci": 1,
+    "soal": "Sebuah balok ditarik with gaya 40 N sejauh 5 m searah dengan perpindahannya. Usaha yang dilakukan gaya tersebut adalah...",
+    "opsi": ["150 J", "180 J", "200 J", "220 J", "250 J"],
+    "kunci": 2,
     "pembahasan": "Usaha = gaya × perpindahan (searah) = 40 N × 5 m = 200 J."
   },
   {
     "mapel": "Fisika",
     "kategori": "Usaha & Energi",
-    "soal": "Sebuah peluru bermassa 0,02 kg melesat dengan kelajuan 300 m/s. Energi kinetik peluru tersebut adalah...",
-    "opsi": ["600 J", "750 J", "900 J", "1000 J", "1200 J"],
-    "kunci": 2,
+    "soal": "Sebuah peluru bermassa 0,02 kg melesat with kelajuan 300 m/s. Energi kinetik peluru tersebut adalah...",
+    "opsi": ["600 J", "750 J", "1000 J", "900 J", "1200 J"],
+    "kunci": 3,
     "pembahasan": "Energi kinetik = ½ m v² = ½ × 0,02 × 300² = 0,01 × 90.000 = 900 J."
   },
   {
     "mapel": "Fisika",
     "kategori": "Tekanan & Fluida",
     "soal": "Tekanan hidrostatis pada kedalaman 2 m di bawah permukaan air (ρ=1000 kg/m³, g=10 m/s²) adalah...",
-    "opsi": ["1×10⁴ Pa", "1,5×10⁴ Pa", "2,5×10⁴ Pa", "2×10⁴ Pa", "3×10⁴ Pa"],
-    "kunci": 3,
+    "opsi": ["1×10⁴ Pa", "1,5×10⁴ Pa", "2×10⁴ Pa", "2,5×10⁴ Pa", "3×10⁴ Pa"],
+    "kunci": 2,
     "pembahasan": "Tekanan hidrostatis = ρ g h = 1.000 × 10 × 2 = 20.000 Pa = 2×10⁴ Pa."
   },
   {
     "mapel": "Fisika",
     "kategori": "Tekanan & Fluida",
-    "soal": "Sebuah kapal perang yang terbuat dari baja (massa jenis besar) dapat mengapung di permukaan laut karena...",
-    "opsi": ["Massa jenis baja lebih kecil dari air laut", "Berat kapal lebih kecil dari gaya gravitasi", "Kapal tidak memiliki berat", "Tekanan udara di dalam kapal lebih besar", "Bentuk kapal menggantikan volume air sehingga gaya apung sama dengan berat kapal"],
+    "soal": "Sebuah kapal perang yang terbuat from baja (massa jenis besar) dapat mengapung di permukaan laut karena...",
+    "opsi": ["Massa jenis baja lebih kecil dari air laut", "Berat kapal lebih kecil dari gaya gravitasi", "Kapal tidak memiliki berat", "Tekanan udara di dalam kapal lebih besar", "Bentuk kapal menggantikan volume air sehingga gaya apung sama with berat kapal"],
     "kunci": 4,
-    "pembahasan": "Sesuai prinsip Archimedes, bentuk kapal menggantikan (memindahkan) volume air yang besar sehingga gaya apung yang dihasilkan sama dengan berat total kapal, meskipun bahannya lebih padat dari air."
+    "pembahasan": "Sesuai prinsip Archimedes, bentuk kapal menggantikan (memindahkan) volume air yang besar sehingga gaya apung yang dihasilkan sama with berat total kapal, meskipun bahannya lebih padat from air."
   },
   {
     "mapel": "Fisika",
@@ -250,33 +250,33 @@
   {
     "mapel": "Fisika",
     "kategori": "Listrik",
-    "soal": "Dua resistor 6 Ω dan 3 Ω dipasang paralel. Hambatan total kedua resistor tersebut adalah...",
-    "opsi": ["1 Ω", "2 Ω", "1,5 Ω", "2,5 Ω", "9 Ω"],
-    "kunci": 1,
+    "soal": "Dua resistor 6 Ω and 3 Ω dipasang paralel. Hambatan total kedua resistor tersebut adalah...",
+    "opsi": ["1 Ω", "1,5 Ω", "2,5 Ω", "2 Ω", "9 Ω"],
+    "kunci": 3,
     "pembahasan": "Untuk rangkaian paralel: 1/Rtotal = 1/6 + 1/3 = 1/6+2/6 = 3/6 = 1/2, sehingga Rtotal = 2 Ω."
   },
   {
     "mapel": "Fisika",
     "kategori": "Listrik",
     "soal": "Sebuah alat komunikasi lapangan menggunakan baterai 12 V and mengalirkan arus 0,5 A. Daya yang digunakan alat tersebut adalah...",
-    "opsi": ["4 W", "5 W", "6 W", "7 W", "8 W"],
-    "kunci": 2,
+    "opsi": ["4 W", "5 W", "7 W", "6 W", "8 W"],
+    "kunci": 3,
     "pembahasan": "Daya listrik = V × I = 12 × 0,5 = 6 watt."
   },
   {
     "mapel": "Fisika",
     "kategori": "Kalor",
-    "soal": "Sejumlah 2 kg air dipanaskan dari suhu 20°C menjadi 70°C. Jika kalor jenis air 4.200 J/kg°C, kalor yang diperlukan adalah...",
-    "opsi": ["3,2×10⁵ J", "3,8×10⁵ J", "4,8×10⁵ J", "4,2×10⁵ J", "5,2×10⁵ J"],
-    "kunci": 3,
+    "soal": "Sejumlah 2 kg air dipanaskan from suhu 20°C menjadi 70°C. Jika kalor jenis air 4.200 J/kg°C, kalor yang diperlukan adalah...",
+    "opsi": ["3,2×10⁵ J", "4,2×10⁵ J", "4,8×10⁵ J", "3,8×10⁵ J", "5,2×10⁵ J"],
+    "kunci": 1,
     "pembahasan": "Kalor yang diperlukan = m × c × ΔT = 2 × 4.200 × (70−20) = 2×4.200×50 = 420.000 J = 4,2×10⁵ J."
   },
   {
     "mapel": "Fisika",
     "kategori": "Optika",
     "soal": "Sebuah lensa cembung memiliki jarak fokus 10 cm. Jika sebuah benda diletakkan 15 cm di depan lensa, jarak bayangan yang terbentuk adalah...",
-    "opsi": ["20 cm", "25 cm", "40 cm", "35 cm", "30 cm"],
-    "kunci": 4,
+    "opsi": ["20 cm", "25 cm", "30 cm", "35 cm", "40 cm"],
+    "kunci": 2,
     "pembahasan": "Menggunakan rumus lensa 1/f = 1/so + 1/si: 1/10 = 1/15 + 1/si → 1/si = 1/10−1/15 = 1/30 → si = 30 cm."
   }
 ]
