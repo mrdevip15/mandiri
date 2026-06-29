@@ -853,13 +853,13 @@
             currentLevel = level;
             if (level === 'akmil') {
                 QUESTIONS = AKMIL_SET;
-                document.getElementById('instr-materi').textContent = '35 soal Matematika & Fisika.';
+                document.getElementById('instr-materi').textContent = '35 soal Matematika & Fisika (50 Menit).';
             } else if (level === 'andi') {
                 QUESTIONS = ANDI_SET;
-                document.getElementById('instr-materi').textContent = '16 soal Fisika & Matematika Dasar.';
+                document.getElementById('instr-materi').textContent = '16 soal Fisika & Matematika Dasar (30 Menit).';
             } else {
                 QUESTIONS = ALL_SETS[currentLevel - 1];
-                document.getElementById('instr-materi').textContent = '16 soal Verbal, Numerik, Logika, Spasial.';
+                document.getElementById('instr-materi').textContent = '16 soal Verbal, Numerik, Logika, Spasial (25 Menit).';
             }
             
             if (!Array.isArray(QUESTIONS) || QUESTIONS.length === 0) {
@@ -954,6 +954,16 @@
             QUESTIONS = questions;
             quizActive = true; 
             quizStartTime = Date.now();
+            
+            // Set level-specific time duration
+            if (currentLevel === 'andi') {
+                timeLeft = 30 * 60; // 30 minutes
+            } else if (currentLevel === 'akmil') {
+                timeLeft = 50 * 60; // 50 minutes
+            } else {
+                timeLeft = 25 * 60; // 25 minutes
+            }
+            
             selectedAnswers = new Array(QUESTIONS.length).fill(null);
             saveState();
             showScreen('s-quiz'); startTimer(); attachAntiCheat(); renderQuestion();
