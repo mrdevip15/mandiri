@@ -709,6 +709,12 @@
         let catScores = { verbal:[0,0], numerik:[0,0], logika:[0,0], spasial:[0,0] };
         let forceSubmitted = false;
         let pesertaName = '', pesertaEmail = '';
+        let consecutiveWrongs = 0;
+
+        function playSound(name) {
+            const audio = new Audio(`sounds/${name}`);
+            audio.play().catch(err => console.warn("Audio play failed:", err));
+        }
         const MAX_VIOLATIONS = 3;
 
         // ===================== PERSISTENCE =====================
@@ -720,7 +726,8 @@
                 pesertaName, pesertaEmail, unlockedLevel, levelScores,
                 // Active Quiz Session (if any)
                 quizActive, currentLevel, currentQ, score, violations, answered,
-                timeLeft, quizStartTime, selectedAnswers, catScores, lastViolationTime
+                timeLeft, quizStartTime, selectedAnswers, catScores, lastViolationTime,
+                consecutiveWrongs
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         }
@@ -734,6 +741,7 @@
             pesertaEmail = state.pesertaEmail;
             unlockedLevel = state.unlockedLevel || 1;
             levelScores = state.levelScores || [0,0,0,0,0];
+            consecutiveWrongs = state.consecutiveWrongs || 0;
 
             if (state.quizActive) {
                 currentLevel = state.currentLevel;
@@ -786,6 +794,7 @@
             timeLeft = 25 * 60; timer = null; quizStartTime = null;
             selectedAnswers = [];
             catScores = { verbal:[0,0], numerik:[0,0], logika:[0,0], spasial:[0,0] };
+            consecutiveWrongs = 0;
             saveState();
         }
 
@@ -1030,10 +1039,15 @@
                 score++; 
                 catScores[q.cat][0]++; 
                 expCard.classList.add('success');
+                consecutiveWrongs = 0;
+                playSound('correct.mp3');
             } else { 
                 btns[idx].classList.add('wrong'); 
                 btns[q.ans].classList.add('correct'); 
                 expCard.classList.add('error');
+                consecutiveWrongs++;
+                const soundNum = Math.min(consecutiveWrongs, 3);
+                playSound(`wrong-${soundNum}.mp3`);
             }
             
             catScores[q.cat][1]++;
