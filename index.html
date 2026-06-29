@@ -571,6 +571,7 @@
 
         let ALL_SETS = [];    // 5 arrays of questions
         let AKMIL_SET = null; // Special set from akmil.json
+        let ANDI_SET = null;  // Special set from latihan-andi-1.json
         let QUESTIONS = [];   // The active set
 
         function normalizeQuestion(q) {
@@ -611,10 +612,20 @@
                     if (akmilResp.ok) {
                         const akmilRaw = await akmilResp.json();
                         AKMIL_SET = akmilRaw.map(normalizeQuestion);
-                        // If we are already on the dashboard, update it to show the special pack
-                        if (pesertaName && !quizActive) renderDashboard();
                     }
                 } catch (e) { console.warn("Akmil set not found"); }
+
+                // Load ANDI special set
+                try {
+                    const andiResp = await fetch('latihan-andi-1.json');
+                    if (andiResp.ok) {
+                        const andiRaw = await andiResp.json();
+                        ANDI_SET = andiRaw.map(normalizeQuestion);
+                    }
+                } catch (e) { console.warn("Andi set not found"); }
+
+                // If we are already on the dashboard, update it to show the special packs
+                if (pesertaName && !quizActive) renderDashboard();
 
                 console.log("Database loaded:", ALL_SETS.length, "sets available.");
                 
@@ -668,6 +679,8 @@
                 currentLevel = state.currentLevel;
                 if (currentLevel === 'akmil') {
                     QUESTIONS = AKMIL_SET;
+                } else if (currentLevel === 'andi') {
+                    QUESTIONS = ANDI_SET;
                 } else {
                     QUESTIONS = ALL_SETS[currentLevel - 1];
                 }
@@ -736,6 +749,9 @@
             if (level === 'akmil') {
                 QUESTIONS = AKMIL_SET;
                 document.getElementById('instr-materi').textContent = '35 soal Matematika & Fisika.';
+            } else if (level === 'andi') {
+                QUESTIONS = ANDI_SET;
+                document.getElementById('instr-materi').textContent = '16 soal Fisika & Matematika Dasar.';
             } else {
                 QUESTIONS = ALL_SETS[currentLevel - 1];
                 document.getElementById('instr-materi').textContent = '16 soal Verbal, Numerik, Logika, Spasial.';
@@ -792,6 +808,30 @@
                 card.onclick = () => goInstructions('akmil');
                 grid.appendChild(card);
             }
+
+            // Add ANDI Special Card if loaded
+            if (ANDI_SET) {
+                const card = document.createElement('div');
+                card.className = `bento-card relative overflow-hidden flex flex-col items-center justify-center gap-2 p-6 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-95 border-2 border-emerald-400 bg-zinc-900`;
+                card.innerHTML = `
+                    <span class="text-[9px] font-black uppercase tracking-widest text-emerald-400">Special</span>
+                    <h3 class="text-2xl font-display font-black text-white">LATIHAN ANDI 1</h3>
+                    <div class="mt-2 text-center">
+                        <span class="text-[8px] font-bold uppercase text-emerald-200">
+                            16 Questions • Math & Physics
+                        </span>
+                    </div>
+                `;
+                card.onclick = () => {
+                    const password = prompt("Masukkan password untuk mengakses Latihan Andi 1:");
+                    if (password === "accel123") {
+                        goInstructions('andi');
+                    } else if (password !== null) {
+                        alert("Password salah!");
+                    }
+                };
+                grid.appendChild(card);
+            }
         }
 
         function goDashboard() {
@@ -806,7 +846,7 @@
         function startQuiz() {
             const questions = Array.isArray(QUESTIONS) && QUESTIONS.length > 0
                 ? QUESTIONS
-                : (currentLevel === 'akmil' ? AKMIL_SET : ALL_SETS[currentLevel - 1]);
+                : (currentLevel === 'akmil' ? AKMIL_SET : (currentLevel === 'andi' ? ANDI_SET : ALL_SETS[currentLevel - 1]));
 
             if (!Array.isArray(questions) || questions.length === 0) {
                 alert('Soal belum siap. Silakan tunggu beberapa saat atau muat ulang halaman.');
@@ -832,7 +872,7 @@
             const q = QUESTIONS[currentQ]; answered = false;
             const savedAns = selectedAnswers[currentQ];
             
-            const levelLabel = currentLevel === 'akmil' ? 'SPECIAL' : `LEVEL ${currentLevel}`;
+            const levelLabel = (currentLevel === 'akmil' || currentLevel === 'andi') ? 'SPECIAL' : `LEVEL ${currentLevel}`;
             document.getElementById('q-label').textContent = `${levelLabel} • ITEM ${String(currentQ + 1).padStart(2, '0')} / ${QUESTIONS.length}`;
             document.getElementById('prog-fill').style.width = `${((currentQ + 1) / QUESTIONS.length * 100)}%`;
             document.getElementById('cat-chip').textContent = q.label;
@@ -924,7 +964,7 @@
             removeAntiCheat(); 
 
             // Update Progress
-            if (currentLevel !== 'akmil') {
+            if (currentLevel !== 'akmil' && currentLevel !== 'andi') {
                 if (score > levelScores[currentLevel - 1]) {
                     levelScores[currentLevel - 1] = score;
                 }
@@ -981,8 +1021,8 @@
             const pct = Math.round(score/QUESTIONS.length*100);
             const elapsed = Math.floor((Date.now() - quizStartTime) / 1000);
             
-            document.getElementById('r-title').textContent = `${pesertaName} • ${currentLevel === 'akmil' ? 'SPECIAL AKMIL' : 'LEVEL ' + currentLevel}`;
-            document.getElementById('r-verdict').textContent = score >= (currentLevel === 'akmil' ? 20 : PASSING_SCORE) ? 'BERHASIL DILEWATI!' : 'SKOR BELUM MENCUKUPI.';
+            document.getElementById('r-title').textContent = `${pesertaName} • ${currentLevel === 'akmil' ? 'SPECIAL AKMIL' : (currentLevel === 'andi' ? 'LATIHAN ANDI 1' : 'LEVEL ' + currentLevel)}`;
+            document.getElementById('r-verdict').textContent = score >= (currentLevel === 'akmil' ? 20 : (currentLevel === 'andi' ? 8 : PASSING_SCORE)) ? 'BERHASIL DILEWATI!' : 'SKOR BELUM MENCUKUPI.';
 
             document.getElementById('r-score').textContent = score;
             document.getElementById('r-pct').textContent = pct + '%';
@@ -1050,7 +1090,7 @@ Nama Peserta  : ${pesertaName}
 Skor Akhir    : ${score}/${QUESTIONS.length} (${pct}%)
 Waktu Ujian   : ${elapsed}
 Pelanggaran   : ${violations}
-Status        : ${score >= PASSING_SCORE ? 'LULUS' : 'GAGAL'}
+Status        : ${score >= (currentLevel === 'akmil' ? 20 : (currentLevel === 'andi' ? 8 : PASSING_SCORE)) ? 'LULUS' : 'GAGAL'}
                 `.trim()
             };
 

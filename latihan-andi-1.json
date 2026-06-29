@@ -1,0 +1,226 @@
+[
+  {
+    "mapel": "Fisika",
+    "kategori": "Besaran Pokok & Satuan",
+    "soal": "Kelompok besaran berikut yang seluruhnya merupakan besaran pokok menurut Sistem Internasional (SI) adalah...",
+    "opsi": [
+      "Panjang, massa, kecepatan",
+      "Suhu, kuat arus listrik, jumlah zat",
+      "Gaya, energi, usaha",
+      "Waktu, intensitas cahaya, luas",
+      "Suhu, panjang, percepatan"
+    ],
+    "kunci": 1,
+    "pembahasan": "Besaran pokok ada 7: Panjang (meter), Massa (kilogram), Waktu (sekon), Suhu (Kelvin), Kuat arus listrik (Ampere), Intensitas cahaya (candela), dan Jumlah zat (mol). Jadi kelompok suhu, kuat arus listrik, dan jumlah zat semuanya besaran pokok."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Jarak & Perpindahan",
+    "soal": "Seseorang berlari mengelilingi lapangan berbentuk persegi panjang dengan panjang 40 meter dan lebar 30 meter. Jika ia mulai dari salah satu titik sudut, memutari lapangan tersebut hingga kembali ke posisi awal, tentukan jarak total dan besar perpindahan orang tersebut!",
+    "opsi": [
+      "Jarak 140 m, perpindahan 0 m",
+      "Jarak 140 m, perpindahan 50 m",
+      "Jarak 70 m, perpindahan 50 m",
+      "Jarak 70 m, perpindahan 0 m",
+      "Jarak 100 m, perpindahan 50 m"
+    ],
+    "kunci": 0,
+    "pembahasan": "Jarak total adalah panjang lintasan: Keliling = 2 × (p + l) = 2 × (40 + 30) = 140 m. Perpindahan adalah jarak terpendek dari posisi awal ke posisi akhir. Karena kembali ke posisi awal, perpindahannya adalah 0 m."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Kelajuan & Kecepatan",
+    "soal": "Seorang calon taruna berlari ke arah timur sejauh 80 meter dalam waktu 15 detik, kemudian berbalik ke arah barat sejauh 20 meter dalam waktu 5 detik. Kelajuan rata-rata dan besar kecepatan rata-rata calon taruna tersebut berturut-turut adalah...",
+    "opsi": [
+      "5 m/s dan 3 m/s",
+      "5 m/s dan 5 m/s",
+      "3 m/s dan 5 m/s",
+      "4 m/s dan 3 m/s",
+      "6 m/s dan 4 m/s"
+    ],
+    "kunci": 0,
+    "pembahasan": "Jarak total s = 80 + 20 = 100 m. Waktu total t = 15 + 5 = 20 s. Kelajuan rata-rata = s / t = 100 / 20 = 5 m/s. Perpindahan Δs = 80 − 20 = 60 m. Kecepatan rata-rata = Δs / t = 60 / 20 = 3 m/s."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "GLB & GLBB",
+    "soal": "Sebuah mobil patroli mula-mula diam (v0 = 0), kemudian bergerak dipercepat konstan sebesar 4 m/s². Kecepatan akhir mobil setelah menempuh jarak 50 meter adalah...",
+    "opsi": [
+      "10 m/s",
+      "15 m/s",
+      "20 m/s",
+      "25 m/s",
+      "30 m/s"
+    ],
+    "kunci": 2,
+    "pembahasan": "Menggunakan rumus GLBB: vt² = v0² + 2 × a × S. Karena mula-mula diam, v0 = 0. vt² = 0 + 2 × 4 × 50 = 400. vt = √400 = 20 m/s."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Gerak Jatuh Bebas",
+    "soal": "Sebuah kelapa jatuh bebas dari pohonnya yang memiliki ketinggian 20 meter dari tanah. Jika percepatan gravitasi bumi g = 10 m/s², waktu yang dibutuhkan buah kelapa tersebut untuk sampai di tanah adalah...",
+    "opsi": [
+      "1 detik",
+      "2 detik",
+      "3 detik",
+      "4 detik",
+      "5 detik"
+    ],
+    "kunci": 1,
+    "pembahasan": "Menggunakan rumus Gerak Jatuh Bebas untuk waktu jatuh: t = √(2h / g). t = √(2 × 20 / 10) = √4 = 2 detik."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Gerak Berpapasan",
+    "soal": "Peleton A dan Peleton B terpisah sejauh 120 km. Peleton A bergerak ke arah Peleton B dengan kecepatan konstan 35 km/jam, sedangkan Peleton B bergerak ke arah Peleton A dengan kecepatan konstan 25 km/jam pada saat yang bersamaan. Mereka akan berpapasan setelah...",
+    "opsi": [
+      "1,5 jam",
+      "2 jam",
+      "2,5 jam",
+      "3 jam",
+      "4 jam"
+    ],
+    "kunci": 1,
+    "pembahasan": "Waktu berpapasan dengan waktu berangkat sama: t = S_total / (vA + vB) = 120 / (35 + 25) = 120 / 60 = 2 jam."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Gerak Parabola",
+    "soal": "Sebuah peluru ditembakkan dari meriam dengan kecepatan awal 100 m/s dan sudut elevasi 30°. Jika g = 10 m/s², jangkauan maksimum mendatar (X_max) yang dapat dicapai peluru tersebut adalah...",
+    "opsi": [
+      "250 √3 meter",
+      "500 meter",
+      "500 √3 meter",
+      "1000 meter",
+      "1000 √3 meter"
+    ],
+    "kunci": 2,
+    "pembahasan": "Rumus jangkauan maksimum: X_max = (v0² × sin 2α) / g. Diketahui v0 = 100 m/s, α = 30° (sehingga 2α = 60°), g = 10 m/s². X_max = (100² × sin 60°) / 10 = (10000 × 0,5 √3) / 10 = 500 √3 meter."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Hukum-Hukum Newton",
+    "soal": "Sebuah balok bermassa 5 kg terletak di atas lantai licin (tanpa gesekan). Jika balok ditarik oleh gaya mendatar sebesar 15 N, percepatan yang dialami balok tersebut adalah...",
+    "opsi": [
+      "1 m/s²",
+      "2 m/s²",
+      "3 m/s²",
+      "4 m/s²",
+      "5 m/s²"
+    ],
+    "kunci": 2,
+    "pembahasan": "Menurut Hukum II Newton: ΣF = m × a. Percepatan a = ΣF / m = 15 / 5 = 3 m/s²."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Gaya Gesek & Gaya Normal",
+    "soal": "Sebuah peti bermassa 20 kg diam di atas lantai kasar dengan koefisien gesek statis μs = 0,4 dan koefisien gesek kinetis μk = 0,3. Jika peti tersebut ditarik gaya horizontal sebesar 70 N, besar gaya gesek yang bekerja pada peti adalah... (g = 10 m/s²)",
+    "opsi": [
+      "60 N",
+      "70 N",
+      "80 N",
+      "0 N",
+      "50 N"
+    ],
+    "kunci": 1,
+    "pembahasan": "Gaya normal N = m × g = 20 × 10 = 200 N. Gaya gesek statis maksimum f_s_max = μs × N = 0,4 × 200 = 80 N. Karena gaya tarik F = 70 N lebih kecil dari gaya gesek statis maksimum (80 N), maka benda tetap diam. Oleh karena itu, gaya gesek yang bekerja sama dengan gaya tarik, yaitu 70 N."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Tegangan Tali / Benda Terhubung",
+    "soal": "Dua balok m1 = 4 kg dan m2 = 6 kg dihubungkan tali ringan di atas lantai licin. Benda kedua (m2) ditarik dengan gaya horizontal F = 30 N. Besar tegangan tali penghubung kedua benda tersebut adalah...",
+    "opsi": [
+      "12 N",
+      "18 N",
+      "20 N",
+      "24 N",
+      "30 N"
+    ],
+    "kunci": 0,
+    "pembahasan": "Percepatan sistem a = F / (m1 + m2) = 30 / (4 + 6) = 3 m/s². Tinjau benda pertama (m1): gaya mendatar satu-satunya adalah tegangan tali T. T = m1 × a = 4 kg × 3 m/s² = 12 N."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Bidang Miring Kasar",
+    "soal": "Sebuah balok bermassa 10 kg diletakkan pada bidang miring kasar yang memiliki sudut kemiringan 37° (sin 37° = 0,6 dan cos 37° = 0,8). Jika koefisien gesek kinetis μk = 0,2 dan g = 10 m/s², percepatan balok saat meluncur ke bawah adalah...",
+    "opsi": [
+      "4,4 m/s²",
+      "5,0 m/s²",
+      "3,6 m/s²",
+      "4,8 m/s²",
+      "6,0 m/s²"
+    ],
+    "kunci": 0,
+    "pembahasan": "Gaya berat sejajar bidang miring: W sin 37° = m × g × sin 37° = 10 × 10 × 0,6 = 60 N. Gaya normal N = W cos 37° = 10 × 10 × 0,8 = 80 N. Gaya gesek kinetis f_k = μk × N = 0,2 × 80 = 16 N. Sesuai Hukum II Newton: ΣF = m × a → W sin 37° − f_k = m × a → 60 − 16 = 10 × a → 44 = 10 × a → a = 4,4 m/s²."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Dinamika Rotasi - Torsi",
+    "soal": "Sebuah kunci inggris dengan panjang lengan 25 cm digunakan untuk mengencangkan baut. Gaya sebesar 40 N diberikan pada ujung lengan kunci inggris secara tegak lurus. Besar momen gaya (torsi) yang dihasilkan terhadap poros baut adalah...",
+    "opsi": [
+      "10 Nm",
+      "20 Nm",
+      "5 Nm",
+      "1000 Nm",
+      "100 Nm"
+    ],
+    "kunci": 0,
+    "pembahasan": "Momen gaya τ = F × r × sin θ. Lengan r = 25 cm = 0,25 m, F = 40 N, θ = 90° (sin 90° = 1). Maka τ = 40 × 0,25 × 1 = 10 Nm."
+  },
+  {
+    "mapel": "Fisika",
+    "kategori": "Dinamika Rotasi - Inersia & Hukum II Newton",
+    "soal": "Sebuah roda berbentuk silinder pejal bermassa 4 kg dan jari-jari 20 cm (momen inersia silinder pejal I = 1/2 m r²) berputar terhadap porosnya. Jika roda tersebut diberikan torsi sebesar 1,6 Nm, percepatan sudut (α) yang dialami roda adalah...",
+    "opsi": [
+      "5 rad/s²",
+      "10 rad/s²",
+      "15 rad/s²",
+      "20 rad/s²",
+      "25 rad/s²"
+    ],
+    "kunci": 3,
+    "pembahasan": "Momen inersia silinder pejal I = 0,5 × m × r² = 0,5 × 4 × (0,2)² = 2 × 0,04 = 0,08 kg m². Percepatan sudut α = τ / I = 1,6 / 0,08 = 20 rad/s²."
+  },
+  {
+    "mapel": "Matematika",
+    "kategori": "Volume Balok & Aljabar",
+    "soal": "Sebuah kotak perlengkapan berbentuk balok memiliki perbandingan rusuk panjang : lebar : tinggi = 3 : 2 : 1. Jika volume balok tersebut adalah 384 cm³, panjang balok tersebut adalah...",
+    "opsi": [
+      "6 cm",
+      "8 cm",
+      "12 cm",
+      "16 cm",
+      "24 cm"
+    ],
+    "kunci": 2,
+    "pembahasan": "Misalkan panjang p = 3x, lebar l = 2x, tinggi t = x. Volume = p × l × t → 384 = (3x) × (2x) × (x) → 384 = 6x³ → x³ = 64 → x = 4 cm. Panjang balok = 3x = 3 × 4 = 12 cm."
+  },
+  {
+    "mapel": "Matematika",
+    "kategori": "Trigonometri Dasar",
+    "soal": "Diketahui segitiga siku-siku ABC dengan sudut siku-siku di B. Jika nilai sin A = 3/5, maka nilai cos A dan tan A berturut-turut adalah...",
+    "opsi": [
+      "4/5 dan 3/4",
+      "3/4 dan 4/5",
+      "4/5 dan 4/3",
+      "1/2 √3 dan √3",
+      "3/5 dan 4/5"
+    ],
+    "kunci": 0,
+    "pembahasan": "sin A = depan / miring = 3/5. Berdasarkan teorema Pythagoras, sisi samping = √(5² − 3²) = 4. Maka cos A = samping / miring = 4/5, dan tan A = depan / samping = 3/4."
+  },
+  {
+    "mapel": "Matematika",
+    "kategori": "Penerapan Trigonometri",
+    "soal": "Seorang prajurit menyandarkan tangga sepanjang 10 meter pada dinding pos jaga. Jika tangga tersebut membentuk sudut 60° dengan tanah, berapakah tinggi ujung tangga di dinding diukur dari permukaan tanah?",
+    "opsi": [
+      "5 meter",
+      "5 √2 meter",
+      "5 √3 meter",
+      "10 √3 meter",
+      "8 meter"
+    ],
+    "kunci": 2,
+    "pembahasan": "Tangga bertindak sebagai sisi miring (mi = 10 m). Tinggi dinding adalah sisi depan (de). Sudut α = 60°. Gunakan perbandingan sinus: sin 60° = de / mi → 1/2 √3 = de / 10 → de = 10 × 0,5 √3 = 5 √3 meter."
+  }
+]
