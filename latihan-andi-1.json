@@ -4,223 +4,223 @@
     "kategori": "Besaran Pokok & Satuan",
     "soal": "Kelompok besaran berikut yang seluruhnya merupakan besaran pokok menurut Sistem Internasional (SI) adalah...",
     "opsi": [
-      "Panjang, massa, kecepatan",
-      "Suhu, kuat arus listrik, jumlah zat",
-      "Gaya, energi, usaha",
-      "Waktu, intensitas cahaya, luas",
-      "Suhu, panjang, percepatan"
+      "Panjang ($m$), massa ($kg$), kecepatan",
+      "Suhu ($K$), kuat arus listrik ($A$), jumlah zat ($mol$)",
+      "Gaya ($N$), energi ($J$), usaha ($J$)",
+      "Waktu ($s$), intensitas cahaya ($cd$), luas ($m^2$)",
+      "Suhu ($K$), panjang ($m$), percepatan ($m/s^2$)"
     ],
     "kunci": 1,
-    "pembahasan": "Besaran pokok ada 7: Panjang (meter), Massa (kilogram), Waktu (sekon), Suhu (Kelvin), Kuat arus listrik (Ampere), Intensitas cahaya (candela), dan Jumlah zat (mol). Jadi kelompok suhu, kuat arus listrik, dan jumlah zat semuanya besaran pokok."
+    "pembahasan": "Besaran pokok ada 7: Panjang ($m$), Massa ($kg$), Waktu ($s$), Suhu ($K$), Kuat arus listrik ($A$), Intensitas cahaya ($cd$), dan Jumlah zat ($mol$). Jadi kelompok suhu, kuat arus listrik, dan jumlah zat semuanya besaran pokok."
   },
   {
     "mapel": "Fisika",
     "kategori": "Jarak & Perpindahan",
-    "soal": "Seseorang berlari mengelilingi lapangan berbentuk persegi panjang dengan panjang 40 meter dan lebar 30 meter. Jika ia mulai dari salah satu titik sudut, memutari lapangan tersebut hingga kembali ke posisi awal, tentukan jarak total dan besar perpindahan orang tersebut!",
+    "soal": "Seseorang berlari mengelilingi lapangan berbentuk persegi panjang dengan panjang $40\\text{ meter}$ dan lebar $30\\text{ meter}$. Jika ia mulai dari salah satu titik sudut, memutari lapangan tersebut hingga kembali ke posisi awal, tentukan jarak total dan besar perpindahan orang tersebut!",
     "opsi": [
-      "Jarak 140 m, perpindahan 0 m",
-      "Jarak 140 m, perpindahan 50 m",
-      "Jarak 70 m, perpindahan 50 m",
-      "Jarak 70 m, perpindahan 0 m",
-      "Jarak 100 m, perpindahan 50 m"
+      "Jarak $140\\text{ m}$, perpindahan $0\\text{ m}$",
+      "Jarak $140\\text{ m}$, perpindahan $50\\text{ m}$",
+      "Jarak $70\\text{ m}$, perpindahan $50\\text{ m}$",
+      "Jarak $70\\text{ m}$, perpindahan $0\\text{ m}$",
+      "Jarak $100\\text{ m}$, perpindahan $50\\text{ m}$"
     ],
     "kunci": 0,
-    "pembahasan": "Jarak total adalah panjang lintasan: Keliling = 2 × (p + l) = 2 × (40 + 30) = 140 m. Perpindahan adalah jarak terpendek dari posisi awal ke posisi akhir. Karena kembali ke posisi awal, perpindahannya adalah 0 m."
+    "pembahasan": "Jarak total adalah panjang lintasan: Keliling = $2 \\times (p + l) = 2 \\times (40 + 30) = 140\\text{ m}$. Perpindahan adalah jarak terpendek dari posisi awal ke posisi akhir. Karena kembali ke posisi awal, perpindahannya adalah $0\\text{ m}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Kelajuan & Kecepatan",
-    "soal": "Seorang calon taruna berlari ke arah timur sejauh 80 meter dalam waktu 15 detik, kemudian berbalik ke arah barat sejauh 20 meter dalam waktu 5 detik. Kelajuan rata-rata dan besar kecepatan rata-rata calon taruna tersebut berturut-turut adalah...",
+    "soal": "Seorang calon taruna berlari ke arah timur sejauh $80\\text{ meter}$ dalam waktu $15\\text{ detik}$, kemudian berbalik ke arah barat sejauh $20\\text{ meter}$ dalam waktu $5\\text{ detik}$. Kelajuan rata-rata dan besar kecepatan rata-rata calon taruna tersebut berturut-turut adalah...",
     "opsi": [
-      "5 m/s dan 3 m/s",
-      "5 m/s dan 5 m/s",
-      "3 m/s dan 5 m/s",
-      "4 m/s dan 3 m/s",
-      "6 m/s dan 4 m/s"
+      "$5\\text{ m/s}$ dan $3\\text{ m/s}$",
+      "$5\\text{ m/s}$ dan $5\\text{ m/s}$",
+      "$3\\text{ m/s}$ dan $5\\text{ m/s}$",
+      "$4\\text{ m/s}$ dan $3\\text{ m/s}$",
+      "$6\\text{ m/s}$ dan $4\\text{ m/s}$"
     ],
     "kunci": 0,
-    "pembahasan": "Jarak total s = 80 + 20 = 100 m. Waktu total t = 15 + 5 = 20 s. Kelajuan rata-rata = s / t = 100 / 20 = 5 m/s. Perpindahan Δs = 80 − 20 = 60 m. Kecepatan rata-rata = Δs / t = 60 / 20 = 3 m/s."
+    "pembahasan": "Jarak total $s = 80 + 20 = 100\\text{ m}$. Waktu total $t = 15 + 5 = 20\\text{ s}$. Kelajuan rata-rata = $\\frac{s}{t} = \\frac{100}{20} = 5\\text{ m/s}$. Perpindahan $\\Delta s = 80 - 20 = 60\\text{ m}$. Kecepatan rata-rata = $\\frac{\\Delta s}{t} = \\frac{60}{20} = 3\\text{ m/s}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "GLB & GLBB",
-    "soal": "Sebuah mobil patroli mula-mula diam (v0 = 0), kemudian bergerak dipercepat konstan sebesar 4 m/s². Kecepatan akhir mobil setelah menempuh jarak 50 meter adalah...",
+    "soal": "Sebuah mobil patroli mula-mula diam ($v_0 = 0$), kemudian bergerak dipercepat konstan sebesar $4\\text{ m/s}^2$. Kecepatan akhir mobil setelah menempuh jarak $50\\text{ meter}$ adalah...",
     "opsi": [
-      "10 m/s",
-      "15 m/s",
-      "20 m/s",
-      "25 m/s",
-      "30 m/s"
+      "$10\\text{ m/s}$",
+      "$15\\text{ m/s}$",
+      "$20\\text{ m/s}$",
+      "$25\\text{ m/s}$",
+      "$30\\text{ m/s}$"
     ],
     "kunci": 2,
-    "pembahasan": "Menggunakan rumus GLBB: vt² = v0² + 2 × a × S. Karena mula-mula diam, v0 = 0. vt² = 0 + 2 × 4 × 50 = 400. vt = √400 = 20 m/s."
+    "pembahasan": "Menggunakan rumus GLBB: $v_t^2 = v_0^2 + 2a \\cdot S$. Karena mula-mula diam, $v_0 = 0$. $v_t^2 = 0 + 2 \\cdot 4 \\cdot 50 = 400 \\implies v_t = \\sqrt{400} = 20\\text{ m/s}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Gerak Jatuh Bebas",
-    "soal": "Sebuah kelapa jatuh bebas dari pohonnya yang memiliki ketinggian 20 meter dari tanah. Jika percepatan gravitasi bumi g = 10 m/s², waktu yang dibutuhkan buah kelapa tersebut untuk sampai di tanah adalah...",
+    "soal": "Sebuah kelapa jatuh bebas dari pohonnya yang memiliki ketinggian $20\\text{ meter}$ dari tanah. Jika percepatan gravitasi bumi $g = 10\\text{ m/s}^2$, waktu yang dibutuhkan buah kelapa tersebut untuk sampai di tanah adalah...",
     "opsi": [
-      "1 detik",
-      "2 detik",
-      "3 detik",
-      "4 detik",
-      "5 detik"
+      "$1\\text{ detik}$",
+      "$2\\text{ detik}$",
+      "$3\\text{ detik}$",
+      "$4\\text{ detik}$",
+      "$5\\text{ detik}$"
     ],
     "kunci": 1,
-    "pembahasan": "Menggunakan rumus Gerak Jatuh Bebas untuk waktu jatuh: t = √(2h / g). t = √(2 × 20 / 10) = √4 = 2 detik."
+    "pembahasan": "Menggunakan rumus Gerak Jatuh Bebas untuk waktu jatuh: $t = \\sqrt{\\frac{2h}{g}}$. Substitusi nilai: $t = \\sqrt{\\frac{2 \\times 20}{10}} = \\sqrt{4} = 2\\text{ detik}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Gerak Berpapasan",
-    "soal": "Peleton A dan Peleton B terpisah sejauh 120 km. Peleton A bergerak ke arah Peleton B dengan kecepatan konstan 35 km/jam, sedangkan Peleton B bergerak ke arah Peleton A dengan kecepatan konstan 25 km/jam pada saat yang bersamaan. Mereka akan berpapasan setelah...",
+    "soal": "Peleton A dan Peleton B terpisah sejauh $120\\text{ km}$. Peleton A bergerak ke arah Peleton B dengan kecepatan konstan $35\\text{ km/jam}$, sedangkan Peleton B bergerak ke arah Peleton A dengan kecepatan konstan $25\\text{ km/jam}$ pada saat yang bersamaan. Mereka akan berpapasan setelah...",
     "opsi": [
-      "1,5 jam",
-      "2 jam",
-      "2,5 jam",
-      "3 jam",
-      "4 jam"
+      "$1{,}5\\text{ jam}$",
+      "$2\\text{ jam}$",
+      "$2{,}5\\text{ jam}$",
+      "$3\\text{ jam}$",
+      "$4\\text{ jam}$"
     ],
     "kunci": 1,
-    "pembahasan": "Waktu berpapasan dengan waktu berangkat sama: t = S_total / (vA + vB) = 120 / (35 + 25) = 120 / 60 = 2 jam."
+    "pembahasan": "Waktu berpapasan dengan waktu berangkat bersamaan: $t = \\frac{S_{\\text{total}}}{v_A + v_B} = \\frac{120}{35 + 25} = \\frac{120}{60} = 2\\text{ jam}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Gerak Parabola",
-    "soal": "Sebuah peluru ditembakkan dari meriam dengan kecepatan awal 100 m/s dan sudut elevasi 30°. Jika g = 10 m/s², jangkauan maksimum mendatar (X_max) yang dapat dicapai peluru tersebut adalah...",
+    "soal": "Sebuah peluru ditembakkan dari meriam dengan kecepatan awal $v_0 = 100\\text{ m/s}$ dan sudut elevasi $\\alpha = 30^\\circ$. Jika $g = 10\\text{ m/s}^2$, jangkauan maksimum mendatar ($X_{\\max}$) yang dapat dicapai peluru tersebut adalah...",
     "opsi": [
-      "250 √3 meter",
-      "500 meter",
-      "500 √3 meter",
-      "1000 meter",
-      "1000 √3 meter"
+      "$250\\sqrt{3}\\text{ meter}$",
+      "$500\\text{ meter}$",
+      "$500\\sqrt{3}\\text{ meter}$",
+      "$1000\\text{ meter}$",
+      "$1000\\sqrt{3}\\text{ meter}$"
     ],
     "kunci": 2,
-    "pembahasan": "Rumus jangkauan maksimum: X_max = (v0² × sin 2α) / g. Diketahui v0 = 100 m/s, α = 30° (sehingga 2α = 60°), g = 10 m/s². X_max = (100² × sin 60°) / 10 = (10000 × 0,5 √3) / 10 = 500 √3 meter."
+    "pembahasan": "Rumus jangkauan maksimum: $X_{\\max} = \\frac{v_0^2 \\sin 2\\alpha}{g}$. Diketahui $v_0 = 100\\text{ m/s}$, $\\alpha = 30^\\circ$ (sehingga $2\\alpha = 60^\\circ$), dan $g = 10\\text{ m/s}^2$. Maka $X_{\\max} = \\frac{100^2 \\cdot \\sin 60^\\circ}{10} = \\frac{10000 \\cdot \\frac{1}{2}\\sqrt{3}}{10} = 500\\sqrt{3}\\text{ meter}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Hukum-Hukum Newton",
-    "soal": "Sebuah balok bermassa 5 kg terletak di atas lantai licin (tanpa gesekan). Jika balok ditarik oleh gaya mendatar sebesar 15 N, percepatan yang dialami balok tersebut adalah...",
+    "soal": "Sebuah balok bermassa $m = 5\\text{ kg}$ terletak di atas lantai licin (tanpa gesekan). Jika balok ditarik oleh gaya mendatar sebesar $F = 15\\text{ N}$, percepatan yang dialami balok tersebut adalah...",
     "opsi": [
-      "1 m/s²",
-      "2 m/s²",
-      "3 m/s²",
-      "4 m/s²",
-      "5 m/s²"
+      "$1\\text{ m/s}^2$",
+      "$2\\text{ m/s}^2$",
+      "$3\\text{ m/s}^2$",
+      "$4\\text{ m/s}^2$",
+      "$5\\text{ m/s}^2$"
     ],
     "kunci": 2,
-    "pembahasan": "Menurut Hukum II Newton: ΣF = m × a. Percepatan a = ΣF / m = 15 / 5 = 3 m/s²."
+    "pembahasan": "Menurut Hukum II Newton: $\\Sigma F = m \\cdot a$. Percepatan $a = \\frac{\\Sigma F}{m} = \\frac{15}{5} = 3\\text{ m/s}^2$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Gaya Gesek & Gaya Normal",
-    "soal": "Sebuah peti bermassa 20 kg diam di atas lantai kasar dengan koefisien gesek statis μs = 0,4 dan koefisien gesek kinetis μk = 0,3. Jika peti tersebut ditarik gaya horizontal sebesar 70 N, besar gaya gesek yang bekerja pada peti adalah... (g = 10 m/s²)",
+    "soal": "Sebuah peti bermassa $20\\text{ kg}$ diam di atas lantai kasar dengan koefisien gesek statis $\\mu_s = 0{,}4$ dan koefisien gesek kinetis $\\mu_k = 0{,}3$. Jika peti tersebut ditarik gaya horizontal sebesar $F = 70\\text{ N}$, besar gaya gesek yang bekerja pada peti adalah... ($g = 10\\text{ m/s}^2$)",
     "opsi": [
-      "60 N",
-      "70 N",
-      "80 N",
-      "0 N",
-      "50 N"
+      "$60\\text{ N}$",
+      "$70\\text{ N}$",
+      "$80\\text{ N}$",
+      "$0\\text{ N}$",
+      "$50\\text{ N}$"
     ],
     "kunci": 1,
-    "pembahasan": "Gaya normal N = m × g = 20 × 10 = 200 N. Gaya gesek statis maksimum f_s_max = μs × N = 0,4 × 200 = 80 N. Karena gaya tarik F = 70 N lebih kecil dari gaya gesek statis maksimum (80 N), maka benda tetap diam. Oleh karena itu, gaya gesek yang bekerja sama dengan gaya tarik, yaitu 70 N."
+    "pembahasan": "Gaya normal $N = m \\cdot g = 20 \\times 10 = 200\\text{ N}$. Gaya gesek statis maksimum $f_{s,\\max} = \\mu_s \\cdot N = 0{,}4 \\times 200 = 80\\text{ N}$. Karena gaya tarik $F = 70\\text{ N} < f_{s,\\max}$, maka peti tetap diam. Gaya gesek yang bekerja sama dengan gaya tarik, yaitu $f_s = F = 70\\text{ N}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Tegangan Tali / Benda Terhubung",
-    "soal": "Dua balok m1 = 4 kg dan m2 = 6 kg dihubungkan tali ringan di atas lantai licin. Benda kedua (m2) ditarik dengan gaya horizontal F = 30 N. Besar tegangan tali penghubung kedua benda tersebut adalah...",
+    "soal": "Dua balok $m_1 = 4\\text{ kg}$ dan $m_2 = 6\\text{ kg}$ dihubungkan tali ringan di atas lantai licin. Benda kedua ($m_2$) ditarik dengan gaya horizontal $F = 30\\text{ N}$. Besar tegangan tali penghubung kedua benda tersebut adalah...",
     "opsi": [
-      "12 N",
-      "18 N",
-      "20 N",
-      "24 N",
-      "30 N"
+      "$12\\text{ N}$",
+      "$18\\text{ N}$",
+      "$20\\text{ N}$",
+      "$24\\text{ N}$",
+      "$30\\text{ N}$"
     ],
     "kunci": 0,
-    "pembahasan": "Percepatan sistem a = F / (m1 + m2) = 30 / (4 + 6) = 3 m/s². Tinjau benda pertama (m1): gaya mendatar satu-satunya adalah tegangan tali T. T = m1 × a = 4 kg × 3 m/s² = 12 N."
+    "pembahasan": "Percepatan sistem $a = \\frac{F}{m_1 + m_2} = \\frac{30}{4 + 6} = 3\\text{ m/s}^2$. Tinjau benda pertama ($m_1$): gaya mendatar satu-satunya adalah tegangan tali $T$. Maka $T = m_1 \\cdot a = 4 \\times 3 = 12\\text{ N}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Bidang Miring Kasar",
-    "soal": "Sebuah balok bermassa 10 kg diletakkan pada bidang miring kasar yang memiliki sudut kemiringan 37° (sin 37° = 0,6 dan cos 37° = 0,8). Jika koefisien gesek kinetis μk = 0,2 dan g = 10 m/s², percepatan balok saat meluncur ke bawah adalah...",
+    "soal": "Sebuah balok bermassa $10\\text{ kg}$ diletakkan pada bidang miring kasar yang memiliki sudut kemiringan $\\alpha = 37^\\circ$ ($\\sin 37^\\circ = 0{,}6$ dan $\\cos 37^\\circ = 0{,}8$). Jika koefisien gesek kinetis $\\mu_k = 0{,}2$ dan $g = 10\\text{ m/s}^2$, percepatan balok saat meluncur ke bawah adalah...",
     "opsi": [
-      "4,4 m/s²",
-      "5,0 m/s²",
-      "3,6 m/s²",
-      "4,8 m/s²",
-      "6,0 m/s²"
+      "$4{,}4\\text{ m/s}^2$",
+      "$5{,}0\\text{ m/s}^2$",
+      "$3{,}6\\text{ m/s}^2$",
+      "$4{,}8\\text{ m/s}^2$",
+      "$6{,}0\\text{ m/s}^2$"
     ],
     "kunci": 0,
-    "pembahasan": "Gaya berat sejajar bidang miring: W sin 37° = m × g × sin 37° = 10 × 10 × 0,6 = 60 N. Gaya normal N = W cos 37° = 10 × 10 × 0,8 = 80 N. Gaya gesek kinetis f_k = μk × N = 0,2 × 80 = 16 N. Sesuai Hukum II Newton: ΣF = m × a → W sin 37° − f_k = m × a → 60 − 16 = 10 × a → 44 = 10 × a → a = 4,4 m/s²."
+    "pembahasan": "Gaya berat sejajar bidang miring: $W \\sin 37^\\circ = m \\cdot g \\cdot \\sin 37^\\circ = 10 \\times 10 \\times 0{,}6 = 60\\text{ N}$. Gaya normal $N = W \\cos 37^\\circ = m \\cdot g \\cdot \\cos 37^\\circ = 10 \\times 10 \\times 0{,}8 = 80\\text{ N}$. Gaya gesek kinetis $f_k = \\mu_k \\cdot N = 0{,}2 \\times 80 = 16\\text{ N}$. Sesuai Hukum II Newton: $\\Sigma F = m \\cdot a \\implies W \\sin 37^\\circ - f_k = m \\cdot a \\implies 60 - 16 = 10a \\implies a = 4{,}4\\text{ m/s}^2$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Dinamika Rotasi - Torsi",
-    "soal": "Sebuah kunci inggris dengan panjang lengan 25 cm digunakan untuk mengencangkan baut. Gaya sebesar 40 N diberikan pada ujung lengan kunci inggris secara tegak lurus. Besar momen gaya (torsi) yang dihasilkan terhadap poros baut adalah...",
+    "soal": "Sebuah kunci inggris dengan panjang lengan $r = 25\\text{ cm}$ digunakan untuk mengencangkan baut. Gaya sebesar $F = 40\\text{ N}$ diberikan pada ujung lengan kunci inggris secara tegak lurus ($\\theta = 90^\\circ$). Besar momen gaya (torsi) yang dihasilkan terhadap poros baut adalah...",
     "opsi": [
-      "10 Nm",
-      "20 Nm",
-      "5 Nm",
-      "1000 Nm",
-      "100 Nm"
+      "$10\\text{ Nm}$",
+      "$20\\text{ Nm}$",
+      "$5\\text{ Nm}$",
+      "$1000\\text{ Nm}$",
+      "$100\\text{ Nm}$"
     ],
     "kunci": 0,
-    "pembahasan": "Momen gaya τ = F × r × sin θ. Lengan r = 25 cm = 0,25 m, F = 40 N, θ = 90° (sin 90° = 1). Maka τ = 40 × 0,25 × 1 = 10 Nm."
+    "pembahasan": "Momen gaya $\\tau = F \\cdot r \\sin\\theta$. Dengan $r = 25\\text{ cm} = 0{,}25\\text{ m}$, $F = 40\\text{ N}$, dan $\\theta = 90^\\circ$ ($\\sin 90^\\circ = 1$). Maka $\\tau = 40 \\cdot 0{,}25 \\cdot 1 = 10\\text{ Nm}$."
   },
   {
     "mapel": "Fisika",
     "kategori": "Dinamika Rotasi - Inersia & Hukum II Newton",
-    "soal": "Sebuah roda berbentuk silinder pejal bermassa 4 kg dan jari-jari 20 cm (momen inersia silinder pejal I = 1/2 m r²) berputar terhadap porosnya. Jika roda tersebut diberikan torsi sebesar 1,6 Nm, percepatan sudut (α) yang dialami roda adalah...",
+    "soal": "Sebuah roda berbentuk silinder pejal bermassa $m = 4\\text{ kg}$ dan jari-jari $r = 20\\text{ cm}$ (momen inersia silinder pejal $I = \\frac{1}{2} m r^2$) berputar terhadap porosnya. Jika roda tersebut diberikan torsi sebesar $\\tau = 1{,}6\\text{ Nm}$, percepatan sudut ($\\alpha$) yang dialami roda adalah...",
     "opsi": [
-      "5 rad/s²",
-      "10 rad/s²",
-      "15 rad/s²",
-      "20 rad/s²",
-      "25 rad/s²"
+      "$5\\text{ rad/s}^2$",
+      "$10\\text{ rad/s}^2$",
+      "$15\\text{ rad/s}^2$",
+      "$20\\text{ rad/s}^2$",
+      "$25\\text{ rad/s}^2$"
     ],
     "kunci": 3,
-    "pembahasan": "Momen inersia silinder pejal I = 0,5 × m × r² = 0,5 × 4 × (0,2)² = 2 × 0,04 = 0,08 kg m². Percepatan sudut α = τ / I = 1,6 / 0,08 = 20 rad/s²."
+    "pembahasan": "Momen inersia silinder pejal $I = \\frac{1}{2} m r^2 = 0{,}5 \\times 4 \\times (0{,}2)^2 = 2 \\times 0{,}04 = 0{,}08\\text{ kg m}^2$. Percepatan sudut $\\alpha = \\frac{\\tau}{I} = \\frac{1{,}6}{0{,}08} = 20\\text{ rad/s}^2$."
   },
   {
     "mapel": "Matematika",
     "kategori": "Volume Balok & Aljabar",
-    "soal": "Sebuah kotak perlengkapan berbentuk balok memiliki perbandingan rusuk panjang : lebar : tinggi = 3 : 2 : 1. Jika volume balok tersebut adalah 384 cm³, panjang balok tersebut adalah...",
+    "soal": "Sebuah kotak perlengkapan berbentuk balok memiliki perbandingan rusuk panjang : lebar : tinggi = $3 : 2 : 1$. Jika volume balok tersebut adalah $384\\text{ cm}^3$, panjang balok tersebut adalah...",
     "opsi": [
-      "6 cm",
-      "8 cm",
-      "12 cm",
-      "16 cm",
-      "24 cm"
+      "$6\\text{ cm}$",
+      "$8\\text{ cm}$",
+      "$12\\text{ cm}$",
+      "$16\\text{ cm}$",
+      "$24\\text{ cm}$"
     ],
     "kunci": 2,
-    "pembahasan": "Misalkan panjang p = 3x, lebar l = 2x, tinggi t = x. Volume = p × l × t → 384 = (3x) × (2x) × (x) → 384 = 6x³ → x³ = 64 → x = 4 cm. Panjang balok = 3x = 3 × 4 = 12 cm."
+    "pembahasan": "Misalkan panjang $p = 3x$, lebar $l = 2x$, tinggi $t = x$. Volume = $p \\cdot l \\cdot t \\implies 384 = (3x) \\cdot (2x) \\cdot (x) \\implies 384 = 6x^3 \\implies x^3 = 64 \\implies x = 4\\text{ cm}$. Panjang balok = $3x = 3 \\times 4 = 12\\text{ cm}$."
   },
   {
     "mapel": "Matematika",
     "kategori": "Trigonometri Dasar",
-    "soal": "Diketahui segitiga siku-siku ABC dengan sudut siku-siku di B. Jika nilai sin A = 3/5, maka nilai cos A dan tan A berturut-turut adalah...",
+    "soal": "Diketahui segitiga siku-siku ABC dengan sudut siku-siku di B. Jika nilai $\\sin A = \\frac{3}{5}$, maka nilai $\\cos A$ dan $\\tan A$ berturut-turut adalah...",
     "opsi": [
-      "4/5 dan 3/4",
-      "3/4 dan 4/5",
-      "4/5 dan 4/3",
-      "1/2 √3 dan √3",
-      "3/5 dan 4/5"
+      "$\\frac{4}{5}$ dan $\\frac{3}{4}$",
+      "$\\frac{3}{4}$ dan $\\frac{4}{5}$",
+      "$\\frac{4}{5}$ dan $\\frac{4}{3}$",
+      "$\\frac{1}{2}\\sqrt{3}$ dan $\\sqrt{3}$",
+      "$\\frac{3}{5}$ dan $\\frac{4}{5}$"
     ],
     "kunci": 0,
-    "pembahasan": "sin A = depan / miring = 3/5. Berdasarkan teorema Pythagoras, sisi samping = √(5² − 3²) = 4. Maka cos A = samping / miring = 4/5, dan tan A = depan / samping = 3/4."
+    "pembahasan": "$\\sin A = \\frac{\\text{depan}}{\\text{miring}} = \\frac{3}{5}$. Berdasarkan teorema Pythagoras, sisi samping = $\\sqrt{5^2 - 3^2} = 4$. Maka $\\cos A = \\frac{\\text{samping}}{\\text{miring}} = \\frac{4}{5}$, dan $\\tan A = \\frac{\\text{depan}}{\\text{samping}} = \\frac{3}{4}$."
   },
   {
     "mapel": "Matematika",
     "kategori": "Penerapan Trigonometri",
-    "soal": "Seorang prajurit menyandarkan tangga sepanjang 10 meter pada dinding pos jaga. Jika tangga tersebut membentuk sudut 60° dengan tanah, berapakah tinggi ujung tangga di dinding diukur dari permukaan tanah?",
+    "soal": "Seorang prajurit menyandarkan tangga sepanjang $10\\text{ meter}$ pada dinding pos jaga. Jika tangga tersebut membentuk sudut $60^\\circ$ dengan tanah, berapakah tinggi ujung tangga di dinding diukur dari permukaan tanah?",
     "opsi": [
-      "5 meter",
-      "5 √2 meter",
-      "5 √3 meter",
-      "10 √3 meter",
-      "8 meter"
+      "$5\\text{ meter}$",
+      "$5\\sqrt{2}\\text{ meter}$",
+      "$5\\sqrt{3}\\text{ meter}$",
+      "$10\\sqrt{3}\\text{ meter}$",
+      "$8\\text{ meter}$"
     ],
     "kunci": 2,
-    "pembahasan": "Tangga bertindak sebagai sisi miring (mi = 10 m). Tinggi dinding adalah sisi depan (de). Sudut α = 60°. Gunakan perbandingan sinus: sin 60° = de / mi → 1/2 √3 = de / 10 → de = 10 × 0,5 √3 = 5 √3 meter."
+    "pembahasan": "Tangga bertindak sebagai sisi miring ($mi = 10\\text{ m}$). Tinggi dinding adalah sisi depan ($de$). Sudut $\\alpha = 60^\\circ$. Gunakan perbandingan sinus: $\\sin 60^\\circ = \\frac{de}{mi} \\implies \\frac{1}{2}\\sqrt{3} = \\frac{de}{10} \\implies de = 10 \\cdot \\frac{1}{2}\\sqrt{3} = 5\\sqrt{3}\\text{ meter}$."
   }
 ]

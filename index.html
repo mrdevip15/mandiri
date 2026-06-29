@@ -13,6 +13,11 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
+    <!-- KaTeX CSS & JS for LaTeX rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -157,7 +162,7 @@
             background-color: black;
             color: white;
             font-family: var(--font-display);
-            font-weight: 700;
+            font-weight: 500;
             padding: 1rem 1.5rem;
             border-radius: 1rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -253,7 +258,7 @@
             background-color: var(--brand-50);
             border: 1px solid var(--brand-200);
             font-size: 10px;
-            font-weight: 700;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--brand-700);
@@ -262,31 +267,31 @@
 
         .display-h1 {
             font-family: var(--font-display);
-            font-weight: 900;
+            font-weight: 600;
             color: var(--zinc-950);
             letter-spacing: -0.05em;
-            line-height: 1.0;
-            font-size: 2.25rem;
+            line-height: 1.1;
+            font-size: 2rem;
         }
 
         @media (min-width: 768px) {
             .display-h1 {
-                font-size: 5rem;
+                font-size: 4rem;
             }
         }
 
         .question-title {
             font-family: var(--font-display);
-            font-weight: 900;
+            font-weight: 500;
             color: var(--zinc-950);
-            font-size: 1.25rem;
-            letter-spacing: -0.025em;
-            line-height: 1.25;
+            font-size: 1.15rem;
+            letter-spacing: -0.01em;
+            line-height: 1.4;
         }
 
         @media (min-width: 768px) {
             .question-title {
-                font-size: 2.25rem;
+                font-size: 1.75rem;
             }
         }
 
@@ -319,12 +324,12 @@
             </p>
             <div class="flex justify-center md:justify-start gap-8 pt-2">
                 <div class="flex flex-col">
-                    <span class="text-zinc-400 text-[9px] font-bold uppercase tracking-widest font-display">Waktu</span>
-                    <span class="text-xl md:text-3xl font-mono font-bold text-zinc-900">25:00</span>
+                    <span class="text-zinc-400 text-[9px] font-medium uppercase tracking-widest font-display">Waktu</span>
+                    <span class="text-xl md:text-3xl font-mono font-semibold text-zinc-900">25:00</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-zinc-400 text-[9px] font-bold uppercase tracking-widest font-display">Soal</span>
-                    <span class="text-xl md:text-3xl font-mono font-bold text-zinc-900">16 Item</span>
+                    <span class="text-zinc-400 text-[9px] font-medium uppercase tracking-widest font-display">Soal</span>
+                    <span class="text-xl md:text-3xl font-mono font-semibold text-zinc-900">16 Item</span>
                 </div>
             </div>
         </div>
@@ -334,14 +339,14 @@
                 <div class="absolute -right-6 -top-6 text-white/5 pointer-events-none">
                     <i class="ph ph-fingerprint text-[8rem] md:text-[10rem]"></i>
                 </div>
-                <h2 class="text-lg font-display font-black text-white mb-6 relative tracking-tight uppercase">Registrasi Sesi</h2>
+                <h2 class="text-lg font-display font-semibold text-white mb-6 relative tracking-tight uppercase">Registrasi Sesi</h2>
                 <div class="space-y-5 relative">
                     <div class="space-y-2 text-left">
-                        <label class="text-[10px] font-bold text-brand-100 uppercase tracking-widest font-display ml-1">Nama Lengkap</label>
+                        <label class="text-[10px] font-medium text-brand-100 uppercase tracking-widest font-display ml-1">Nama Lengkap</label>
                         <input type="text" id="inp-name" class="input-brand" placeholder="Ketik nama Anda...">
                     </div>
                     <div class="space-y-2 text-left">
-                        <label class="text-[10px] font-bold text-brand-100 uppercase tracking-widest font-display ml-1">Alamat Email</label>
+                        <label class="text-[10px] font-medium text-brand-100 uppercase tracking-widest font-display ml-1">Alamat Email</label>
                         <input type="email" id="inp-email" class="input-brand" placeholder="email@contoh.com">
                     </div>
                     <button onclick="goDashboard()" class="btn-brand w-full group mt-2">
@@ -356,17 +361,17 @@
     <!-- ======= DASHBOARD SCREEN ======= -->
     <main id="s-dashboard" class="screen hidden flex flex-col items-center justify-center max-w-4xl mx-auto space-y-8">
         <div class="text-center space-y-2 animate-reveal">
-            <h2 class="text-3xl md:text-5xl font-display font-black text-zinc-950 tracking-tighter uppercase">Pilih Level</h2>
+            <h2 class="text-3xl md:text-5xl font-display font-semibold text-zinc-950 tracking-tighter uppercase">Pilih Level</h2>
             <p class="text-zinc-500 font-medium text-xs md:text-base">Selesaikan level sebelumnya untuk membuka level berikutnya.</p>
         </div>
         
-        <div id="level-grid" class="grid grid-cols-1 md:grid-cols-5 gap-4 w-full animate-reveal [animation-delay:100ms]">
+        <div id="level-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full animate-reveal [animation-delay:100ms]">
             <!-- Levels injected via JS -->
         </div>
 
         <div class="flex flex-col items-center gap-4 pt-8 animate-reveal [animation-delay:200ms]">
-            <p id="player-info" class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest"></p>
-            <button onclick="logout()" class="text-[9px] font-black text-brand-600 hover:text-zinc-950 uppercase tracking-[0.2em] font-display transition-colors">Reset Sesi & Ganti Identitas</button>
+            <p id="player-info" class="text-[10px] font-medium text-zinc-400 uppercase tracking-widest"></p>
+            <button onclick="logout()" class="text-[9px] font-medium text-brand-600 hover:text-zinc-950 uppercase tracking-[0.2em] font-display transition-colors">Reset Sesi & Ganti Identitas</button>
         </div>
     </main>
 
@@ -374,7 +379,7 @@
     <main id="s-instructions" class="screen hidden flex items-center justify-center">
         <div class="w-full max-w-2xl space-y-6 md:space-y-10 animate-reveal">
             <div class="text-center space-y-2">
-                <h2 class="text-3xl md:text-5xl font-display font-black text-zinc-950 tracking-tighter uppercase">Protokol</h2>
+                <h2 class="text-3xl md:text-5xl font-display font-semibold text-zinc-950 tracking-tighter uppercase">Protokol</h2>
                 <p class="text-zinc-500 font-medium text-xs md:text-base">Harap patuhi standar operasional demi validitas hasil.</p>
             </div>
 
@@ -382,14 +387,14 @@
                 <div class="bento-card !p-5 flex gap-4 items-start">
                     <i class="ph ph-stack text-white text-xl md:text-2xl mt-1"></i>
                     <div>
-                        <h3 class="font-display font-bold text-white text-sm">Materi</h3>
+                        <h3 class="font-display font-medium text-white text-sm">Materi</h3>
                         <p id="instr-materi" class="text-[10px] text-brand-100">16 soal Verbal, Numerik, Logika, Spasial.</p>
                     </div>
                 </div>
                 <div class="bento-card !p-5 flex gap-4 items-start">
                     <i class="ph ph-lock-key text-white text-xl md:text-2xl mt-1"></i>
                     <div>
-                        <h3 class="font-display font-bold text-white text-sm">Keamanan</h3>
+                        <h3 class="font-display font-medium text-white text-sm">Keamanan</h3>
                         <p class="text-[10px] text-brand-100">Sistem memantau perpindahan tab/window.</p>
                     </div>
                 </div>
@@ -410,18 +415,18 @@
     <main id="s-quiz" class="screen hidden !p-0">
         <nav class="glass-nav">
             <div class="flex flex-col flex-1">
-                <span id="q-label" class="text-[9px] font-display font-bold text-zinc-400 uppercase tracking-widest leading-none mb-1">ITEM 01 / 16</span>
+                <span id="q-label" class="text-[9px] font-display font-medium text-zinc-400 uppercase tracking-widest leading-none mb-1">ITEM 01 / 16</span>
                 <div class="w-full max-w-[120px] h-1 bg-zinc-100 rounded-full overflow-hidden">
                     <div id="prog-fill" class="h-full bg-brand-600 transition-all duration-500" style="width: 0%"></div>
                 </div>
             </div>
 
             <div class="flex items-center gap-2">
-                <div id="viol-pill" class="hidden flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-[10px] font-bold uppercase font-display">
+                <div id="viol-pill" class="hidden flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-[10px] font-medium uppercase font-display">
                     <i class="ph ph-warning-octagon text-sm"></i>
                     <span><span id="viol-count">0</span>/3</span>
                 </div>
-                <div id="timer-pill" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black text-white font-mono font-bold text-[10px] tracking-tight">
+                <div id="timer-pill" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black text-white font-mono font-medium text-[10px] tracking-tight">
                     <i class="ph ph-clock text-brand-500"></i>
                     <span id="timer-text">25:00</span>
                 </div>
@@ -431,7 +436,7 @@
         <div class="flex-1 p-5 overflow-y-auto">
             <div class="w-full max-w-2xl space-y-6 md:space-y-10 animate-reveal mx-auto">
                 <div class="space-y-3">
-                    <span id="cat-chip" class="inline-block px-2.5 py-0.5 rounded-lg bg-brand-50 border border-brand-100 text-brand-700 text-[9px] font-black uppercase tracking-widest font-display">
+                    <span id="cat-chip" class="inline-block px-2.5 py-0.5 rounded-lg bg-brand-50 border border-brand-100 text-brand-700 text-[9px] font-semibold uppercase tracking-widest font-display">
                         VERBAL
                     </span>
                     <h3 id="q-text" class="question-title">
@@ -445,7 +450,7 @@
 
                 <div id="explain-box" class="hidden animate-reveal">
                     <div id="explain-card" class="bento-card !p-5 md:!p-8 space-y-2">
-                        <span class="text-[9px] font-bold text-brand-100 uppercase tracking-widest font-display">Penjelasan</span>
+                        <span class="text-[9px] font-medium text-brand-100 uppercase tracking-widest font-display">Penjelasan</span>
                         <p id="explain-text" class="text-white text-xs md:text-sm leading-relaxed"></p>
                     </div>
                 </div>
@@ -467,44 +472,44 @@
                 <div class="relative inline-block">
                     <div class="absolute inset-0 bg-brand-600/10 blur-3xl rounded-full"></div>
                     <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full border-2 border-zinc-200 flex flex-col items-center justify-center bg-black shadow-2xl mx-auto">
-                        <span id="r-score" class="text-4xl md:text-7xl font-display font-black text-white">0</span>
-                        <span class="text-[8px] md:text-[10px] font-bold text-zinc-500 uppercase tracking-widest -mt-1 font-display">Final Score</span>
+                        <span id="r-score" class="text-4xl md:text-7xl font-display font-semibold text-white">0</span>
+                        <span class="text-[8px] md:text-[10px] font-medium text-zinc-500 uppercase tracking-widest -mt-1 font-display">Final Score</span>
                     </div>
                 </div>
                 <div class="space-y-1">
-                    <h2 id="r-title" class="text-2xl md:text-5xl font-display font-black text-zinc-950 uppercase">Selesai</h2>
+                    <h2 id="r-title" class="text-2xl md:text-5xl font-display font-semibold text-zinc-950 uppercase">Selesai</h2>
                     <p id="r-verdict" class="text-zinc-500 text-xs md:text-sm"></p>
                 </div>
             </header>
 
             <div id="r-viol-alert" class="hidden bg-black border border-brand-600 rounded-2xl p-5 flex gap-4 items-center shadow-xl">
                 <i class="ph ph-warning-circle text-brand-600 text-2xl"></i>
-                <p id="r-viol-text" class="text-[10px] md:text-sm text-brand-50 font-bold font-display"></p>
+                <p id="r-viol-text" class="text-[10px] md:text-sm text-brand-50 font-medium font-display"></p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div class="bento-card md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div class="text-center md:text-left">
-                        <span class="text-[8px] font-bold text-brand-100 uppercase tracking-widest font-display">Akurasi</span>
-                        <p id="r-pct" class="text-xl md:text-3xl font-mono font-bold text-white">0%</p>
+                        <span class="text-[8px] font-medium text-brand-100 uppercase tracking-widest font-display">Akurasi</span>
+                        <p id="r-pct" class="text-xl md:text-3xl font-mono font-semibold text-white">0%</p>
                     </div>
                     <div class="text-center md:text-left">
-                        <span class="text-[8px] font-bold text-brand-100 uppercase tracking-widest font-display">Waktu</span>
-                        <p id="r-time" class="text-xl md:text-3xl font-mono font-bold text-white">00:00</p>
+                        <span class="text-[8px] font-medium text-brand-100 uppercase tracking-widest font-display">Waktu</span>
+                        <p id="r-time" class="text-xl md:text-3xl font-mono font-semibold text-white">00:00</p>
                     </div>
                     <div class="text-center md:text-left">
-                        <span class="text-[8px] font-bold text-brand-100 uppercase tracking-widest font-display">Pelanggaran</span>
-                        <p id="r-violations" class="text-xl md:text-3xl font-mono font-bold text-white">0</p>
+                        <span class="text-[8px] font-medium text-brand-100 uppercase tracking-widest font-display">Pelanggaran</span>
+                        <p id="r-violations" class="text-xl md:text-3xl font-mono font-semibold text-white">0</p>
                     </div>
                     <div class="flex items-center justify-center md:justify-start">
-                        <p id="r-integrity" class="text-[8px] font-black text-white bg-black/30 px-3 py-1 rounded-full uppercase font-display tracking-tighter">Verified</p>
+                        <p id="r-integrity" class="text-[8px] font-semibold text-white bg-black/30 px-3 py-1 rounded-full uppercase font-display tracking-tighter">Verified</p>
                     </div>
                 </div>
 
                 <div class="bento-card flex flex-col justify-between gap-4">
                     <div>
-                        <h3 class="text-base font-display font-black uppercase">Laporan</h3>
-                        <div id="email-status" class="text-[8px] font-bold uppercase block mt-1">Automatic Background Send Active</div>
+                        <h3 class="text-base font-display font-semibold uppercase">Laporan</h3>
+                        <div id="email-status" class="text-[8px] font-medium uppercase block mt-1">Automatic Background Send Active</div>
                     </div>
                     <button id="manual-send-btn" onclick="sendEmail()" class="hidden btn-brand w-full !py-2.5 !text-[9px] uppercase">Manual Re-Send</button>
                 </div>
@@ -512,25 +517,25 @@
 
             <div class="space-y-6">
                 <div class="flex items-center gap-4">
-                    <h3 class="text-lg font-display font-black text-zinc-950 uppercase tracking-tight">Kategori</h3>
+                    <h3 class="text-lg font-display font-semibold text-zinc-950 uppercase tracking-tight">Kategori</h3>
                     <div class="flex-1 h-px bg-zinc-200"></div>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     <div class="bento-card !p-5 flex items-end justify-between">
-                        <span class="text-[9px] font-bold text-brand-100 uppercase font-display">Verbal</span>
-                        <span id="r-verbal" class="text-2xl font-mono font-bold text-white">0/4</span>
+                        <span class="text-[9px] font-medium text-brand-100 uppercase font-display">Verbal</span>
+                        <span id="r-verbal" class="text-2xl font-mono font-semibold text-white">0/4</span>
                     </div>
                     <div class="bento-card !p-5 flex items-end justify-between">
-                        <span class="text-[9px] font-bold text-brand-100 uppercase font-display">Numerik</span>
-                        <span id="r-numerik" class="text-2xl font-mono font-bold text-white">0/4</span>
+                        <span class="text-[9px] font-medium text-brand-100 uppercase font-display">Numerik</span>
+                        <span id="r-numerik" class="text-2xl font-mono font-semibold text-white">0/4</span>
                     </div>
                     <div class="bento-card !p-5 flex items-end justify-between">
-                        <span class="text-[9px] font-bold text-brand-100 uppercase font-display">Logika</span>
-                        <span id="r-logika" class="text-2xl font-mono font-bold text-white">0/4</span>
+                        <span class="text-[9px] font-medium text-brand-100 uppercase font-display">Logika</span>
+                        <span id="r-logika" class="text-2xl font-mono font-semibold text-white">0/4</span>
                     </div>
                     <div class="bento-card !p-5 flex items-end justify-between">
-                        <span class="text-[9px] font-bold text-brand-100 uppercase font-display">Spasial</span>
-                        <span id="r-spasial" class="text-2xl font-mono font-bold text-white">0/4</span>
+                        <span class="text-[9px] font-medium text-brand-100 uppercase font-display">Spasial</span>
+                        <span id="r-spasial" class="text-2xl font-mono font-semibold text-white">0/4</span>
                     </div>
                 </div>
             </div>
@@ -548,12 +553,50 @@
                 <i class="ph ph-shield-warning text-4xl"></i>
             </div>
             <div class="space-y-2">
-                <h3 class="text-xl font-display font-black text-white uppercase">Interupsi!</h3>
+                <h3 class="text-xl font-display font-semibold text-white uppercase">Interupsi!</h3>
                 <p id="modal-msg" class="text-xs text-brand-100 leading-relaxed font-medium"></p>
             </div>
-            <button onclick="closeViolModal()" class="w-full py-4 bg-white text-black rounded-xl font-bold text-sm uppercase tracking-widest active:scale-95">
+            <button onclick="closeViolModal()" class="w-full py-4 bg-white text-zinc-900 rounded-xl font-semibold text-sm uppercase tracking-widest active:scale-95">
                 Back to Session
             </button>
+        </div>
+    </div>
+
+    <!-- ======= PASSWORD MODAL ======= -->
+    <div id="pw-modal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-6">
+        <div class="w-full max-w-sm bento-card border-emerald-400 text-center space-y-6 shadow-2xl bg-zinc-950">
+            <div class="w-20 h-20 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                <i class="ph ph-key text-4xl"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-display font-semibold text-white uppercase">Password Required</h3>
+                <p class="text-xs text-emerald-200 leading-relaxed font-medium">Masukkan password untuk mengakses Latihan Andi 1.</p>
+            </div>
+            <form onsubmit="event.preventDefault(); submitPassword();" class="space-y-4">
+                <input type="password" id="pw-input" autocomplete="current-password" class="input-brand text-center" placeholder="••••••••" style="background-color: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);">
+                <p id="pw-error" class="hidden text-[10px] text-brand-600 font-medium uppercase font-display">Password salah!</p>
+                <div class="flex gap-2">
+                    <button type="button" onclick="closePwModal()" class="flex-1 py-3 bg-zinc-800 text-white rounded-xl font-semibold text-xs uppercase tracking-widest active:scale-95">Cancel</button>
+                    <button type="submit" class="flex-1 py-3 bg-emerald-500 text-zinc-950 rounded-xl font-semibold text-xs uppercase tracking-widest active:scale-95">Unlock</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ======= CONFIRM RESET MODAL ======= -->
+    <div id="reset-modal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-6">
+        <div class="w-full max-w-sm bento-card border-brand-400 text-center space-y-6 shadow-2xl bg-zinc-950">
+            <div class="w-20 h-20 bg-brand-500/10 text-brand-500 rounded-2xl flex items-center justify-center mx-auto shadow-xl">
+                <i class="ph ph-trash text-4xl"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-display font-semibold text-white uppercase">Reset Sesi?</h3>
+                <p class="text-xs text-brand-100 leading-relaxed font-medium">Ini akan menghapus seluruh progress dan identitas Anda.</p>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="closeResetModal()" class="flex-1 py-3 bg-zinc-800 text-white rounded-xl font-semibold text-xs uppercase tracking-widest active:scale-95">Batal</button>
+                <button onclick="confirmReset()" class="flex-1 py-3 bg-brand-600 text-white rounded-xl font-semibold text-xs uppercase tracking-widest active:scale-95">Reset</button>
+            </div>
         </div>
     </div>
 
@@ -596,6 +639,20 @@
                 explain: q.explain || 'Tidak ada penjelasan.'
             };
         }
+
+        function renderMath() {
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\(', right: '\\)', display: false},
+                        {left: '\\[', right: '\\]', display: true}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
         
         async function loadQuestions() {
             try {
@@ -625,7 +682,10 @@
                 } catch (e) { console.warn("Andi set not found"); }
 
                 // If we are already on the dashboard, update it to show the special packs
-                if (pesertaName && !quizActive) renderDashboard();
+                if (pesertaName && !quizActive) {
+                    renderDashboard();
+                    renderMath();
+                }
 
                 console.log("Database loaded:", ALL_SETS.length, "sets available.");
                 
@@ -729,11 +789,47 @@
             saveState();
         }
 
-        function logout() {
-            if (confirm("Reset seluruh progress dan identitas?")) {
-                localStorage.removeItem(STORAGE_KEY);
-                location.reload();
+        let pendingLevelToGo = null;
+
+        function checkLevelAccess(level) {
+            if (level === 'andi') {
+                pendingLevelToGo = level;
+                document.getElementById('pw-input').value = '';
+                document.getElementById('pw-error').classList.add('hidden');
+                document.getElementById('pw-modal').classList.remove('hidden');
+                setTimeout(() => document.getElementById('pw-input').focus(), 50);
+            } else {
+                goInstructions(level);
             }
+        }
+
+        function closePwModal() {
+            document.getElementById('pw-modal').classList.add('hidden');
+            pendingLevelToGo = null;
+        }
+
+        function submitPassword() {
+            const val = document.getElementById('pw-input').value;
+            if (val === 'accel123') {
+                document.getElementById('pw-modal').classList.add('hidden');
+                goInstructions(pendingLevelToGo);
+                pendingLevelToGo = null;
+            } else {
+                document.getElementById('pw-error').classList.remove('hidden');
+            }
+        }
+
+        function logout() {
+            document.getElementById('reset-modal').classList.remove('hidden');
+        }
+
+        function closeResetModal() {
+            document.getElementById('reset-modal').classList.add('hidden');
+        }
+
+        function confirmReset() {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
         }
 
         // ===================== CORE LOGIC =====================
@@ -779,10 +875,10 @@
                 card.className = `bento-card relative overflow-hidden flex flex-col items-center justify-center gap-2 p-6 transition-all duration-300 ${isUnlocked ? 'cursor-pointer hover:scale-[1.02] active:scale-95' : 'opacity-40 grayscale pointer-events-none'}`;
                 
                 card.innerHTML = `
-                    <span class="text-[9px] font-black uppercase tracking-widest text-brand-100">Level</span>
-                    <h3 class="text-4xl font-display font-black text-white">${i}</h3>
+                    <span class="text-[9px] font-semibold uppercase tracking-widest text-brand-100">Level</span>
+                    <h3 class="text-4xl font-display font-medium text-white">${i}</h3>
                     <div class="mt-2 text-center">
-                        <span class="text-[8px] font-bold uppercase ${highscore >= PASSING_SCORE ? 'text-emerald-300' : 'text-brand-200'}">
+                        <span class="text-[8px] font-medium uppercase ${highscore >= PASSING_SCORE ? 'text-emerald-300' : 'text-brand-200'}">
                             ${highscore > 0 ? `High Score: ${highscore}/16` : isUnlocked ? 'Ready to Play' : 'Locked'}
                         </span>
                     </div>
@@ -797,10 +893,10 @@
                 const card = document.createElement('div');
                 card.className = `bento-card relative overflow-hidden flex flex-col items-center justify-center gap-2 p-6 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-95 border-2 border-amber-400 bg-zinc-900`;
                 card.innerHTML = `
-                    <span class="text-[9px] font-black uppercase tracking-widest text-amber-400">Special</span>
-                    <h3 class="text-2xl font-display font-black text-white">AKMIL PACK</h3>
+                    <span class="text-[9px] font-semibold uppercase tracking-widest text-amber-400">Special</span>
+                    <h3 class="text-2xl font-display font-medium text-white">AKMIL PACK</h3>
                     <div class="mt-2 text-center">
-                        <span class="text-[8px] font-bold uppercase text-amber-200">
+                        <span class="text-[8px] font-medium uppercase text-amber-200">
                             35 Questions • Math & Physics
                         </span>
                     </div>
@@ -814,22 +910,15 @@
                 const card = document.createElement('div');
                 card.className = `bento-card relative overflow-hidden flex flex-col items-center justify-center gap-2 p-6 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-95 border-2 border-emerald-400 bg-zinc-900`;
                 card.innerHTML = `
-                    <span class="text-[9px] font-black uppercase tracking-widest text-emerald-400">Special</span>
-                    <h3 class="text-2xl font-display font-black text-white">LATIHAN ANDI 1</h3>
+                    <span class="text-[9px] font-semibold uppercase tracking-widest text-emerald-400">Special</span>
+                    <h3 class="text-2xl font-display font-medium text-white">LATIHAN ANDI 1</h3>
                     <div class="mt-2 text-center">
-                        <span class="text-[8px] font-bold uppercase text-emerald-200">
+                        <span class="text-[8px] font-medium uppercase text-emerald-200">
                             16 Questions • Math & Physics
                         </span>
                     </div>
                 `;
-                card.onclick = () => {
-                    const password = prompt("Masukkan password untuk mengakses Latihan Andi 1:");
-                    if (password === "accel123") {
-                        goInstructions('andi');
-                    } else if (password !== null) {
-                        alert("Password salah!");
-                    }
-                };
+                card.onclick = () => checkLevelAccess('andi');
                 grid.appendChild(card);
             }
         }
@@ -884,10 +973,10 @@
                 const btn = document.createElement('button');
                 btn.className = 'opt-card group';
                 btn.innerHTML = `
-                    <div class="w-8 h-8 shrink-0 rounded-lg bg-black flex items-center justify-center font-display font-black text-white border-2 border-black text-xs">
+                    <div class="w-8 h-8 shrink-0 rounded-lg bg-black flex items-center justify-center font-display font-medium text-white border-2 border-black text-xs">
                         ${['A','B','C','D','E'][i]}
                     </div>
-                    <span class="font-display font-bold text-zinc-950 text-sm md:text-lg flex-1">${opt.substring(3) || opt}</span>
+                    <span class="font-display font-medium text-zinc-950 text-sm md:text-base flex-1">${opt.substring(3) || opt}</span>
                 `;
                 btn.onclick = () => selectAnswer(i);
                 list.appendChild(btn);
@@ -897,6 +986,7 @@
             document.getElementById('btn-next').classList.add('hidden');
 
             if (savedAns !== null) restoreAnswer(savedAns);
+            renderMath();
         }
 
         function restoreAnswer(idx) {
@@ -921,6 +1011,7 @@
             document.getElementById('explain-text').textContent = q.explain;
             document.getElementById('explain-box').classList.remove('hidden');
             document.getElementById('btn-next').classList.remove('hidden');
+            renderMath();
         }
 
         function selectAnswer(idx) {
@@ -950,6 +1041,7 @@
             document.getElementById('explain-box').classList.remove('hidden');
             document.getElementById('btn-next').classList.remove('hidden');
             saveState();
+            renderMath();
         }
 
         function nextQuestion() {
@@ -1055,14 +1147,15 @@
             }
 
             const detail = document.getElementById('r-detail');
-            detail.innerHTML = '<h3 class="text-xl font-display font-black uppercase mb-4 mt-6">Log Jawaban</h3>';
+            detail.innerHTML = '<h3 class="text-xl font-display font-semibold uppercase mb-4 mt-6">Log Jawaban</h3>';
             QUESTIONS.forEach((q, i) => {
                 const sel = selectedAnswers[i];
                 const row = document.createElement('div');
                 row.className = 'flex items-center gap-3 p-4 rounded-2xl bg-white border border-zinc-200 mb-2';
-                row.innerHTML = `<span class="font-mono text-zinc-400 text-[9px] font-bold">${String(i+1).padStart(2, '0')}</span><p class="flex-1 text-[10px] text-zinc-900 font-bold truncate">${q.soal}</p><span class="text-[9px] font-black uppercase ${sel === q.ans ? 'text-emerald-500' : 'text-brand-600'}">${sel === q.ans ? 'OK' : 'ERR'}</span>`;
+                row.innerHTML = `<span class="font-mono text-zinc-400 text-[9px] font-medium">${String(i+1).padStart(2, '0')}</span><p class="flex-1 text-[10px] text-zinc-900 font-medium truncate">${q.soal}</p><span class="text-[9px] font-semibold uppercase ${sel === q.ans ? 'text-emerald-500' : 'text-brand-600'}">${sel === q.ans ? 'OK' : 'ERR'}</span>`;
                 detail.appendChild(row);
             });
+            renderMath();
             
             // Show return to dashboard button
             const manualBtn = document.getElementById('manual-send-btn');
